@@ -1,56 +1,59 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-public class CardFlipper : MonoBehaviour 
+namespace Assets.Scripts
 {
-    SpriteRenderer spriteRenderer;
-    CardModel model;
-
-    public AnimationCurve scaleCurve;
-    public float duration = 0.5f;
-
-    void Awake()
+    public class CardFlipper : MonoBehaviour
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        model = GetComponent<CardModel>();
-    }
+        private SpriteRenderer spriteRenderer;
+        private CardModel model;
 
-    public void FlipCard(Sprite startImage, Sprite endImage, int cardIndex)
-    {
-        StopCoroutine(Flip(startImage, endImage, cardIndex));
-        StartCoroutine(Flip(startImage, endImage, cardIndex));
-    }
+        public AnimationCurve scaleCurve;
+        public float duration = 0.5f;
 
-    IEnumerator Flip(Sprite startImage, Sprite endImage, int cardIndex)
-    {
-        spriteRenderer.sprite = startImage;
-
-        float time = 0f;
-        while (time <= 1f)
+        void Awake()
         {
-            float scale = scaleCurve.Evaluate(time);
-            time = time + Time.deltaTime / duration;
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            model = GetComponent<CardModel>();
+        }
 
-            Vector3 localScale = transform.localScale;
-            localScale.x = scale;
-            transform.localScale = localScale;
+        public void FlipCard(Sprite startImage, Sprite endImage, int cardIndex)
+        {
+            StopCoroutine(Flip(startImage, endImage, cardIndex));
+            StartCoroutine(Flip(startImage, endImage, cardIndex));
+        }
 
-            if (time >= 0.5f)
+        IEnumerator Flip(Sprite startImage, Sprite endImage, int cardIndex)
+        {
+            spriteRenderer.sprite = startImage;
+
+            var time = 0f;
+            while (time <= 1f)
             {
-                spriteRenderer.sprite = endImage;
+                float scale = scaleCurve.Evaluate(time);
+                time = time + Time.deltaTime / duration;
+
+                Vector3 localScale = transform.localScale;
+                localScale.x = scale;
+                transform.localScale = localScale;
+
+                if (time >= 0.5f)
+                {
+                    spriteRenderer.sprite = endImage;
+                }
+
+                yield return new WaitForFixedUpdate();
             }
 
-            yield return new WaitForFixedUpdate();
-        }
-
-        if (cardIndex == -1)
-        {
-            model.ToggleFace(false);
-        }
-        else
-        {
-            model.cardIndex = cardIndex;
-            model.ToggleFace(true);
+            if (cardIndex == -1)
+            {
+                model.ToggleFace(false);
+            }
+            else
+            {
+                model.cardIndex = cardIndex;
+                model.ToggleFace(true);
+            }
         }
     }
 }

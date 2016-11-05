@@ -1,44 +1,46 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class DebugChangeCard : MonoBehaviour
+namespace Assets.Scripts
 {
-    CardFlipper flipper;
-    CardModel cardModel;
-    int cardIndex = 0;
-
-    public GameObject card;
-
-	void Awake()
+    public class DebugChangeCard : MonoBehaviour
     {
-        cardModel = card.GetComponent<CardModel>();
-        flipper = card.GetComponent<CardFlipper>();
-	}
+        CardFlipper flipper;
+        CardModel cardModel;
+        int cardIndex = 0;
 
-    void OnGUI()
-    {
-        if (GUI.Button(new Rect(10, 10, 100, 28), "Hit me!"))
+        public GameObject card;
+
+        void Awake()
         {
-            if (cardIndex >= cardModel.faces.Length)
+            cardModel = card.GetComponent<CardModel>();
+            flipper = card.GetComponent<CardFlipper>();
+        }
+
+        void OnGUI()
+        {
+            if (GUI.Button(new Rect(10, 10, 100, 28), "Hit me!"))
             {
-                cardIndex = 0;
-                flipper.FlipCard(cardModel.faces[cardModel.faces.Length - 1], cardModel.cardBack, -1);
-            }
-            else
-            {
-                if (cardIndex >0)
+                if (cardIndex >= cardModel.faces.Length)
                 {
-                    flipper.FlipCard(cardModel.faces[cardIndex - 1], cardModel.faces[cardIndex], cardIndex);
+                    cardIndex = 0;
+                    flipper.FlipCard(cardModel.faces[cardModel.faces.Length - 1], cardModel.cardBack, -1);
                 }
                 else
                 {
-                    flipper.FlipCard(cardModel.cardBack, cardModel.faces[cardIndex], cardIndex);
+                    if (cardIndex >0)
+                    {
+                        flipper.FlipCard(cardModel.faces[cardIndex - 1], cardModel.faces[cardIndex], cardIndex);
+                    }
+                    else
+                    {
+                        flipper.FlipCard(cardModel.cardBack, cardModel.faces[cardIndex], cardIndex);
+                    }
+
+                    cardIndex++;
                 }
-
-                cardIndex++;
             }
-        }
 
-    }
+        }
 	
+    }
 }

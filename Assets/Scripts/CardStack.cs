@@ -1,138 +1,140 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class CardStack : MonoBehaviour
+namespace Assets.Scripts
 {
-    List<int> cards;
-
-    public bool isGameDeck;
-
-    public bool HasCards
+    public class CardStack : MonoBehaviour
     {
-        get { return cards != null && cards.Count > 0; }
-    }
+        List<int> cards;
 
-    public event CardEventHandler CardRemoved;
-    public event CardEventHandler CardAdded;
+        public bool isGameDeck;
 
-    public int CardCount
-    {
-        get
+        public bool HasCards
         {
-            if (cards == null)
-            {
-                return 0;
-            }
-            else
-            {
-                return cards.Count;
-            }
-        }
-    }
-
-    public IEnumerable<int> GetCards()
-    {
-        foreach (int i in cards)
-        {
-            yield return i;
-        }
-    }
-
-    public int Pop()
-    {
-        int temp = cards[0];
-        cards.RemoveAt(0);
-
-        if (CardRemoved != null)
-        {
-            CardRemoved(this, new CardEventArgs(temp));
+            get { return cards != null && cards.Count > 0; }
         }
 
-        return temp;
-    }
+        public event CardEventHandler CardRemoved;
+        public event CardEventHandler CardAdded;
 
-    public void Push(int card)
-    {
-        cards.Add(card);
-
-        if (CardAdded != null)
+        public int CardCount
         {
-            CardAdded(this, new CardEventArgs(card));
-        }
-    }
-
-    public int HandValue()
-    {
-        int total = 0;
-        int aces = 0;
-
-        foreach (int card in GetCards())
-        {
-            int cardRank = card % 13;
-
-            if (cardRank <= 8)
+            get
             {
-                cardRank += 2;
-                total = total + cardRank;
-            }
-            else if (cardRank > 8 && cardRank < 12)
-            {
-                cardRank = 10;
-                total = total + cardRank;
-            }
-            else
-            {
-                aces++;
+                if (cards == null)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return cards.Count;
+                }
             }
         }
 
-        for (int i = 0; i < aces; i++)
+        public IEnumerable<int> GetCards()
         {
-            if (total + 11 <= 21)
+            foreach (int i in cards)
             {
-                total = total + 11;
-            }
-            else
-            {
-                total = total + 1;
+                yield return i;
             }
         }
 
-        return total;
-    }
-
-    public void CreateDeck()
-    {
-        cards.Clear();
-
-        for (int i = 0; i < 52; i++)
+        public int Pop()
         {
-            cards.Add(i);
+            int temp = cards[0];
+            cards.RemoveAt(0);
+
+            if (CardRemoved != null)
+            {
+                CardRemoved(this, new CardEventArgs(temp));
+            }
+
+            return temp;
         }
 
-        int n = cards.Count;
-        while (n > 1)
+        public void Push(int card)
         {
-            n--;
-            int k = Random.Range(0, n + 1);
-            int temp = cards[k];
-            cards[k] = cards[n];
-            cards[n] = temp;
+            cards.Add(card);
+
+            if (CardAdded != null)
+            {
+                CardAdded(this, new CardEventArgs(card));
+            }
+        }
+
+        public int HandValue()
+        {
+            int total = 0;
+            int aces = 0;
+
+            foreach (int card in GetCards())
+            {
+                int cardRank = card % 13;
+
+                if (cardRank <= 8)
+                {
+                    cardRank += 2;
+                    total = total + cardRank;
+                }
+                else if (cardRank > 8 && cardRank < 12)
+                {
+                    cardRank = 10;
+                    total = total + cardRank;
+                }
+                else
+                {
+                    aces++;
+                }
+            }
+
+            for (int i = 0; i < aces; i++)
+            {
+                if (total + 11 <= 21)
+                {
+                    total = total + 11;
+                }
+                else
+                {
+                    total = total + 1;
+                }
+            }
+
+            return total;
+        }
+
+        public void CreateDeck()
+        {
+            cards.Clear();
+
+            for (int i = 0; i < 52; i++)
+            {
+                cards.Add(i);
+            }
+
+            int n = cards.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = Random.Range(0, n + 1);
+                int temp = cards[k];
+                cards[k] = cards[n];
+                cards[n] = temp;
+            }
+        }
+
+        public void Reset()
+        {
+            cards.Clear();
+        }
+
+        void Awake()
+        {
+            cards = new List<int>();
+            if (isGameDeck)
+            {
+                CreateDeck();
+            }
         }
     }
-
-    public void Reset()
-    {
-        cards.Clear();
-    }
-
-	void Awake() 
-    {
-        cards = new List<int>();
-        if (isGameDeck)
-        {
-            CreateDeck();
-        }
-	}
 }

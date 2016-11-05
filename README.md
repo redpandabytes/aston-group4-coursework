@@ -1,6 +1,9 @@
-README
-<<<<<<< HEAD
+#Guilds of Triumph
+##An epic card game made by second year students at Aston University
 =======
+
+###Produced by the following people
+======
 Dehul Shingadia
 Ann Tomi
 Matthew Kavanagh
@@ -9,4 +12,3 @@ Rahima Khanom
 Dimimu Olagoke
 Brad Kirk
 Nathaniel Baulch-Jones
->>>>>>> 99e85f80a53c1e816e11d2121fba2b8d3d0af210

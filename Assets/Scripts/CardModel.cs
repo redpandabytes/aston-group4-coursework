@@ -1,29 +1,31 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class CardModel : MonoBehaviour
+namespace Assets.Scripts
 {
-    SpriteRenderer spriteRenderer;
-
-    public Sprite[] faces;
-    public Sprite cardBack;
-    public int cardIndex; // e.g. faces[cardIndex];
-
-    public void ToggleFace(bool showFace)
+    public class CardModel : MonoBehaviour
     {
-        if (showFace)
-        {
-            spriteRenderer.sprite = faces[cardIndex];
-        }
-        else
-        {
-            spriteRenderer.sprite = cardBack;
-        }
-    }
+        SpriteRenderer spriteRenderer;
 
-    void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+        public Sprite[] faces;
+        public Sprite cardBack;
+        public int cardIndex; // e.g. faces[cardIndex];
 
+        public void ToggleFace(bool showFace)
+        {
+            if (showFace)
+            {
+                spriteRenderer.sprite = faces[cardIndex];
+            }
+            else
+            {
+                spriteRenderer.sprite = cardBack;
+            }
+        }
+
+        void Awake()
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+    }
 }

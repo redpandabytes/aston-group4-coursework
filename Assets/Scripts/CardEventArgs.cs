@@ -1,11 +1,14 @@
 ﻿using System;
 
-public class CardEventArgs : EventArgs
+namespace Assets.Scripts
 {
-    public int CardIndex { get; private set; }
-
-    public CardEventArgs(int cardIndex)
+    public class CardEventArgs : EventArgs
     {
-        CardIndex = cardIndex;
+        public int CardIndex { get; private set; }
+
+        public CardEventArgs(int cardIndex)
+        {
+            CardIndex = cardIndex;
+        }
     }
 }
