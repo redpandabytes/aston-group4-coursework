@@ -98,20 +98,27 @@ namespace Assets.Scripts
                 {
                     player3.Push(deck.Pop());
                     //Add wait for 1sec
+                    System.Threading.Thread.Sleep(2000);
+
+                    }
                     if (i == 2)
                     {
                         player2.Push(deck.Pop());
-                        //Add wait for 1sec
+                        //Add wait for 2sec
+                        System.Threading.Thread.Sleep(2000);
                         if (i == 1)
                         {
                             player1.Push(deck.Pop());
-                            //Add wait for 1sec
-                        }
+                            //Add wait for 2sec
+                            System.Threading.Thread.Sleep(2000);
+                            }
 
 
                         i = 0;
                     }
                 }
+
+                //Cheack for button press
 
                 // for ( i < 2; i++)
                 // {
@@ -125,7 +132,7 @@ namespace Assets.Scripts
             
 
 
-        }
+        
 
         /// <summary>
         /// curent player
