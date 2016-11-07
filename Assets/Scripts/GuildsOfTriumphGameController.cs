@@ -99,8 +99,11 @@ namespace Assets.Scripts
             playerArray[1] = player1;
             playerArray[2] = player2;
             playerArray[3] = player3;
+            Debug.Log("Player 1 card count: " + player0.HandValue());
+            Debug.Log("Player 1 card count: " + player1.HandValue());
+            Debug.Log("Player 1 card count: " + player2.HandValue());
+            Debug.Log("Player 1 card count: " + player3.HandValue());
 
-            Debug.Log("Player 1 card count: " + _player1Info.GetCards());
 
 
             for (int i = 0; i <= playerArray.Length; i++)
