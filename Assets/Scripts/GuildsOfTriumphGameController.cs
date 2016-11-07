@@ -7,8 +7,14 @@ namespace Assets.Scripts
     public class GuildsOfTriumphGameController : MonoBehaviour
     {
         int dealersFirstCard = -1;
+        //Players
 
-        public CardStack player;
+
+        public CardStack player0;
+        public CardStack player1;
+        public CardStack player2;
+        public CardStack player3;
+
         public CardStack dealer;
         public CardStack deck;
 
@@ -17,6 +23,9 @@ namespace Assets.Scripts
         public Button playAgainButton;
 
         public Text winnerText;
+
+        CardStack[] playerArray = new CardStack[4];
+
 
         /*
      * Cards dealt to each player
@@ -29,8 +38,8 @@ namespace Assets.Scripts
 
         public void Hit()
         {
-            player.Push(deck.Pop());
-            if (player.HandValue() > 21)
+            player1.Push(deck.Pop());
+            if (player1.HandValue() > 21)
             {
                 hitButton.interactable = false;
                 stickButton.interactable = false;
@@ -49,7 +58,7 @@ namespace Assets.Scripts
         {
             playAgainButton.interactable = false;
 
-            player.GetComponent<CardStackView>().Clear();
+            player1.GetComponent<CardStackView>().Clear();
             dealer.GetComponent<CardStackView>().Clear();
             deck.GetComponent<CardStackView>().Clear();
             deck.CreateDeck();
@@ -77,12 +86,66 @@ namespace Assets.Scripts
 
         void StartGame()
         {
-            for (int i = 0; i < 2; i++)
+            playerArray[0] = player0;
+            playerArray[1] = player1;
+            playerArray[2] = player2;
+            playerArray[3] = player3;
+
+
+            for (int i = 0; i <= playerArray.Length; i++)
             {
-                player.Push(deck.Pop());
-                HitDealer();
+                if (i == 3)
+                {
+                    player3.Push(deck.Pop());
+                    if (i == 2)
+                    {
+                        player2.Push(deck.Pop());
+                        if (i == 1)
+                        {
+                            player1.Push(deck.Pop());
+
+                        }
+
+
+                        i = 0;
+                    }
+                }
+
+                // for ( i < 2; i++)
+                // {
+                //     player1.Push(deck.Pop());
+                //     HitDealer();
+                // }
+
+            }else
+            {
+
             }
+
+
+
         }
+
+        /// <summary>
+        /// curent player
+        /// 
+        /// 
+        /// 
+        /// 
+        /// while( int i= 1; i <= 4;i++){
+        ///     if(
+        /// }
+        /// 
+        /// 
+        /// </summary>
+
+           
+       // void currentPlayer() {
+            
+
+
+
+        //}
 
         void HitDealer()
         {
@@ -117,11 +180,11 @@ namespace Assets.Scripts
                 yield return new WaitForSeconds(1f);
             }
 
-            if (player.HandValue() > 21 || (dealer.HandValue() >= player.HandValue() && dealer.HandValue() <= 21))
+            if (player1.HandValue() > 21 || (dealer.HandValue() >= player1.HandValue() && dealer.HandValue() <= 21))
             {
                 winnerText.text = "Sorry-- you lose";
             }
-            else if (dealer.HandValue() > 21 || (player.HandValue() <= 21 && player.HandValue() > dealer.HandValue()))
+            else if (dealer.HandValue() > 21 || (player1.HandValue() <= 21 && player1.HandValue() > dealer.HandValue()))
             {
                 winnerText.text = "Winner, winner! Chicken dinner";
             }

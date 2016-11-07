@@ -29,7 +29,7 @@ namespace Assets.Scripts
 
         public void Hit()
         {
-            player.Push(deck.Pop());
+            player.Push(deck.Pop());// picks a card
             if (player.HandValue() > 21)
             {
                 hitButton.interactable = false;
@@ -45,7 +45,7 @@ namespace Assets.Scripts
             StartCoroutine(DealersTurn());
         }
 
-        public void PlayAgain()
+        public void PlayAgain()//reset
         {
             playAgainButton.interactable = false;
 
@@ -53,7 +53,6 @@ namespace Assets.Scripts
             dealer.GetComponent<CardStackView>().Clear();
             deck.GetComponent<CardStackView>().Clear();
             deck.CreateDeck();
-
             winnerText.text = "";
 
             hitButton.interactable = true;
