@@ -34,6 +34,11 @@ namespace Assets.Scripts
             SceneManager.LoadScene (toHelp);
         }
 
+		public void btnToSettings(string toSettings)
+		{
+			SceneManager.LoadScene (toSettings);
+		}
+
         public void returnToMain(string returnToMain)
         {
             SceneManager.LoadScene (returnToMain);
