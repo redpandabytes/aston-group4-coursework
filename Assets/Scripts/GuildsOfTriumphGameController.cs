@@ -97,13 +97,15 @@ namespace Assets.Scripts
                 if (i == 3)
                 {
                     player3.Push(deck.Pop());
+                    //Add wait for 1sec
                     if (i == 2)
                     {
                         player2.Push(deck.Pop());
+                        //Add wait for 1sec
                         if (i == 1)
                         {
                             player1.Push(deck.Pop());
-
+                            //Add wait for 1sec
                         }
 
 
@@ -117,11 +119,10 @@ namespace Assets.Scripts
                 //     HitDealer();
                 // }
 
-            }else
-            {
+            }            
 
-            }
 
+            
 
 
         }
