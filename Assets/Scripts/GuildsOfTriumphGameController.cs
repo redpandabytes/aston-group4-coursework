@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,6 +39,7 @@ namespace Assets.Scripts
 
         public void Hit()
         {
+
             player1.Push(deck.Pop());
             if (player1.HandValue() > 21)
             {
@@ -86,10 +88,15 @@ namespace Assets.Scripts
 
         void StartGame()
         {
+            Debug.Log("We're in control");
             playerArray[0] = player0;
+            Debug.Log("Player Array 0 Card Count: " + playerArray[0].CardCount);
             playerArray[1] = player1;
+            Debug.Log("Player Array 1 Card Count: " + playerArray[0].CardCount);
             playerArray[2] = player2;
+            Debug.Log("Player Array 2 Card Count: " + playerArray[0].CardCount);
             playerArray[3] = player3;
+            Debug.Log("Player Array 3 Card Count: " + playerArray[0].CardCount);
 
 
             for (int i = 0; i <= playerArray.Length; i++)
@@ -113,11 +120,11 @@ namespace Assets.Scripts
                     }
                 }
 
-                // for ( i < 2; i++)
-                // {
-                //     player1.Push(deck.Pop());
-                //     HitDealer();
-                // }
+                 for (int n = 0; n < 2; n++)
+                 {
+                     player1.Push(deck.Pop());
+                     HitDealer();
+                 }
 
             }            
 
