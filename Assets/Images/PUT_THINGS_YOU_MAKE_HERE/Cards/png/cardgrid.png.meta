@@ -1,0 +1,1459 @@
+fileFormatVersion: 2
+guid: 19d7cab02e2f6754c80fd324dd9508df
+timeCreated: 1478521986
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: cardgrid_0
+    21300002: cardgrid_1
+    21300004: cardgrid_2
+    21300006: cardgrid_3
+    21300008: cardgrid_4
+    21300010: cardgrid_5
+    21300012: cardgrid_6
+    21300014: cardgrid_7
+    21300016: cardgrid_8
+    21300018: cardgrid_9
+    21300020: cardgrid_10
+    21300022: cardgrid_11
+    21300024: cardgrid_12
+    21300026: cardgrid_13
+    21300028: cardgrid_14
+    21300030: cardgrid_15
+    21300032: cardgrid_16
+    21300034: cardgrid_17
+    21300036: cardgrid_18
+    21300038: cardgrid_19
+    21300040: cardgrid_20
+    21300042: cardgrid_21
+    21300044: cardgrid_22
+    21300046: cardgrid_23
+    21300048: cardgrid_24
+    21300050: cardgrid_25
+    21300052: cardgrid_26
+    21300054: cardgrid_27
+    21300056: cardgrid_28
+    21300058: cardgrid_29
+    21300060: cardgrid_30
+    21300062: cardgrid_31
+    21300064: cardgrid_32
+    21300066: cardgrid_33
+    21300068: cardgrid_34
+    21300070: cardgrid_35
+    21300072: cardgrid_36
+    21300074: cardgrid_37
+    21300076: cardgrid_38
+    21300078: cardgrid_39
+    21300080: cardgrid_40
+    21300082: cardgrid_41
+    21300084: cardgrid_42
+    21300086: cardgrid_43
+    21300088: cardgrid_44
+    21300090: cardgrid_45
+    21300092: cardgrid_46
+    21300094: cardgrid_47
+    21300096: cardgrid_48
+    21300098: cardgrid_49
+    21300100: cardgrid_50
+    21300102: cardgrid_51
+    21300104: cardgrid_52
+    21300106: cardgrid_53
+    21300108: cardgrid_54
+    21300110: cardgrid_55
+    21300112: cardgrid_56
+    21300114: cardgrid_57
+    21300116: cardgrid_58
+    21300118: cardgrid_59
+    21300120: cardgrid_60
+    21300122: cardgrid_61
+    21300124: cardgrid_62
+    21300126: cardgrid_63
+    21300128: cardgrid_64
+    21300130: cardgrid_65
+    21300132: cardgrid_66
+    21300134: cardgrid_67
+    21300136: cardgrid_68
+    21300138: cardgrid_69
+    21300140: cardgrid_70
+    21300142: cardgrid_71
+    21300144: cardgrid_72
+    21300146: cardgrid_73
+    21300148: cardgrid_74
+    21300150: cardgrid_75
+    21300152: cardgrid_76
+    21300154: cardgrid_77
+    21300156: cardgrid_78
+    21300158: cardgrid_79
+    21300160: cardgrid_80
+    21300162: cardgrid_81
+    21300164: cardgrid_82
+    21300166: cardgrid_83
+    21300168: cardgrid_84
+    21300170: cardgrid_85
+    21300172: cardgrid_86
+    21300174: cardgrid_87
+    21300176: cardgrid_88
+    21300178: cardgrid_89
+    21300180: cardgrid_90
+    21300182: cardgrid_91
+    21300184: cardgrid_92
+    21300186: cardgrid_93
+    21300188: cardgrid_94
+    21300190: cardgrid_95
+    21300192: cardgrid_96
+    21300194: cardgrid_97
+    21300196: cardgrid_98
+    21300198: cardgrid_99
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 1
+  spritePivot: {x: 0, y: 1}
+  spriteBorder: {x: 288, y: 0, z: 0, w: 400}
+  spritePixelsToUnits: 300
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: cardgrid_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 3600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_2
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 3600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_3
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 3600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_4
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 3600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_5
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 3600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_6
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 3600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_7
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 3600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_8
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 3600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_9
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 3600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_11
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 3200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_12
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 3200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_13
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 3200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_14
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 3200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_15
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 3200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_16
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 3200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_17
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 3200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_18
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 3200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_19
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 3200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_21
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 2800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_22
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 2800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_23
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 2800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_24
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 2800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_25
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 2800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_26
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 2800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_27
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 2800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_28
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 2800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_29
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 2800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_31
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 2400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_32
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 2400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_33
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 2400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_34
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 2400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_35
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 2400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_36
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 2400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_37
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 2400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_38
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 2400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_39
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 2400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2000
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_41
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 2000
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_42
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 2000
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_43
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 2000
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_44
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 2000
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_45
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 2000
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_46
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 2000
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_47
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 2000
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_48
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 2000
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_49
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 2000
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_51
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_52
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_53
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_54
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_55
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_56
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_57
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 1600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_58
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_59
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 1600
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_61
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_62
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_63
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_64
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_65
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_66
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_67
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 1200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_68
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_69
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 1200
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_71
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_72
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_73
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_74
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_75
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_76
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_77
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_78
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_79
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 800
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_81
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_82
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_83
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_84
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_85
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_86
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_87
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_88
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_89
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 400
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_91
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_92
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_93
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_94
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_95
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 0
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_96
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 0
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_97
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 0
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_98
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cardgrid_99
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 0
+        width: 288
+        height: 400
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
