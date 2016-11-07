@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    public class GameController : MonoBehaviour
+    public class GuildsOfTriumphGameController : MonoBehaviour
     {
         int dealersFirstCard = -1;
 
@@ -17,7 +17,7 @@ namespace Assets.Scripts
         public Button playAgainButton;
 
         public Text winnerText;
-    
+
         /*
      * Cards dealt to each player
      * First player hits/sticks/bust
@@ -115,7 +115,7 @@ namespace Assets.Scripts
             {
                 HitDealer();
                 yield return new WaitForSeconds(1f);
-            } 
+            }
 
             if (player.HandValue() > 21 || (dealer.HandValue() >= player.HandValue() && dealer.HandValue() <= 21))
             {

@@ -5,13 +5,13 @@ namespace Assets.Scripts
 {
     public class CardStack : MonoBehaviour
     {
-        List<int> cards;
+        private List<int> _cards;
 
         public bool isGameDeck;
 
         public bool HasCards
         {
-            get { return cards != null && cards.Count > 0; }
+            get { return _cards != null && _cards.Count > 0; }
         }
 
         public event CardEventHandler CardRemoved;
@@ -21,20 +21,20 @@ namespace Assets.Scripts
         {
             get
             {
-                if (cards == null)
+                if (_cards == null)
                 {
                     return 0;
                 }
                 else
                 {
-                    return cards.Count;
+                    return _cards.Count;
                 }
             }
         }
 
         public IEnumerable<int> GetCards()
         {
-            foreach (int i in cards)
+            foreach (int i in _cards)
             {
                 yield return i;
             }
@@ -42,20 +42,21 @@ namespace Assets.Scripts
 
         public int Pop()
         {
-            int temp = cards[0];
-            cards.RemoveAt(0);
+            var temp = _cards[0];
+            _cards.RemoveAt(0);
 
             if (CardRemoved != null)
             {
                 CardRemoved(this, new CardEventArgs(temp));
             }
 
+            Debug.Log("The value of this card is " + temp);
             return temp;
         }
 
         public void Push(int card)
         {
-            cards.Add(card);
+            _cards.Add(card);
 
             if (CardAdded != null)
             {
@@ -65,12 +66,12 @@ namespace Assets.Scripts
 
         public int HandValue()
         {
-            int total = 0;
-            int aces = 0;
+            var total = 0;
+            var aces = 0;
 
-            foreach (int card in GetCards())
+            foreach (var card in GetCards())
             {
-                int cardRank = card % 13;
+                var cardRank = card % 13;
 
                 if (cardRank <= 8)
                 {
@@ -88,7 +89,7 @@ namespace Assets.Scripts
                 }
             }
 
-            for (int i = 0; i < aces; i++)
+            for (var i = 0; i < aces; i++)
             {
                 if (total + 11 <= 21)
                 {
@@ -105,32 +106,32 @@ namespace Assets.Scripts
 
         public void CreateDeck()
         {
-            cards.Clear();
+            _cards.Clear();
 
-            for (int i = 0; i < 52; i++)
+            for (var i = 0; i < 52; i++)
             {
-                cards.Add(i);
+                _cards.Add(i);
             }
 
-            int n = cards.Count;
+            var n = _cards.Count;
             while (n > 1)
             {
                 n--;
-                int k = Random.Range(0, n + 1);
-                int temp = cards[k];
-                cards[k] = cards[n];
-                cards[n] = temp;
+                var k = Random.Range(0, n + 1);
+                var temp = _cards[k];
+                _cards[k] = _cards[n];
+                _cards[n] = temp;
             }
         }
 
         public void Reset()
         {
-            cards.Clear();
+            _cards.Clear();
         }
 
-        void Awake()
+        private void Awake()
         {
-            cards = new List<int>();
+            _cards = new List<int>();
             if (isGameDeck)
             {
                 CreateDeck();

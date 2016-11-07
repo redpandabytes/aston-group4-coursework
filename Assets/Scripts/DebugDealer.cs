@@ -13,7 +13,7 @@ namespace Assets.Scripts
 
         void OnGUI()
         {
-            if (GUI.Button(new Rect(10, 10, 256, 28), "Hit Me!"))
+            if (GUI.Button(new Rect(10, 10, 256, 28), "Hit Player"))
             {
                 player.Push(dealer.Pop());
             }
