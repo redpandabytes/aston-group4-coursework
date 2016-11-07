@@ -25,6 +25,11 @@ namespace Assets.Scripts
 
         public Text winnerText;
 
+        private CardStack _player1Info;
+//        private var _player2Info;
+//        private var _player3Info;
+//        private var _player4Info;
+
         CardStack[] playerArray = new CardStack[4];
 
 
@@ -82,6 +87,7 @@ namespace Assets.Scripts
         void Start()
         {
             StartGame();
+            _player1Info = player1.GetComponent<CardStack>();
         }
 
         #endregion
@@ -90,13 +96,11 @@ namespace Assets.Scripts
         {
             Debug.Log("We're in control");
             playerArray[0] = player0;
-            Debug.Log("Player Array 0 Card Count: " + playerArray[0].CardCount);
             playerArray[1] = player1;
-            Debug.Log("Player Array 1 Card Count: " + playerArray[0].CardCount);
             playerArray[2] = player2;
-            Debug.Log("Player Array 2 Card Count: " + playerArray[0].CardCount);
             playerArray[3] = player3;
-            Debug.Log("Player Array 3 Card Count: " + playerArray[0].CardCount);
+
+            Debug.Log("Player 1 card count: " + _player1Info.GetCards());
 
 
             for (int i = 0; i <= playerArray.Length; i++)
