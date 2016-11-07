@@ -107,7 +107,7 @@ namespace Assets.Scripts
         public void CreateDeck()
         {
             _cards.Clear();
-            for (var i = 0; i <= 100; i++) // fix this magic number pls!!!
+            for (var i = 0; i <= 96; i++) // fix this magic number pls!!!
             {
                 _cards.Add(i);
             }

@@ -14,6 +14,7 @@ namespace Assets.Scripts
         {
             if (showFace)
             {
+                Debug.Log("Max is: " +faces.Length + "we want to access" + cardIndex);
                 spriteRenderer.sprite = faces[cardIndex];
             }
             else
