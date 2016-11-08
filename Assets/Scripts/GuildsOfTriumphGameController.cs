@@ -26,6 +26,11 @@ namespace Assets.Scripts
         public Text winnerText;
 
         private CardStack _player1Info;
+
+        private int currentPlayer;
+
+
+
 //        private var _player2Info;
 //        private var _player3Info;
 //        private var _player4Info;
@@ -43,6 +48,43 @@ namespace Assets.Scripts
 
         public void Hit()
         {
+            if (currentPlayer == 0)
+            {
+                //Autoplay for user
+                System.Threading.Thread.Sleep(1500);
+                player0.Push(deck.Pop());
+                Debug.Log("Player 0 picked a card");
+
+                if (currentPlayer == 1)
+                {
+                    //Autoplay for AI
+                    System.Threading.Thread.Sleep(1500);
+                    player1.Push(deck.Pop());
+                    Debug.Log("Player 1 picked a card");
+
+                    if (currentPlayer == 2)
+                    {
+                        //Autoplay for AI
+                        System.Threading.Thread.Sleep(1500);
+                        player2.Push(deck.Pop());
+                        Debug.Log("Player 2 picked a card");
+
+                        if (currentPlayer == 3)
+                        {
+                            //Autoplay for AI
+                            System.Threading.Thread.Sleep(1500);
+                            player3.Push(deck.Pop());
+                            Debug.Log("Player 3 picked a card");
+                        }
+                    }
+                }
+            }
+            else
+            {
+
+            }
+
+
 
             player1.Push(deck.Pop());
             if (player1.HandValue() > 21)
@@ -50,7 +92,15 @@ namespace Assets.Scripts
                 hitButton.interactable = false;
                 stickButton.interactable = false;
                 StartCoroutine(DealersTurn());
+
             }
+            currentPlayer = 0;
+        }
+
+        public int setPlayer(int n)
+        {
+            currentPlayer = n;
+            return currentPlayer;
         }
 
         public void Stick()
@@ -100,18 +150,22 @@ namespace Assets.Scripts
 //            for (int i = 0; i <= playerArray.Length; i++)
             for (int i = 0; i <= 3; i++)
             {
-                if (i == 3)
+                if (i == 1)
                 {
-                    player3.Push(deck.Pop());
-                    //Add wait for 1sec
+                    System.Threading.Thread.Sleep(1500);
+                    player1.Push(deck.Pop());
+                    Debug.Log("Player 1 picked a card");
+
                     if (i == 2)
                     {
+                        System.Threading.Thread.Sleep(1500);
                         player2.Push(deck.Pop());
-                        //Add wait for 1sec
+                        Debug.Log("Player 2 picked a card");
                         if (i == 1)
                         {
-                            player1.Push(deck.Pop());
-                            //Add wait for 1sec
+                            System.Threading.Thread.Sleep(1500);
+                            player3.Push(deck.Pop());
+                            Debug.Log("Player 3 picked a card");
                         }
 
 

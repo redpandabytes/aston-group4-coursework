@@ -42,6 +42,9 @@ namespace Assets.Scripts
 
         public int Pop()
         {
+
+            GuildsOfTriumphGameController.setPlayer();
+
             var temp = _cards[0];
             _cards.RemoveAt(0);
 
