@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: a3fa1c1f970ec5948aad594e17fd7467
-timeCreated: 1478279471
+timeCreated: 1478546028
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - source: {instanceID: 0}
+  - hover: {fileID: 8300000, guid: d93dee44feaa8304485232b4927d454d, type: 3}
+  - click: {fileID: 8300000, guid: f5c01be50ed570d45929c82b42fda4b5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -5,19 +5,19 @@ namespace Assets.Scripts
 {
     public class MainMenubuttonManager : MonoBehaviour 
     {
-		public AudioSource source;
+		private AudioSource source;
 		public AudioClip hover;
 		public AudioClip click;
 
         public void SingleplayerBtn(string startGame)
         {
             SceneManager.LoadScene (startGame);
+			Camera.main.GetComponent<AudioSource> ();
         }
 
 		public void OnClick ()
 		{
-
-			source.PlayOneShot (click);
+		   source.PlayOneShot (click);
 		}
 		public void OnHover()
 		{
