@@ -40,6 +40,11 @@ namespace Assets.Scripts
             }
         }
 
+        public int GetLastCard()
+        {
+            return _cards[_cards.Count - 1];
+        }
+
         public int Pop()
         {
 

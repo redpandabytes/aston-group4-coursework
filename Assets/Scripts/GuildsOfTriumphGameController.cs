@@ -51,50 +51,38 @@ namespace Assets.Scripts
             if (currentPlayer == 0)
             {
                 //Autoplay for user
-                System.Threading.Thread.Sleep(1500);
                 player0.Push(deck.Pop());
                 Debug.Log("Player 0 picked a card");
+                Debug.Log("Player 0 picked a card. The card was:" + (player0.GetLastCard() +1) );
+            }
+            if (currentPlayer == 1)
+            {
+                //Autoplay for AI
+                player1.Push(deck.Pop());
+                Debug.Log("Player 1 picked a card");
+                Debug.Log("Player 1 picked a card. The card was:" + (player1.GetLastCard() +1) );
+            }
+            if (currentPlayer == 2)
+            {
+                //Autoplay for AI
+                player2.Push(deck.Pop());
+                Debug.Log("Player 2 picked a card. The card was:" + (player2.GetLastCard()+1 ) );
+            }
+            if (currentPlayer == 3)
+            {
+            //Autoplay for AI
+            player3.Push(deck.Pop());
+            Debug.Log("Player 2 picked a card. The card was:" + (player3.GetLastCard() +1) );
+            }
 
-                if (currentPlayer == 1)
-                {
-                    //Autoplay for AI
-                    System.Threading.Thread.Sleep(1500);
-                    player1.Push(deck.Pop());
-                    Debug.Log("Player 1 picked a card");
-
-                    if (currentPlayer == 2)
-                    {
-                        //Autoplay for AI
-                        System.Threading.Thread.Sleep(1500);
-                        player2.Push(deck.Pop());
-                        Debug.Log("Player 2 picked a card");
-
-                        if (currentPlayer == 3)
-                        {
-                            //Autoplay for AI
-                            System.Threading.Thread.Sleep(1500);
-                            player3.Push(deck.Pop());
-                            Debug.Log("Player 3 picked a card");
-                        }
-                    }
-                }
+            if (currentPlayer == 3)
+            {
+                currentPlayer = 0;
             }
             else
             {
-
+                currentPlayer ++;
             }
-
-
-
-            player1.Push(deck.Pop());
-            if (player1.HandValue() > 21)
-            {
-                hitButton.interactable = false;
-                stickButton.interactable = false;
-                StartCoroutine(DealersTurn());
-
-            }
-            currentPlayer = 0;
         }
 
         public int setPlayer(int n)
@@ -148,38 +136,38 @@ namespace Assets.Scripts
 
 
 //            for (int i = 0; i <= playerArray.Length; i++)
-            for (int i = 0; i <= 3; i++)
-            {
-                if (i == 1)
-                {
-                    System.Threading.Thread.Sleep(1500);
-                    player1.Push(deck.Pop());
-                    Debug.Log("Player 1 picked a card");
+//            for (int i = 0; i <= 3; i++)
+//            {
+//                if (i == 1)
+//                {
+//                    System.Threading.Thread.Sleep(1500);
+//                    player1.Push(deck.Pop());
+//                    Debug.Log("Player 1 picked a card");
+//
+//                    if (i == 2)
+//                    {
+//                        System.Threading.Thread.Sleep(1500);
+//                        player2.Push(deck.Pop());
+//                        Debug.Log("Player 2 picked a card");
+//                        if (i == 1)
+//                        {
+//                            System.Threading.Thread.Sleep(1500);
+//                            player3.Push(deck.Pop());
+//                            Debug.Log("Player 3 picked a card");
+//                        }
+//
+//
+//                        i = 0;
+//                    }
+//                }
+//
+//                 for (int n = 0; n < 2; n++)
+//                 {
+//                     player1.Push(deck.Pop());
+//                     HitDealer();
+//                 }
 
-                    if (i == 2)
-                    {
-                        System.Threading.Thread.Sleep(1500);
-                        player2.Push(deck.Pop());
-                        Debug.Log("Player 2 picked a card");
-                        if (i == 1)
-                        {
-                            System.Threading.Thread.Sleep(1500);
-                            player3.Push(deck.Pop());
-                            Debug.Log("Player 3 picked a card");
-                        }
-
-
-                        i = 0;
-                    }
-                }
-
-                 for (int n = 0; n < 2; n++)
-                 {
-                     player1.Push(deck.Pop());
-                     HitDealer();
-                 }
-
-            }            
+//            }
 
 
             
