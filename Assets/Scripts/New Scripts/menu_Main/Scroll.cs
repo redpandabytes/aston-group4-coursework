@@ -47,6 +47,7 @@ public class Scroll : MonoBehaviour {
         if (!dragging)
         {
             //LerpToButtons(minButtonNum)
+
         }
 	}
 
