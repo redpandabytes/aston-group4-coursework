@@ -30,12 +30,24 @@ public class Scroll : MonoBehaviour {
         {
 
             distance[i] = Mathf.Abs(center.transform.position.x - buttons[i].transform.position.x);
-
-            //Console.WriteLine(distance[i]);
+            
         
         }
 
-        
+        float minDistance = Mathf.Min(distance);
+
+        for (int a = 0; a < buttons.Length; a++ )
+        {
+            if (minDistance == distance[a])
+            {
+                closestButton = a;
+            }
+        }
+
+        if (!dragging)
+        {
+            LerpToButtons(min)
+        }
 	}
 
     public void startDrag()
