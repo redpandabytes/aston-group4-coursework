@@ -19,8 +19,8 @@ public class GameController : MonoBehaviour {
     public void setupGame(int noOfPlayers, int difficulty, String userName, int gameMode)
     {
         //SET UP DECKS
-        discardDeck == new Deck();
-        drawDeck == new Deck();
+        discardDeck = new Deck();
+        drawDeck = new Deck();
 
         // For guilds 1-4, create cards 1-20 and add to the draw deck
         for (int g = 1; g < 5; g++)
@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour {
        // drawDeck.shuffle();
 
         //SET UP PLAYERS
-        players = new ArrayList<Player>();
+        players = new List<Player>();
 
         //For singleplayer: 
         AI = new AIController(difficulty, noOfPlayers);
