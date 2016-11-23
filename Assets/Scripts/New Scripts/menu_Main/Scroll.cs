@@ -46,10 +46,17 @@ public class Scroll : MonoBehaviour {
 
         if (!dragging)
         {
-            //LerpToButtons(minButtonNum)
+           // LerpToButtons(closestButton * -distance);
 
         }
+
+
 	}
+
+    void LerpToButtons(int position) 
+    {
+    
+    }
 
     public void startDrag()
     {
