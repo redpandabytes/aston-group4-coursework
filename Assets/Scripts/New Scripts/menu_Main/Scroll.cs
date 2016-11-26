@@ -3,6 +3,10 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
+/*
+ *  Created By Dehul Shingadia on 08/11/2016   
+ */
+
 public class Scroll : MonoBehaviour {
 
     public RectTransform panel; // Holds the panel
