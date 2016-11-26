@@ -12,13 +12,15 @@ public class Scroll : MonoBehaviour {
 
     private bool dragging = false; //Only true if image is being dragged
     private int closestButton; // closest button to the center
-    
+    private int bttnDistance;
 	// Use this for initialization
 	void Start ()
     {
         int bttnLength = buttons.Length;
         distance = new float[bttnLength];
         //making the length of the distance array match the length of bttnLength
+
+        bttnDistance = (int)Mathf.Abs(buttons[1].GetComponent<RectTransform>().anchoredPosition.x - buttons[0].GetComponent<RectTransform>().anchoredPosition.x);
 
     }
 	
@@ -34,7 +36,7 @@ public class Scroll : MonoBehaviour {
         
         }
 
-        float minDistance = Mathf.Min(distance);
+        float minDistance = Mathf.Min(distance); //Gets the minimum distance
 
         for (int a = 0; a < buttons.Length; a++ )
         {
@@ -47,7 +49,7 @@ public class Scroll : MonoBehaviour {
 
         if (!dragging)
         {
-           // LerpToButtons(closestButton * -distance);
+           LerpToButtons(closestButton * -bttnDistance);
 
         }
 
@@ -56,7 +58,11 @@ public class Scroll : MonoBehaviour {
 
     void LerpToButtons(int position) 
     {
-        // method for lerp
+        float newX = Mathf.Lerp(panel.anchoredPosition.x, position, Time.deltaTime * 10f);
+        Vector2 newPosition = new Vector2(newX, panel.anchoredPosition.y);
+
+        panel.anchoredPosition = newPosition;
+            // method for lerp
     }
 
     public void startDrag()
@@ -65,12 +71,12 @@ public class Scroll : MonoBehaviour {
         //makes field dragging true
     }
 
-    public void endDragging()
+    public void endDrag()
     {
         dragging = false;
         //makes field dragging false
     }
 
-    //watch tut 2 - 4
+    
 
 }
