@@ -18,7 +18,7 @@ public class Scroll : MonoBehaviour {
     {
         int bttnLength = buttons.Length;
         distance = new float[bttnLength];
-
+        //making the length of the distance array match the length of bttnLength
 
     }
 	
@@ -30,7 +30,7 @@ public class Scroll : MonoBehaviour {
         {
 
             distance[i] = Mathf.Abs(center.transform.position.x - buttons[i].transform.position.x);
-            
+            //distance of card i from the center 
         
         }
 
@@ -41,6 +41,7 @@ public class Scroll : MonoBehaviour {
             if (minDistance == distance[a])
             {
                 closestButton = a;
+                //sets the card with the closest value to the center to the colsestButton field
             }
         }
 
@@ -55,17 +56,21 @@ public class Scroll : MonoBehaviour {
 
     void LerpToButtons(int position) 
     {
-    
+        // method for lerp
     }
 
     public void startDrag()
     {
         dragging = true;
+        //makes field dragging true
     }
 
     public void endDragging()
     {
         dragging = false;
+        //makes field dragging false
     }
+
+    //watch tut 2 - 4
 
 }
