@@ -7,25 +7,26 @@ using System.Collections;
 public class Card : MonoBehaviour
 {
     //Fields
-    private Sprite face;
-    private int guild;
-    private int value;
+    private Sprite _face;
+    private int _guild;
+    private int _value;
 
 	// Use this for initialization
-	private void Start (int guild, int value)
+	public void Initialise (int guild, int value, Sprite face)
 	{
-	    this.guild = guild;
-	    this.value = value;
+	    this._guild = guild;
+	    this._value = value;
+        this._face = face;
 	}
 	
 	// Update is called once per frame
 	public int getGuild()
 	{
-	    return guild;
+	    return _guild;
 	}
 
     public int getValue()
     {
-        return value;
+        return _value;
     }
 }

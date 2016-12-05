@@ -14,11 +14,16 @@ public class Player : MonoBehaviour
 
 
 	// Use this for initialization
-	void Start (string userName, bool isAI)
+	void Start ()
 	{
-	    this.userName = userName;
-	    this.isAI = isAI;
+
 	}
+
+    public void Initialise(string userName, bool isAI)
+    {
+        this.userName = userName;
+        this.isAI = isAI;
+    }
 
     //Gets the state of hasPlayedCleanSlate
     public bool getCleanSlate()

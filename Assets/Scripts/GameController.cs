@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    public class GameController : MonoBehaviour
+    public class GameController2 : MonoBehaviour
     {
         int dealersFirstCard = -1;
 

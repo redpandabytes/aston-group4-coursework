@@ -9,11 +9,11 @@ using System.Collections.Generic;
 public class Deck : MonoBehaviour
 {
     //Fields
-    private Stack<Card> deck;
+    private Stack<Card> deck = new Stack<Card>();
 
     // initialise our stack of cards here if needed
-    void Start () {
-        deck = new Stack<Card>();
+    void Awake () {
+
 	}
 
     //Tests if this stack is empty.
@@ -44,10 +44,14 @@ public class Deck : MonoBehaviour
     }
 
     //Pushes an item onto the top of this stack.
-    public Card push(Card c)
+    public void push(Card c)
     {
         deck.Push(c);
-        return c; 
+    }
+
+    public int getAmountOfCards()
+    {
+        return deck.Count;
     }
 
     //Returns the 1-based position where an card is on this stack.
