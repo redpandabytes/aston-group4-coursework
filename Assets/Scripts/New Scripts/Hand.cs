@@ -6,29 +6,30 @@ using System.Collections.Generic;
 public class Hand : MonoBehaviour
 {
     //Fields
-    //private List<card> hand;// uncomment when working wiht method
+    private List<Card> hand;// uncomment when working wiht method
 
 	// Use this for initialization
 	void Start () {
-	    // if we ever need a constructor then put it here
+        // if we ever need a constructor then put it here
+        hand = new List<Card>();
 	}
 
     // add a card to the user's hand
     public void add(Card card)
     {
-
+        hand.Add(card);
     }
-
     // remove a card from the user's hand
     public void remove(Card card)
     {
-
+        hand.Remove(card);
     }
 
     // check if the player's hand contains a certain card
     public Boolean hasCard(Card card)
     {
-        return false ; // change  false is jts a place holder
+        Boolean x = hand.Contains(card);
+        return x; 
     }
 
     // returns an arraylist of all the cards in the user's hand
@@ -40,8 +41,7 @@ public class Hand : MonoBehaviour
     //get the hand size of the player's hand
     public int getHandSize()
     {
-        //return hand.Count;// uncomment when wokring on this method
-        return 0;//<- deleted when working on this method
+        return hand.Count;
     }
 
     //dump the player's hand and get a new one from the deck

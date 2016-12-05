@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     }
 
     //Sets the state of hasPlayedCleanSlate
+    //should probably only be able to set it to true? 
+    //to stop players abusing this method?
     public void setCleanSlate(bool state)
     {
         hasPlayedCleanSlate = state;

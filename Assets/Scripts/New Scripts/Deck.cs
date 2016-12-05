@@ -4,41 +4,50 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Deck : MonoBehaviour
 {
     //Fields
-    //private Stack<card> cards;//uncomment when working on class
+    private Stack<Card> deck;
 
     // initialise our stack of cards here if needed
     void Start () {
-
+        deck = new Stack<Card>();
 	}
 
     //Tests if this stack is empty.
     public Boolean isEmpty()
     {
-        //return cards.Count == 0; // uncomment
-        return false;//<- delete when working on thie method
+        if (deck.Count == 0)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 
     // Removes the object at the top of this stack and returns that object as the value of this function.
     public Card pop()
     {
-        return null;
+        Card c = deck.Pop();
+        return c; 
     }
 
 	// Looks at the object at the top of this stack without removing it from the stack.
-    public Card peek ()
+    public Card peek()
     {
-        return null;
+       Card x = deck.Peek();
+       return x; 
     }
 
     //Pushes an item onto the top of this stack.
-    public Card push()
+    public Card push(Card c)
     {
-        return null;
+        deck.Push(c);
+        return c; 
     }
 
     //Returns the 1-based position where an card is on this stack.
@@ -54,6 +63,11 @@ public class Deck : MonoBehaviour
             Debug.Log("Exception:" + e.ToString());
         }
         return null;
+    }
+
+    //Shuffles deck. 
+    public void shuffle() {
+
     }
 
 }

@@ -18,6 +18,40 @@ public class GameController : MonoBehaviour {
 
     public void setupGame()
     {
+       /* discardDeck = new Deck();
+        drawDeck = new Deck();
+
+        // For guilds 1-4, create cards 1-20 and add to the draw deck
+        for (int g = 1; g < 5; g++)
+        {
+            for (int v = 1; v < 20; v++)
+            {
+                Card c = new Card(v, g);
+                drawDeck.push(c);
+            }
+        }
+        Card triumph = new Card(0, 0);
+        drawDeck.push(triumph);
+        // drawDeck.shuffle();
+
+        //SET UP PLAYERS
+        players = new List<Player>();
+
+        //For singleplayer: 
+        AI = new AIController(difficulty, noOfPlayers);
+        if (gameMode == 1)
+        {
+            players.Add(new Player(userName, false));
+            for (int p = 1; p < noOfPlayers; p++)
+            {
+                Player AI = new Player("AI" + p, true);
+                players.Add(AI);
+            }
+        }
+        else
+        {
+            //Multiplayer Set Up 
+        } */
     }
 
     public void startGame()
