@@ -56,4 +56,9 @@ public class Player : MonoBehaviour
 	void Update () {
 	
 	}
+
+    public Hand getHand()
+    {
+        return hand;
+    }
 }

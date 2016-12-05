@@ -8,6 +8,9 @@ using System.Collections.Generic;
 
 public class Deck : MonoBehaviour
 {
+
+    static System.Random _random = new System.Random();
+
     //Fields
     private Stack<Card> deck = new Stack<Card>();
 
@@ -70,8 +73,32 @@ public class Deck : MonoBehaviour
     }
 
     //Shuffles deck. 
-    public void shuffle() {
-
+    public void shuffle()
+    {
+        Card[] toArray = deck.ToArray();
+        DoShuffle(toArray);
+        foreach (Card currentCard in toArray)
+        {
+            Debug.Log("Value: " + currentCard.getValue() + ", Guild: " + currentCard.getGuild());
+        }
     }
 
+    static void DoShuffle<T>(T[] array)
+    {
+        // TODO: Implement Fisher-Yates algorithm
+        int n = array.Length;
+        for (int x = 0; x < 9; x++) // shuffle 10x
+        {
+            for (int i = 0; i < n; i++)
+            {
+                // NextDouble returns a random number between 0 and 1.
+                // ... It is equivalent to Math.random() in Java.
+                int r = i + (int)(_random.NextDouble() * (n - i));
+                T t = array[r];
+                array[r] = array[i];
+                array[i] = t;
+            }
+        }
+
+    }
 }

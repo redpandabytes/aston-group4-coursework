@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour {
     private UnityEngine.GameObject[] _faces;
     private const int GameMode = 1;
 
+    private const int startingHandSize = 7;
+
     // Use this for initialization
     void Start () {
         // setup game objects we need
@@ -27,7 +29,7 @@ public class GameController : MonoBehaviour {
             {
                 Card c = new Card();
                 //TODO: Pass a face
-                c.Initialise(v, g, null);
+                c.Initialise(g, v, null);
                 _drawDeck.push(c);
             }
         }
@@ -67,6 +69,26 @@ public class GameController : MonoBehaviour {
                 player.setCleanSlate(true);
                 Debug.Log(player.getCleanSlate());
             }
+            _drawDeck.shuffle();
+
+            Card lol = _drawDeck.pop();
+            Debug.Log(lol.getGuild());
+
+            // give players cards
+            foreach (Player curPlayer in _players)
+            {
+                Hand curHand = curPlayer.getHand();
+                for (int i = 0; i <= startingHandSize; i++)
+                {
+                    curHand.add(_drawDeck.pop());
+                }
+            }
+
+            Debug.Log(_players[0].getHand().getHandSize());
+
+            // decide which player goes first
+
+            // Finished :D
         }
 
         else
