@@ -11,7 +11,8 @@ public class PauseMenuScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.P)) {
+		//if (Input.GetKeyDown (KeyCode.P)) {
+		if (Input.GetMouseButtonDown(0)) {
 			if (canvas.gameObject.activeInHierarchy == false) {
 				canvas.gameObject.SetActive (true);
 				Time.timeScale = 0;
