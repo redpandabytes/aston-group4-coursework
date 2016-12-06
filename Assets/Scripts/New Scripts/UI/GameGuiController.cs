@@ -25,6 +25,7 @@ public class GameGuiController : MonoBehaviour
 
     void popCard()
     {
+
         if (currentPlayer == 0)
         {// check for user input 
             player0.add(deck.pop());// player 0 picks a card

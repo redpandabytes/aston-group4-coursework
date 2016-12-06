@@ -5,6 +5,7 @@ using System;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler
 {
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("OnBeginDrag");
