@@ -55,4 +55,8 @@ public class Hand : MonoBehaviour
 	void Update () {
 
 	}
+    
+
+    //!! We need a method to keep track of what the last card picked was !!
+
 }

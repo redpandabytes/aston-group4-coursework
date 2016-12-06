@@ -25,22 +25,37 @@ public class GameGuiController : MonoBehaviour
 
     void popCard()
     {
-        if (currentPlayer == 1)
+        if (currentPlayer == 0)
         {// check for user input 
-
+            player0.add(deck.pop());// player 0 picks a card
+            Debug.Log("Player 0 picked a card");
+        }
+        if (currentPlayer == 1)
+        {//autoplay for ai, pick of play card
+            player1.add(deck.pop());// player 1 picks a card
+            Debug.Log("Player 1 picked a card");
         }
         if (currentPlayer == 2)
-        {//autoplay for ai, pick of play card
-
+        {//autoplay for ai, pick or play card
+            player2.add(deck.pop());// player 2 picks a card
+            Debug.Log("Player 2 picked a card");
         }
         if (currentPlayer == 3)
         {//autoplay for ai, pick or play card
-
+            player3.add(deck.pop());// player 3 picks a card
+            Debug.Log("Player 3 picked a card");
         }
-        if (currentPlayer == 4)
-        {//autoplay for ai, pick or play card
 
+        if (currentPlayer == 3)
+        {
+            currentPlayer = 0;
+        }
+        else
+        {
+            currentPlayer = currentPlayer + 1;
         }
     }
+
+    
 
 }
