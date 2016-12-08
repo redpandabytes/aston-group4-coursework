@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.New_Scripts
 {
-    public class AiController : MonoBehaviour {
+    public class AiController : GuildsElement {
         //Fields
         private int _difficulty;
         private int _noOfPlayers;

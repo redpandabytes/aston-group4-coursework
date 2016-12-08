@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.New_Scripts;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
-    public class MainMenubuttonManager : MonoBehaviour 
+    public class MainMenubuttonManager : GuildsElement
     {
 		private AudioSource source; //TODO: Assign this
 		public AudioClip hover;
@@ -42,6 +43,11 @@ namespace Assets.Scripts
         public void returnToMain(string returnToMain)
         {
             SceneManager.LoadScene (returnToMain);
+        }
+
+        public void NotifyMVC()
+        {
+            app.controller.EndGame();
         }
 		
 		

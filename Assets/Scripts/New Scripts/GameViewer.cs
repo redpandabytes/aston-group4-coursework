@@ -2,19 +2,27 @@
 
 namespace Assets.Scripts.New_Scripts
 {
-    public class GameViewer : MonoBehaviour, IGameController {
+    public class GameViewer : GuildsElement
+    {
+
+        public GameModel model;
 
         //TODO: Write this class
 
 
         public void Start()
         {
-            throw new System.NotImplementedException();
+//            throw new System.NotImplementedException();
+        }
+
+        public void Intiailise(GameModel passedModel) // Setup the object with a constructor
+        {
+            this.model = passedModel;
         }
 
         public void Update()
         {
-            throw new System.NotImplementedException();
+//            throw new System.NotImplementedException();
         }
 
         public void StartTurn()
