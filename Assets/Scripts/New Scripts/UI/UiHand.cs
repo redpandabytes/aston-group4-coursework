@@ -7,7 +7,12 @@ public class UiHand : MonoBehaviour {
 
     private List<Card> Uihand;// list holding all the cards
 
-    void Start()
+    void add(Card card)//pas through uiCard not card
+    {
+
+    }
+
+    void remove(Card card)
     {
 
     }
