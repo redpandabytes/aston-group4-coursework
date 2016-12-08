@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.New_Scripts;
 using UnityEngine;
 
-namespace Assets.Scripts.New_Scripts {
+namespace New_Scripts {
     public class GameModel : GuildsElement {
 
         //Fields

@@ -1,7 +1,6 @@
-﻿using System.Diagnostics;
-using Debug = UnityEngine.Debug;
+﻿using Debug = UnityEngine.Debug;
 
-namespace Assets.Scripts.New_Scripts {
+namespace New_Scripts {
     public class GameController : GuildsElement
     {
         public GameViewer viewer;

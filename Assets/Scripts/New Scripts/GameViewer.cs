@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Assets.Scripts.New_Scripts
+﻿namespace New_Scripts
 {
     public class GameViewer : GuildsElement
     {

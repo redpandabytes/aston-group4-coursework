@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.New_Scripts;
+using UnityEngine;
 
-namespace Assets.Scripts.New_Scripts
+namespace New_Scripts
 {
     // Base class for all elements in the application
     public class GuildsElement : MonoBehaviour

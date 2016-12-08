@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts
+namespace New_Scripts
 {
     public class MainMenubuttonManager : GuildsElement
     {

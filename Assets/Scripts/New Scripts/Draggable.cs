@@ -3,12 +3,15 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System;
 
-public class Draggable : MonoBehaviour, IBeginDragHandler
+namespace Assets.Scripts.New_Scripts
 {
-
-    public void OnBeginDrag(PointerEventData eventData)
+    public class Draggable : MonoBehaviour, IBeginDragHandler
     {
-        Debug.Log("OnBeginDrag");
-        throw new NotImplementedException();
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            Debug.Log("OnBeginDrag");
+            throw new NotImplementedException();
+        }
     }
 }
