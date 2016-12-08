@@ -1,20 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class UiHand : MonoBehaviour {
 
 
-    private List<Card> Uihand;// list holding all the cards
+    public List<Card> Hand;// list holding all the cards
 
-    void add(Card card)//pas through uiCard not card
+    void Start()
     {
+        Hand = new List<Card>();
+    }
 
+    public void add(Card card)//pas through uiCard not card
+    {
+        Hand.Add(card);
     }
 
     void remove(Card card)
     {
-
+        Hand.Remove(card);
     }
 
+    
 }
