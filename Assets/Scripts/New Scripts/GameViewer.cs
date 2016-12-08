@@ -1,17 +1,45 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class GameViewer : MonoBehaviour {
+namespace Assets.Scripts.New_Scripts
+{
+    public class GameViewer : MonoBehaviour, IGameController {
 
-    //TODO: Write this class
+        //TODO: Write this class
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+        public void Start()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void StartTurn()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void TakeAction()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void EndTurn()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void CheckForWinner()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void EndGame()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
 }

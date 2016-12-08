@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace New_Scripts
+namespace Assets.Scripts.New_Scripts
 {
     public class AiController : MonoBehaviour {
         //Fields

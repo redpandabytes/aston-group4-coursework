@@ -1,135 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿namespace Assets.Scripts.New_Scripts {
+    public interface IGameController {
 
-namespace New_Scripts {
-public class GameController : MonoBehaviour {
+        // Use this for initialization
+        void Start(); // setup objects
+        void Update(); // Keep counting down on every frame
 
-    //Fields
-    private List<Player> _players; // TODO: Check there's no conflict with Unity "Player" Class
-    private Deck _drawDeck;
-    private Deck _discardDeck;
-    private int _currentPlayer;
-    private AiController _ai;
-    private UnityEngine.GameObject[] _faces;
-    private const int GameMode = 1;
+        void StartTurn(); // Update the user's UI when it's their turn
+        void TakeAction(); // The user has supplied a card, action, or no action to be taken
+        void EndTurn(); // Update the Model/UI when it becomes someone elses turn
 
-    private const int startingHandSize = 7;
-
-    // Use this for initialization
-    void Start () {
-        // setup game objects we need
-        _discardDeck = new Deck();
-        _drawDeck = new Deck();
-
-        // For guilds 1-4, create cards 1-20 and add to the draw deck
-        for (int g = 1; g < 5; g++)
-        {
-            for (int v = 1; v < 20; v++)
-            {
-                Card c = new Card();
-                //TODO: Pass a face
-                c.Initialise(g, v, null);
-                _drawDeck.push(c);
-            }
-        }
-        Card triumph = new Card();
-        triumph.Initialise(0, 0, null);
-        _drawDeck.push(triumph);
-        _drawDeck.shuffle();
-
-        Debug.Log(_drawDeck.getAmountOfCards());
-
-        //SET UP PLAYERS
-        // TODO: Only hardcoded for a single player right now
-        _players = new List<Player>();
-
-        //For singleplayer:
-        int difficulty = 1;
-        int noOfPlayers = 4;
-        String userName = "Player 1";
-        _ai = new AiController();
-        _ai.Initialise(difficulty, noOfPlayers);
-        if (GameMode == 1)
-        {
-            Player newPlayer = new Player();
-            newPlayer.Initialise(userName, false);
-            _players.Add(newPlayer);
-            for (int p = 1; p < noOfPlayers; p++)
-            {
-                Player ai = new Player();
-                ai.Initialise("AI " + p, true);
-                _players.Add(ai);
-            }
-
-            foreach (Player player in _players)
-            {
-                Debug.Log(_players.Count);
-                Debug.Log(player.getCleanSlate());
-                player.setCleanSlate(true);
-                Debug.Log(player.getCleanSlate());
-            }
-            _drawDeck.shuffle();
-
-            Card lol = _drawDeck.pop();
-            Debug.Log(lol.getGuild());
-
-            // give players cards
-            foreach (Player curPlayer in _players)
-            {
-                Hand curHand = curPlayer.getHand();
-                for (int i = 0; i <= startingHandSize; i++)
-                {
-                    curHand.add(_drawDeck.pop());
-                }
-            }
-
-            Debug.Log(_players[0].getHand().getHandSize());
-
-            // decide which player goes first
-
-            // Finished :D
-        }
-
-        else
-        {
-            //Multiplayer Set Up
-        }
+        void CheckForWinner(); // TODO: Maybe take out
+        void EndGame(); // The game has finished
     }
-
-    public void setupGame()
-    {
-
-    }
-
-    public void startGame()
-    {
-        // TODO: Implement
-    }
-
-    public void startTurn()
-    {
-        // TODO: Implement
-    }
-
-    public void endTurn()
-    {
-        // TODO: Implement
-    }
-
-    public void checkForWinner()
-    {
-        // TODO: Implement
-    }
-
-    public void playCard()
-    {
-        // TODO: Implement
-    }
-
-	// Update is called once per frame
-	void Update () {
-	    // GAME LOGIC WILL BE RAN HERE!
-	}
-}
 }
