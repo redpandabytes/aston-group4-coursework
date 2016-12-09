@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿//@Author: Dehul Shingadia
+
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UiHand : MonoBehaviour
