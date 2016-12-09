@@ -7,7 +7,8 @@ using System;
  *  Created By Dehul Shingadia on 08/11/2016   
  */
 
-public class Scroll : MonoBehaviour {
+public class Scroll : MonoBehaviour
+{
 
     public RectTransform panel; // Holds the panel
     public RectTransform center; // center position
@@ -17,8 +18,8 @@ public class Scroll : MonoBehaviour {
     private bool dragging = false; //Only true if image is being dragged
     private int closestButton; // closest button to the center
     private int bttnDistance;
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         int bttnLength = buttons.Length;
         distance = new float[bttnLength];
@@ -27,22 +28,22 @@ public class Scroll : MonoBehaviour {
         bttnDistance = (int)Mathf.Abs(buttons[1].GetComponent<RectTransform>().anchoredPosition.x - buttons[0].GetComponent<RectTransform>().anchoredPosition.x);
 
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
-	
+
         for (int i = 0; i < buttons.Length; i++)
         {
 
             distance[i] = Mathf.Abs(center.transform.position.x - buttons[i].transform.position.x);
             //distance of card i from the center 
-        
+
         }
 
         float minDistance = Mathf.Min(distance); //Gets the minimum distance
 
-        for (int a = 0; a < buttons.Length; a++ )
+        for (int a = 0; a < buttons.Length; a++)
         {
             if (minDistance == distance[a])
             {
@@ -53,20 +54,20 @@ public class Scroll : MonoBehaviour {
 
         if (!dragging)
         {
-           LerpToButtons(closestButton * -bttnDistance);
+            LerpToButtons(closestButton * -bttnDistance);
 
         }
 
 
-	}
+    }
 
-    void LerpToButtons(int position) 
+    void LerpToButtons(int position)
     {
         float newX = Mathf.Lerp(panel.anchoredPosition.x, position, Time.deltaTime * 10f);
         Vector2 newPosition = new Vector2(newX, panel.anchoredPosition.y);
 
         panel.anchoredPosition = newPosition;
-            // method for lerp
+        // method for lerp
     }
 
     public void startDrag()
@@ -81,6 +82,6 @@ public class Scroll : MonoBehaviour {
         //makes field dragging false
     }
 
-    
+
 
 }
