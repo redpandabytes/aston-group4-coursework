@@ -1,4 +1,4 @@
-﻿public class StaticAi : GuildsElement
+﻿public class StaticAi
 {
     //Fields
     private int _difficulty;

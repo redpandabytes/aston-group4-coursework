@@ -3,7 +3,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour
+public class Player
 {
     //Fields
     private Hand hand;
@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
     {
         this.userName = userName;
         this.isAI = isAI;
+        this.hasPlayedCleanSlate = false;
+        this.hand = new Hand();
+        this.hasFinishedTurn = false;
     }
 
     //Gets the state of hasPlayedCleanSlate

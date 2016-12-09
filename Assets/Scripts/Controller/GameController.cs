@@ -9,7 +9,7 @@ public class GameController : GuildsElement
 
     public void Start() // setup objects
     {
-
+        app.model.Initialise();
     }
 
     public void Update() // Keep counting down on every frame

@@ -4,8 +4,9 @@ using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 
-public class Deck : MonoBehaviour
+public class Deck
 {
 
     static System.Random _random = new System.Random();
@@ -36,15 +37,13 @@ public class Deck : MonoBehaviour
     // Removes the object at the top of this stack and returns that object as the value of this function.
     public Card pop()
     {
-        Card c = deck.Pop();
-        return c;
+        return deck.Pop();
     }
 
     // Looks at the object at the top of this stack without removing it from the stack.
     public Card peek()
     {
-        Card x = deck.Peek();
-        return x;
+        return deck.Peek();
     }
 
     //Pushes an item onto the top of this stack.
@@ -73,22 +72,24 @@ public class Deck : MonoBehaviour
         return null;
     }
 
-    //Shuffles deck.
+    //Shuffles deck. TODO: This is a slow and shitty algorithm, implement a better one (Fisher Yates?)
     public void shuffle()
     {
         Card[] toArray = deck.ToArray();
+        Debug.Log("Shuffling " + toArray.Length + " cards.");
         DoShuffle(toArray);
         foreach (Card currentCard in toArray)
         {
-            Debug.Log("Value: " + currentCard.getValue() + ", Guild: " + currentCard.getGuild());
+//            Debug.Log("Value: " + currentCard.getValue() + ", Guild: " + currentCard.getGuild());
         }
+        deck = new Stack<Card>(toArray);
     }
 
     static void DoShuffle<T>(T[] array)
     {
         // TODO: Implement Fisher-Yates algorithm
         int n = array.Length;
-        for (int x = 0; x < 9; x++) // shuffle 10x
+        for (int x = 0; x < 99; x++) // shuffle 10x
         {
             for (int i = 0; i < n; i++)
             {

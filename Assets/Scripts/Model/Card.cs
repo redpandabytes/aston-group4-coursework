@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class Card
 {
     //Fields
     private Sprite _face;

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameModel : GuildsElement
 {
@@ -20,88 +21,68 @@ public class GameModel : GuildsElement
 
     public void Initialise()
     {
+        // Use this for initialization
+        // setup game objects we need
+        _discardDeck = new Deck();
+        _drawDeck = new Deck();
 
+        // For guilds 1-4, create cards 1-20 and add to the draw deck
+        for (int g = 1; g < 5; g++)
+        {
+            for (int v = 1; v < 20; v++)
+            {
+                Card c = new Card();
+                //TODO: Pass a face
+                c.Initialise(g, v, null);
+                _drawDeck.push(c);
+            }
+        }
+        // add special cards
+        Card triumph = new Card();
+        triumph.Initialise(0, 0, null);
+        _drawDeck.push(triumph);
+
+        _drawDeck.shuffle();
+
+        //SET UP PLAYERS
+        // TODO: Only hardcoded for a single player right now
+        _players = new List<Player>();
+
+        //For singleplayer:
+        int difficulty = 1; // TODO: All this is hard coded
+        int noOfPlayers = 4;
+        String userName = "Player 1";
+        _ai = new StaticAi();
+        _ai.Initialise(difficulty, noOfPlayers);
+
+        if (GameMode == 1) // TODO: Implement multiplayer mode
+        {
+            Player newPlayer = new Player();
+            newPlayer.Initialise(userName, false);
+            _players.Add(newPlayer);
+            for (int p = 1; p < noOfPlayers; p++)
+            {
+                Player ai = new Player();
+                ai.Initialise("AI " + p, true);
+                _players.Add(ai);
+            }
+
+            // Give players cards
+            foreach (var curPlayer in _players)
+            {
+                var curHand = curPlayer.getHand();
+                for (var i = 1; i <= StartingHandSize; i++)
+                {
+                    Card cardToAdd = _drawDeck.pop();
+                    Debug.Log("(Adding to starting hand): Guild " + cardToAdd.getGuild() + ", Value " + cardToAdd.getValue());
+                    curHand.add(cardToAdd);
+                }
+            }
+
+            // decide which player goes first, in single player the player is always at Index 0 in _players
+            _currentPlayer = Random.Range(0,4);
+        }
     }
-
-    //        // Use this for initialization
-    //        public void Start () {
-    //            // setup game objects we need
-    //            _discardDeck = new Deck();
-    //            _drawDeck = new Deck();
-    //
-    //            // For guilds 1-4, create cards 1-20 and add to the draw deck
-    //            for (int g = 1; g < 5; g++)
-    //            {
-    //                for (int v = 1; v < 20; v++)
-    //                {
-    //                    Card c = new Card();
-    //                    //TODO: Pass a face
-    //                    c.Initialise(g, v, null);
-    //                    _drawDeck.push(c);
-    //                }
-    //            }
-    //            Card triumph = new Card();
-    //            triumph.Initialise(0, 0, null);
-    //            _drawDeck.push(triumph);
-    //            _drawDeck.shuffle();
-    //
-    //            Debug.Log(_drawDeck.getAmountOfCards());
-    //
-    //            //SET UP PLAYERS
-    //            // TODO: Only hardcoded for a single player right now
-    //            _players = new List<Player>();
-    //
-    //            //For singleplayer:
-    //            int difficulty = 1;
-    //            int noOfPlayers = 4;
-    //            String userName = "Player 1";
-    //            _ai = new AiController();
-    //            _ai.Initialise(difficulty, noOfPlayers);
-    //            if (GameMode == 1)
-    //            {
-    //                Player newPlayer = new Player();
-    //                newPlayer.Initialise(userName, false);
-    //                _players.Add(newPlayer);
-    //                for (int p = 1; p < noOfPlayers; p++)
-    //                {
-    //                    Player ai = new Player();
-    //                    ai.Initialise("AI " + p, true);
-    //                    _players.Add(ai);
-    //                }
-    //
-    //                foreach (Player player in _players)
-    //                {
-    //                    Debug.Log(_players.Count);
-    //                    Debug.Log(player.getCleanSlate());
-    //                    player.setCleanSlate(true);
-    //                    Debug.Log(player.getCleanSlate());
-    //                }
-    //                _drawDeck.shuffle();
-    //
-    //                var lol = _drawDeck.pop();
-    //                Debug.Log(lol.getGuild());
-    //
-    //                // give players cards
-    //                foreach (var curPlayer in _players)
-    //                {
-    //                    Hand curHand = curPlayer.getHand();
-    //                    for (var i = 0; i <= StartingHandSize; i++)
-    //                    {
-    //                        curHand.add(_drawDeck.pop());
-    //                    }
-    //                }
-    //
-    //                Debug.Log(_players[0].getHand().getHandSize());
-    //
-    //                // decide which player goes first
-    //
-    //                // Finished :D
-    //            }
-    //
-    //else{
-    //Multiplayer Set Up
-    //}
-    //        }
 
     public void StartTurn()
     {

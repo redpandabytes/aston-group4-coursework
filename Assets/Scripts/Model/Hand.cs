@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hand : MonoBehaviour
+public class Hand
 {
     //Fields
-    private List<Card> hand; // uncomment when working wiht method
+    private List<Card> hand = new List<Card>(); // uncomment when working with method
 
     // Use this for initialization
     void Start()
