@@ -75,7 +75,8 @@ public class GameController : GuildsElement
                 break;
             case GameNotification.CardPicked:
                 Debug.Log("A card was picked");
-
+                //app.model.PickCard();
+                //app.viewer.pickCard(app.model.getLastCard);
                 //app.model
 
                 break;

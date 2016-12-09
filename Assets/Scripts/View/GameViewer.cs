@@ -47,4 +47,8 @@ public class GameViewer : GuildsElement
     {
         throw new System.NotImplementedException();
     }
+    public void pickCArd(Card card)
+    {
+
+    }
 }

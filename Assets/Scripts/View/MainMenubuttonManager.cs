@@ -55,6 +55,7 @@ public class MainMenubuttonManager : GuildsElement
         Debug.Log("Pressed left click.");
         app.Notify(GameNotification.CardPicked,this);
                
+
     }
 
 

@@ -138,4 +138,8 @@ public class GameModel : GuildsElement
     {
         // GAME LOGIC WILL BE RAN HERE!
     }
+    public void pickCard()
+    {
+        //Do this plz
+    }
 }
