@@ -46,6 +46,7 @@ public class MainMenubuttonManager : GuildsElement
 
     public void NotifyMVC()
     {
+        Debug.Log("sdsdfdsd");
         app.Notify(GameNotification.GameVictory,this);
     }
 
