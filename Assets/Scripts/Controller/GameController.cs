@@ -59,8 +59,6 @@ public class GameController : GuildsElement
             case GameNotification.GameDefeat:
                 Debug.Log("Defeat :(");
                 break;
-
-
             case GameNotification.PauseGame:
                 var pauseCanvas = (RectTransform)pData[1];
                 if (pData[0].Equals(false))
@@ -75,6 +73,13 @@ public class GameController : GuildsElement
 
                 }
                 break;
+            case GameNotification.CardPicked:
+                Debug.Log("A card was picked");
+                break;
+            //case GameNotification.CardPicked:
+                //app.model.getHandSize// data about the game
+                //app.viewer. //code to update what the game should look like
+                //brake;
             default:
                 Debug.Log("Unknown Command");
                 break;

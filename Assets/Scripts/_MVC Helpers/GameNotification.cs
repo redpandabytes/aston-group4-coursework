@@ -5,10 +5,12 @@
 internal class GameNotification
 {
     public const string CardPlayed = "card.played";
+    public const string CardPicked = "card.picked";
     public const string TimeRanOut = "time.ran.out";
     public const string PauseGame = "pause.game";
 
     public const string GameVictory = "game.victory";
     public const string GameDefeat = "game.defeat";
     public const string GameDraw = "game.draw";
+    
 }
