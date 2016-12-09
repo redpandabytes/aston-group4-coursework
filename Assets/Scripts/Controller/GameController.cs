@@ -54,6 +54,14 @@ public class GameController : GuildsElement
             case GameNotification.GameDefeat:
                 Debug.Log("Defeat :(");
                 break;
+            case GameNotification.CardPicked:
+                Debug.Log("A card was picked");
+                app.model
+                break;
+            //case GameNotification.CardPicked:
+                //app.model.getHandSize// data about the game
+                //app.viewer. //code to update what the game should look like
+                //brake;
             default:
                 Debug.Log("Unknown Command");
                 break;
