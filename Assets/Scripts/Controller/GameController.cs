@@ -56,7 +56,7 @@ public class GameController : GuildsElement
                 break;
             case GameNotification.CardPicked:
                 Debug.Log("A card was picked");
-                app.model
+                //app.model
                 break;
             //case GameNotification.CardPicked:
                 //app.model.getHandSize// data about the game
