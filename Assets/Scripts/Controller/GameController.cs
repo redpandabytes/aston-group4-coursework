@@ -43,6 +43,11 @@ public class GameController : GuildsElement
         app.Notify(GameNotification.GameVictory, this);
     }
 
+    public void PauseGame()
+    {
+        Debug.Log("got called");
+    }
+
     public void OnNotification(string pEventPath, Object pTarget, object[] pData)
     {
         // Handle GameController notifications
@@ -54,9 +59,25 @@ public class GameController : GuildsElement
             case GameNotification.GameDefeat:
                 Debug.Log("Defeat :(");
                 break;
+            case GameNotification.PauseGame:
+                var pauseCanvas = (RectTransform)pData[1];
+                if (pData[0].Equals(false))
+                {
+                    // logic to pause the game
+                    pauseCanvas.gameObject.SetActive(true);
+                }
+                else
+                {
+                    // logic to unpause the game
+                    pauseCanvas.gameObject.SetActive(false);
+
+                }
+                break;
             case GameNotification.CardPicked:
                 Debug.Log("A card was picked");
+
                 //app.model
+
                 break;
             //case GameNotification.CardPicked:
                 //app.model.getHandSize// data about the game
