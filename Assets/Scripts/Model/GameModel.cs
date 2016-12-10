@@ -81,12 +81,16 @@ public class GameModel : GuildsElement
 
             // decide which player goes first, in single player the player is always at Index 0 in _players
             _currentPlayer = Random.Range(0,4);
+            StartTurn();
         }
     }
 
     public void StartTurn()
     {
         // TODO: Implement
+        _players[_currentPlayer].setDesiredAction();
+        _players[_currentPlayer].getDesiredAction();
+        
     }
 
     public void TakeAction()
