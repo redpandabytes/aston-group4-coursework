@@ -47,7 +47,6 @@ public class GameGuiController : MonoBehaviour
             player3.add(deck.pop()); // player 3 picks a card
             Debug.Log("Player 3 picked a card");
         }
-
         if (currentPlayer == 3)
         {
             currentPlayer = 0;

@@ -1,15 +1,63 @@
-﻿// @Author: Nathaniel Baulch-Jones
+﻿/*
+@Author: Nathaniel Baulch-Jones
+@Author: Dehul Shingadia
+*/
 
 using UnityEngine;
+using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 
 public class GameController : GuildsElement
 {
+    public int player;
     public GameViewer viewer;
+
+    public Hand player0;
+    public Hand player1;
+    public Hand player2;
+    public Hand player3;
+
+    public Deck deck; //stack of unplayed cards
+
+    public Button pickCard;
 
     public void Start() // setup objects
     {
         app.model.Initialise();
+        
+        //all players pick 7 cards
+        for (int i = 0; i < 7; i++){//players pick 7 cards
+            for (player = 0; player < 4; player++) {//4 players
+                //player picks card
+                //app.model.PickCard();
+                
+                if (player == 0)
+                {
+                    // player picks 7 cards
+                    //player0.add(deck.pop()); // player 0 picks a card
+                    Debug.Log("player: " + player + " picked their: " + i + "card.");
+                }
+                if (player == 1)
+                {
+                    //AI picks 7 cards
+                    //player1.add(deck.pop()); // player 1 picks a card
+                    Debug.Log("player: " + player + " picked their: " + i + "card.");
+                }
+                if (player == 2)
+                {
+                    //AI picks 7 cards
+                    //player2.add(deck.pop()); // player 2 picks a card
+                    Debug.Log("player: " + player + " picked their: " + i + "card.");
+                }
+                if (player == 3)
+                {
+                    //AI picks 7 cards
+                    //player3.add(deck.pop()); // player 3 picks a card
+                    Debug.Log("player: " + player + " picked their: " + i + "th card.");
+
+                }
+            }
+        }
     }
 
     public void Update() // Keep counting down on every frame
@@ -21,6 +69,7 @@ public class GameController : GuildsElement
     {
 //        model.StartTurn();
         viewer.StartTurn();
+
     }
 
     public void TakeAction() // The user has supplied a card, action, or no action to be taken
