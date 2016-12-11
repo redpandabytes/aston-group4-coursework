@@ -111,14 +111,17 @@ public class GameModel : GuildsElement
             if (c.getValue() == 0)
             {
                 //Triumph card
+                //remove card
             }
             else if (c.getValue() < 11)
             {
-                //weapon card
+                _discardDeck.push(c);
+               // _players[_currentPlayer].getHand().hasCard(c); remove card
             }
             else
             {
                 //Special card
+                //remove card
             }
 
         }
