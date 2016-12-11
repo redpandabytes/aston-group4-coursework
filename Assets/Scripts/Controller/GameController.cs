@@ -19,7 +19,9 @@ public class GameController : GuildsElement
 
     public Deck deck; //stack of unplayed cards
 
-    public Button pickCard;
+    public Button pickCardBttn;
+
+    public GameObject card;
 
     public void Start() // setup objects
     {
@@ -75,6 +77,7 @@ public class GameController : GuildsElement
     public void TakeAction() // The user has supplied a card, action, or no action to be taken
     {
 
+
     }
 
     public void EndTurn() // Update the Model/UI when it becomes someone elses turn
@@ -92,6 +95,7 @@ public class GameController : GuildsElement
         app.Notify(GameNotification.GameVictory, this);
     }
 
+   
     public void PauseGame()
     {
         Debug.Log("got called");

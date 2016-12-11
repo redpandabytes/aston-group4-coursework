@@ -1,5 +1,7 @@
 ﻿// @Author: Nathaniel Baulch-Jones
 
+using System;
+using System.Security.Principal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +10,7 @@ public class MainMenubuttonManager : GuildsElement
     private AudioSource source; //TODO: Assign this
     public AudioClip hover;
     public AudioClip click;
+    public GameObject card;
 
     public void SingleplayerBtn(string startGame)
     {
@@ -54,9 +57,8 @@ public class MainMenubuttonManager : GuildsElement
     public void pickCard() {
         Debug.Log("Pressed left click.");
         app.Notify(GameNotification.CardPicked,this);
-               
+        //card = Instantiate(card.transform.position, Quaternion, Identity) as GameObject;
 
     }
-
-
+    
 }
