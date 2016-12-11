@@ -80,8 +80,8 @@ public class GameModel : GuildsElement
             }
 
             // decide which player goes first, in single player the player is always at Index 0 in _players
-            _currentPlayer = Random.Range(0,4);
-            StartTurn();
+            _currentPlayer = Random.Range(0, 4);
+
         }
     }
 
@@ -89,18 +89,52 @@ public class GameModel : GuildsElement
     {
         // TODO: Implement
         _players[_currentPlayer].setDesiredAction();
-        _players[_currentPlayer].getDesiredAction();
-        
+        Action choice = _players[_currentPlayer].getDesiredAction();
+        TakeAction(choice);
+
     }
 
-    public void TakeAction()
+    public void TakeAction(Action a)
     {
-        throw new NotImplementedException();
+
+        if (a.getChoice() == "cleanSlate")
+        {
+            _players[_currentPlayer].setCleanSlate();
+        }
+        else if (a.getChoice() == "pickUp")
+        {
+            _players[_currentPlayer].getHand().add(_drawDeck.pop());
+        }
+        else if (a.getChoice() == "playCard")
+        {
+            Card c = a.getSelectedCard();
+            if (c.getValue() == 0)
+            {
+                //Triumph card
+            }
+            else if (c.getValue() < 11)
+            {
+                //weapon card
+            }
+            else
+            {
+                //Special card
+            }
+
+        }
+
+        //throw new NotImplementedException();
+
     }
 
     public void EndTurn()
     {
         // TODO: Implement
+        _currentPlayer++;
+        if (_currentPlayer == _players.Count)
+        {
+            _currentPlayer = 0;
+        }
     }
 
     public void CheckForWinner()

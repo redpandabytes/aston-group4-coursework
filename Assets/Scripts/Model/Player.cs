@@ -11,8 +11,8 @@ public class Player
     private bool hasPlayedCleanSlate;
     private bool isAI;
     private bool hasFinishedTurn;
-    private Card desiredCard;
-    private int desiredAction;
+    private Action desiredAction;
+    private Card selectedCard;
 
 
     // Use this for initialization
@@ -28,6 +28,9 @@ public class Player
         this.hasPlayedCleanSlate = false;
         this.hand = new Hand();
         this.hasFinishedTurn = false;
+        desiredAction = new Action();
+        selectedCard = null;
+
     }
 
     //Gets the state of hasPlayedCleanSlate
@@ -39,21 +42,22 @@ public class Player
     //Sets the state of hasPlayedCleanSlate
     //should probably only be able to set it to true?
     //to stop players abusing this method?
-    public void setCleanSlate(bool state)
+    public void setCleanSlate()
     {
-        hasPlayedCleanSlate = state;
+        hasPlayedCleanSlate = true;
     }
 
     // returns the card or action that the user has performed once their turn is complete
-    public Card getDesiredAction()
+    public Action getDesiredAction()
     {
         // TODO: Implement method that can return a generic, so we can return an action rather than a card/int (we can't do both).
-        return new Card();
+        return new Action();
     }
 
     public void setDesiredAction()
     {
         // TODO: Implement
+
     }
 
 
@@ -67,4 +71,5 @@ public class Player
     {
         return hand;
     }
+
 }

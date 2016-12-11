@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Action : MonoBehaviour
 {
+    private string desired;
+    private Card selectedCard;
 
     // Use this for initialization
     void Start()
@@ -17,13 +19,20 @@ public class Action : MonoBehaviour
     }
 
     //Initialises chosen action
-    public void Initialise()
+    public void Initialise(string choice, Card selected)
     {
-
+        desired = choice;
+        selectedCard = selected;
     }
 
-    public void handCardChosen() { }
-    public void cleanSlate() { }
-    public void pickUp() { }
+    public string getChoice()
+    {
+        return desired;
+    }
+
+    public Card getSelectedCard()
+    {
+        return selectedCard;
+    }
 
 }
