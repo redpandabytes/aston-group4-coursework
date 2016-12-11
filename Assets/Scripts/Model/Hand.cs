@@ -21,11 +21,18 @@ public class Hand
     {
         hand.Add(card);
     }
+    public void addAtIndex(int i, Card c)
+    {
+        hand[i] = c;
+    }
 
     // remove a card from the user's hand
     public void remove(Card card)
     {
         hand.Remove(card);
+    }
+    public void removeAtIndex(int i) {
+        hand.RemoveAt(i);
     }
 
     // check if the player's hand contains a certain card

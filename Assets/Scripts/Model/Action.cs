@@ -5,6 +5,8 @@ public class Action : MonoBehaviour
 {
     private string desired;
     private Card selectedCard;
+    private Player targetedPlayer; //If a special with a target is chosen
+    private int guildToChangeTo; //When thug is chosen 
 
     // Use this for initialization
     void Start()

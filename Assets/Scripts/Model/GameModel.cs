@@ -99,7 +99,14 @@ public class GameModel : GuildsElement
 
         if (a.getChoice() == "cleanSlate")
         {
+            //discard hand and get new cards
             _players[_currentPlayer].setCleanSlate();
+            for(int i =0; i < _players[_currentPlayer].getHand().getHandSize(); i++)
+            {
+                _discardDeck.push(_players[_currentPlayer].getHand().getCardAtIndex(i));
+                _players[_currentPlayer].getHand().addAtIndex(i, _drawDeck.pop());
+            }
+                    
         }
         else if (a.getChoice() == "pickUp")
         {
@@ -132,24 +139,45 @@ public class GameModel : GuildsElement
             { switch(c.getValue())
                 {
                     case 11:
+                        //Professor
                         break;
                     case 12:
+                        //Crazy Prof
                         break;
                     case 13:
+                        //ShieldBearer
                         break;
                     case 14:
+                        //Apprentice
+                            for (int i = 0; i < _players.Count; i++)
+                            {               
+                                if (i != _currentPlayer)
+                                {
+                                    _players[i].getHand().add(_drawDeck.pop());
+                                }
+                             }
                         break;
                     case 15:
+                        //Messenger
                         break;
                     case 16:
+                        //Spy
                         break;
                     case 17:
+                        //Thug
                         break;
                     case 18:
+                        //Jester
                         break;
                     case 19:
+                        //Smith (only for non triumph cards)
+                        if (_discardDeck.peek().getGuild() != 0)
+                        {
+                            _players[_currentPlayer].getHand().add(_discardDeck.pop());
+                        }
                         break;
                     case 20:
+                        //Wizard
                         break;
                 }
 
