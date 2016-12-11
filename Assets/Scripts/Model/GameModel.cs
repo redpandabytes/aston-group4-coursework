@@ -129,9 +129,32 @@ public class GameModel : GuildsElement
             }
             //SPECIAL CARD
             else
-            {
+            { switch(c.getValue())
+                {
+                    case 11:
+                        break;
+                    case 12:
+                        break;
+                    case 13:
+                        break;
+                    case 14:
+                        break;
+                    case 15:
+                        break;
+                    case 16:
+                        break;
+                    case 17:
+                        break;
+                    case 18:
+                        break;
+                    case 19:
+                        break;
+                    case 20:
+                        break;
+                }
+
                 //push to discard deck
-               // special move
+                // special move
                 //remove card
             }
 

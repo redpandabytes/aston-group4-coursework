@@ -35,6 +35,10 @@ public class Hand
         return x;
     }
 
+    public Card getCardAtIndex(int i) {
+        return hand[i];
+    }
+
     // returns an arraylist of all the cards in the user's hand
     //public ArrayList<Card> getCards()
     //{

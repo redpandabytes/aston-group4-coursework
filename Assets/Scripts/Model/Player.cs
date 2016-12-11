@@ -44,6 +44,7 @@ public class Player
     //to stop players abusing this method?
     public void setCleanSlate()
     {
+
         hasPlayedCleanSlate = true;
     }
 
