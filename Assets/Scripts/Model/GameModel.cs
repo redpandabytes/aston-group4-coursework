@@ -108,19 +108,30 @@ public class GameModel : GuildsElement
         else if (a.getChoice() == "playCard")
         {
             Card c = a.getSelectedCard();
+            //TRIUMPH CARD
             if (c.getValue() == 0)
             {
-                //Triumph card
-                //remove card
+                //add 5 cards to each player excl. current
+                for (int i = 0; i < _players.Count; i++) {
+                    for (int j = 0; j < 5; j++) {
+                        if (i != _currentPlayer) {
+                            _players[i].getHand().add(_drawDeck.pop());
+                        }
+                    }
+                }  
+                //then remove card from player             
             }
+            //WEAPON CARD
             else if (c.getValue() < 11)
             {
                 _discardDeck.push(c);
                // _players[_currentPlayer].getHand().hasCard(c); remove card
             }
+            //SPECIAL CARD
             else
             {
-                //Special card
+                //push to discard deck
+               // special move
                 //remove card
             }
 
@@ -142,7 +153,12 @@ public class GameModel : GuildsElement
 
     public void CheckForWinner()
     {
-        // TODO: Implement
+        for (int i = 0; i < _players.Count; i++) {
+            if (_players[i].getHand().getHandSize() == 0) {
+                EndGame();
+                //Needs to pass on who won
+            }
+        }
     }
 
     public void EndGame()
