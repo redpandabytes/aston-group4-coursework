@@ -33,7 +33,7 @@ public class GameViewer : GuildsElement
                 card.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 300);
                 card.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
                 // convert the starting hand/value to a spite to load
-                // TODO: Fix spaghetti
+                // TODO: Fix spaghetti, never spagetti XD
 
                 string theGuild;
 
