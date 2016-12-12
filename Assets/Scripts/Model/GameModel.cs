@@ -18,7 +18,6 @@ public class GameModel : GuildsElement
     private const int GameMode = 1;
     private Card currentCard;
 
-
     private const int StartingHandSize = 7;
 
     public void Initialise()
@@ -85,6 +84,11 @@ public class GameModel : GuildsElement
             _currentPlayer = Random.Range(0, 4);
 
         }
+    }
+
+    public int GetStartingHandSize()
+    {
+        return StartingHandSize;
     }
 
     public Hand GetPlayerHand(int playerId)

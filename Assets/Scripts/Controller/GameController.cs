@@ -33,42 +33,43 @@ public class GameController : GuildsElement
     public void Start() // setup objects
     {
         app.model.Initialise();
+        app.viewer.Initialise();
         
         //all players pick 7 cards
-        for (int i = 0; i < 7; i++){//players pick 7 cards
-            for (player = 0; player < 4; player++) {//4 players
-                //player picks card
-                //app.model.PickCard();
-                
-                if (player == 0)
-                {
-					//turnP1.gameObject.SetActive(true);
-                    // player picks 7 cards
-                    //player0.add(deck.pop()); // player 0 picks a card
-                    Debug.Log("player: " + player + " picked their: " + i + "card.");
-                }
-                if (player == 1)
-                {
-					//turnP2.gameObject.SetActive(true);
-                    //AI picks 7 cards
-                    //player1.add(deck.pop()); // player 1 picks a card
-                    Debug.Log("player: " + player + " picked their: " + i + "card.");
-                }
-                if (player == 2)
-                {
-                    //AI picks 7 cards
-                    //player2.add(deck.pop()); // player 2 picks a card
-                    Debug.Log("player: " + player + " picked their: " + i + "card.");
-                }
-                if (player == 3)
-                {
-                    //AI picks 7 cards
-                    //player3.add(deck.pop()); // player 3 picks a card
-                    Debug.Log("player: " + player + " picked their: " + i + "th card.");
-
-                }
-            }
-        }
+//        for (int i = 0; i < 7; i++){//players pick 7 cards
+//            for (player = 0; player < 4; player++) {//4 players
+//                //player picks card
+//                //app.model.PickCard();
+//
+//                if (player == 0)
+//                {
+//					//turnP1.gameObject.SetActive(true);
+//                    // player picks 7 cards
+//                    //player0.add(deck.pop()); // player 0 picks a card
+//                    Debug.Log("player: " + player + " picked their: " + i + "card.");
+//                }
+//                if (player == 1)
+//                {
+//					//turnP2.gameObject.SetActive(true);
+//                    //AI picks 7 cards
+//                    //player1.add(deck.pop()); // player 1 picks a card
+//                    Debug.Log("player: " + player + " picked their: " + i + "card.");
+//                }
+//                if (player == 2)
+//                {
+//                    //AI picks 7 cards
+//                    //player2.add(deck.pop()); // player 2 picks a card
+//                    Debug.Log("player: " + player + " picked their: " + i + "card.");
+//                }
+//                if (player == 3)
+//                {
+//                    //AI picks 7 cards
+//                    //player3.add(deck.pop()); // player 3 picks a card
+//                    Debug.Log("player: " + player + " picked their: " + i + "th card.");
+//
+//                }
+//            }
+//        }
     }
 
     public void Update() // Keep counting down on every frame
