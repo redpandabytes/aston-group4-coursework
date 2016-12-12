@@ -1,6 +1,7 @@
 ﻿// @Author: Nathaniel Baulch-Jones
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameViewer : GuildsElement
 {
@@ -27,7 +28,31 @@ public class GameViewer : GuildsElement
             if (card != null)
             {
                 card.transform.SetParent(handObject.transform);
-                
+                card.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 300);
+                card.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                // convert the starting hand/value to a spite to load
+                // TODO: Fix spaghetti
+
+                string theGuild;
+
+                if (playersHand.getCardAtIndex(i).getGuild() == 0)
+                {
+                    theGuild = "Blue";
+                }
+                else if (playersHand.getCardAtIndex(i).getGuild() == 1)
+                {
+                    theGuild = "Green";
+                }
+                else if (playersHand.getCardAtIndex(i).getGuild() == 2)
+                {
+                    theGuild = "Purple";
+                }
+                else
+                {
+                    theGuild = "Yellow";
+                }
+
+                card.GetComponent<Image>().sprite = Resources.Load<Sprite>(theGuild + "-Card-" + playersHand.getCardAtIndex(i).getValue());
             }
             else
             {
