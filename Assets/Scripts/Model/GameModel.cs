@@ -16,6 +16,8 @@ public class GameModel : GuildsElement
     private StaticAi _ai;
     private GameObject[] _faces;
     private const int GameMode = 1;
+    private Card currentCard;
+
 
     private const int StartingHandSize = 7;
 
@@ -101,12 +103,12 @@ public class GameModel : GuildsElement
         {
             //discard hand and get new cards
             _players[_currentPlayer].setCleanSlate();
-            for(int i =0; i < _players[_currentPlayer].getHand().getHandSize(); i++)
+            for (int i = 0; i < _players[_currentPlayer].getHand().getHandSize(); i++)
             {
                 _discardDeck.push(_players[_currentPlayer].getHand().getCardAtIndex(i));
                 _players[_currentPlayer].getHand().addAtIndex(i, _drawDeck.pop());
             }
-                    
+
         }
         else if (a.getChoice() == "pickUp")
         {
@@ -114,78 +116,86 @@ public class GameModel : GuildsElement
         }
         else if (a.getChoice() == "playCard")
         {
+            //check if card equals value or guild
             Card c = a.getSelectedCard();
-            //TRIUMPH CARD
-            if (c.getValue() == 0)
+            if ((c.getGuild() == _discardDeck.peek().getGuild())
+                || (c.getValue() == _discardDeck.peek().getGuild())
+                || c.getGuild() == 0)
             {
-                //add 5 cards to each player excl. current
-                for (int i = 0; i < _players.Count; i++) {
-                    for (int j = 0; j < 5; j++) {
-                        if (i != _currentPlayer) {
-                            _players[i].getHand().add(_drawDeck.pop());
+                //TRIUMPH CARD
+                if (c.getValue() == 0)
+                {
+                    //add 5 cards to each player excl. current
+                    for (int i = 0; i < _players.Count; i++)
+                    {
+                        for (int j = 0; j < 5; j++)
+                        {
+                            if (i != _currentPlayer)
+                            {
+                                _players[i].getHand().add(_drawDeck.pop());
+                            }
                         }
                     }
-                }  
-                //then remove card from player             
-            }
-            //WEAPON CARD
-            else if (c.getValue() < 11)
-            {
-                _discardDeck.push(c);
-               // _players[_currentPlayer].getHand().hasCard(c); remove card
-            }
-            //SPECIAL CARD
-            else
-            { switch(c.getValue())
+                    //then remove card from player             
+                }
+                //WEAPON CARD
+                else if (c.getValue() < 11)
                 {
-                    case 11:
-                        //Professor
-                        break;
-                    case 12:
-                        //Crazy Prof
-                        break;
-                    case 13:
-                        //ShieldBearer
-                        break;
-                    case 14:
-                        //Apprentice
+                    _discardDeck.push(c);
+                    // _players[_currentPlayer].getHand().hasCard(c); remove card
+                }
+                //SPECIAL CARD
+                else
+                {
+                    _discardDeck.push(c);
+                    switch (c.getValue())
+                    {
+                        case 11:
+                            //Professor
+                            break;
+                        case 12:
+                            //Crazy Prof
+                            break;
+                        case 13:
+                            //ShieldBearer
+                            break;
+                        case 14:
+                            //Apprentice
                             for (int i = 0; i < _players.Count; i++)
-                            {               
+                            {
                                 if (i != _currentPlayer)
                                 {
                                     _players[i].getHand().add(_drawDeck.pop());
                                 }
-                             }
-                        break;
-                    case 15:
-                        //Messenger
-                        break;
-                    case 16:
-                        //Spy
-                        break;
-                    case 17:
-                        //Thug
-                        break;
-                    case 18:
-                        //Jester
-                        break;
-                    case 19:
-                        //Smith (only for non triumph cards)
-                        if (_discardDeck.peek().getGuild() != 0)
-                        {
-                            _players[_currentPlayer].getHand().add(_discardDeck.pop());
-                        }
-                        break;
-                    case 20:
-                        //Wizard
-                        break;
+                            }
+                            break;
+                        case 15:
+                            //Messenger
+                            break;
+                        case 16:
+                            //Spy
+                            break;
+                        case 17:
+                            //Thug
+                            break;
+                        case 18:
+                            //Jester
+                            break;
+                        case 19:
+                            //Smith (only for non triumph cards)
+                            if (_discardDeck.peek().getGuild() != 0)
+                            {
+                                _players[_currentPlayer].getHand().add(_discardDeck.pop());
+                            }
+                            break;
+                        case 20:
+                            //Wizard
+                            break;
+                    }
+                    //remove card
                 }
 
-                //push to discard deck
-                // special move
-                //remove card
             }
-
         }
 
         //throw new NotImplementedException();
