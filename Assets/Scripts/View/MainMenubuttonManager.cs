@@ -14,7 +14,7 @@ public class MainMenubuttonManager : GuildsElement
     private AudioSource source; //TODO: Assign this
     public AudioClip hover;
     public AudioClip click;
-    public GameObject card;
+    //public GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
 
     public void SingleplayerBtn(string startGame)
     {
@@ -54,15 +54,40 @@ public class MainMenubuttonManager : GuildsElement
     public void NotifyMVC()
     {
         Debug.Log("sdsdfdsd");
-        app.Notify(GameNotification.GameVictory,this);
+        app.Notify(GameNotification.GameVictory, this);
     }
 
 
-    public void pickCard() {
+    public void pickCard()
+    {
         Debug.Log("Pressed left click.");
-        app.Notify(GameNotification.CardPicked,this);
-        //card = Instantiate(card.transform.position, Quaternion, Identity) as GameObject;
+        app.Notify(GameNotification.CardPicked, this);
+        GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
+        GetComponent<Card>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        this.transform.SetParent();
 
+       //card.renderer.transparent.material.color = new Color(1.0f, 1.0.f, 1.0f, 1.0f);
+    /*
+        if (GameController.player == 1)
+        {
+            //set parent of card to player 1 hand
+        }
+        if (GameController.player == 2)
+        {
+            //set parent of card to player 2 hand
+        }
+        if (GameController.player == 3)
+        {
+            //set parent of card to player 3 hand
+        }
+        if (GameController.player == 4)
+        {
+            //set parent of card to player 4 hand
+        }
+        */
     }
-    
+       
 }
+    
+    
+

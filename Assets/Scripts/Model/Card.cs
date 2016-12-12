@@ -9,6 +9,8 @@ public class Card
     private int _guild;
     private int _value;
 
+    public Color color { get; internal set; }
+
     // Use this for initialization
     public void Initialise(int guild, int value, Sprite face)
     {

@@ -1,5 +1,8 @@
 ﻿//@Author: Dehul Shingadia
 
+
+
+// To delete this class, do not need
 using UnityEngine;
 using UnityEngine.UI;
 

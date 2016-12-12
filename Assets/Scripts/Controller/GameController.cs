@@ -1,7 +1,7 @@
 ﻿/*
-* @Author: Nathaniel Baulch-Jones
-* @Author: Dehul Shingadia
-*/
+ * @Author: Nathaniel Baulch-Jones
+ * @Author: Dehul Shingadia
+ */
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -94,8 +94,7 @@ public class GameController : GuildsElement
     {
         app.Notify(GameNotification.GameVictory, this);
     }
-
-   
+  
     public void PauseGame()
     {
         Debug.Log("got called");
