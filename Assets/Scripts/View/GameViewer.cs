@@ -7,7 +7,9 @@ using UnityEngine.UI;
 
 public class GameViewer : GuildsElement
 {
-    private int _expiryCountDown = 10; // the default amount of time a player has to take their turn
+    private GameObject _currentPlayerLabel;
+    private const int DefaultTurnLength = 10;
+    private float _expiryCountDown = DefaultTurnLength;
 
     //TODO: Write this class
 
@@ -15,6 +17,7 @@ public class GameViewer : GuildsElement
     {
         var playersHand = app.model.GetPlayerHand(0);
         var handObject = GameObject.Find("Hand");
+        _currentPlayerLabel = GameObject.Find("CurrentPlayerLabel");
 
         foreach(Transform child in handObject.transform) {
             Destroy(child.gameObject);
@@ -60,16 +63,8 @@ public class GameViewer : GuildsElement
                 Debug.Log("Card not found error");
             }
         }
-        // Update text to reflect current player's turn
-        int curPlayer = app.model.GetCurrentPlayer();
-        if (curPlayer == 0)
-        {
-            GameObject.Find("CurrentPlayerLabel").GetComponent<Text>().text = "     Player, it is your turn! (10)";
-        }
-        else
-        {
-            GameObject.Find("CurrentPlayerLabel").GetComponent<Text>().text = "CPU " + curPlayer + " is taking their turn! (10)";
-        }
+        UpdateCountDown();  // Update text to reflect current player's turn
+
     }
 
     public void Start()
@@ -84,7 +79,33 @@ public class GameViewer : GuildsElement
 
     public void Update()
     {
-        //            throw new System.NotImplementedException();
+        UpdateCountDown();
+
+    }
+
+    public void UpdateCountDown()
+    {
+        _expiryCountDown -= Time.deltaTime;
+        int curPlayer = app.model.GetCurrentPlayer();
+        if (curPlayer == 0)
+        {
+            _currentPlayerLabel.GetComponent<Text>().text = "     Player, it is your turn! (" + Mathf.Floor(_expiryCountDown + 1) + ")";
+        }
+        else
+        {
+            _currentPlayerLabel.GetComponent<Text>().text = "CPU " + curPlayer + " is taking their turn! (" + Mathf.Floor(_expiryCountDown + 1) + ")";
+        }
+
+        if(_expiryCountDown <= 0)
+        {
+            app.Notify(GameNotification.TimeRanOut, this, false, null);
+            ResetCountdownTimer();
+        }
+    }
+
+    public void ResetCountdownTimer()
+    {
+        _expiryCountDown = DefaultTurnLength;
     }
 
     public void StartTurn()
@@ -99,7 +120,7 @@ public class GameViewer : GuildsElement
 
     public void EndTurn()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Called reset countdown");
     }
 
     public void CheckForWinner()

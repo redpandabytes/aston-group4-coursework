@@ -61,6 +61,11 @@ public class GameController : GuildsElement
                     throw new Exception("Cannot play this card");
                 }
                 break;
+            case GameNotification.TimeRanOut:
+                app.model.DrawToPlayer(app.model.GetCurrentPlayer(), 1);
+                app.model.EndTurn();
+//                app.viewer.EndTurn();
+                break;
             default:
                 Debug.Log("Unknown Command");
                 break;
