@@ -65,7 +65,7 @@ public class MainMenubuttonManager : GuildsElement
         Debug.Log("Pressed left click.");
         app.Notify(GameNotification.CardPicked, this);
         GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
-        GetComponent<Card>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        //GetComponent<Card>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
        // this.transform.SetParent(mainPanel);
 
        //card.renderer.transparent.material.color = new Color(1.0f, 1.0.f, 1.0f, 1.0f);

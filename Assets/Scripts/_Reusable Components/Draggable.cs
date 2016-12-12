@@ -29,7 +29,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnDrag(PointerEventData eventData)
     {
         //Debug.Log("Card Being Dragged");
-        //throw new NotImplementedException();
+        
         if (draggable == true)
         {
             this.transform.position = eventData.position;//position of mouse
@@ -41,14 +41,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         dropZone2 = GameObject.Find("Dropzone");
         if (draggable == true)
         {
-            Debug.Log(GameObject.Find("Hand").transform.position);
-            Debug.Log("Card Dropped");
+            //Debug.Log(GameObject.Find("Hand").transform.position);
+            //Debug.Log("Card Dropped");
             this.transform.SetParent(parentToReturnTo);
-            //throw new NotImplementedException();
+            
             //x 270 y guress
             //if card is in center make uninteractable
            
-
             if (this.transform.position == GameObject.Find("Hand").transform.position)
             {
                 draggable = false;
@@ -58,6 +57,5 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 draggable = true;
             }
         }
-
     }
 }
