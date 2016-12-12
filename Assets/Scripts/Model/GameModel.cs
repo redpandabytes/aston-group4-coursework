@@ -16,17 +16,20 @@ public class GameModel : GuildsElement
     private StaticAi _ai;
     private GameObject[] _faces;
     private const int GameMode = 1;
-    private Card currentCard;
+    private Card _currentCard;
+    private int _difficulty;
+    private int _noOfPlayers;
 
     private const int StartingHandSize = 7;
     private const int NumStandardCardsPerDeck = 10;
 
     public void Initialise()
     {
-        // Use this for initialization
-        // setup game objects we need
+        //Initialise a new game:
         _discardDeck = new Deck();
         _drawDeck = new Deck();
+        _difficulty = 1; // TODO: this is hard coded for now
+        _noOfPlayers = 4; // TODO: Different game modes may have <4 || >4 players?
 
         // For guilds 1-4, create cards 1-20 and add to the draw deck
         for (int g = 1; g < 5; g++)
@@ -39,7 +42,8 @@ public class GameModel : GuildsElement
                 _drawDeck.push(c);
             }
         }
-        // add special cards
+
+        // add unique cards (only Triumph card thus far)
         Card triumph = new Card();
         triumph.Initialise(0, 0, null);
         _drawDeck.push(triumph);
@@ -50,19 +54,16 @@ public class GameModel : GuildsElement
         // TODO: Only hardcoded for a single player right now
         _players = new List<Player>();
 
-        //For singleplayer:
-        int difficulty = 1; // TODO: All this is hard coded
-        int noOfPlayers = 4;
         String userName = "Player 1";
         _ai = new StaticAi();
-        _ai.Initialise(difficulty, noOfPlayers);
+        _ai.Initialise(_difficulty, _noOfPlayers);
 
         if (GameMode == 1) // TODO: Implement multiplayer mode
         {
             Player newPlayer = new Player();
             newPlayer.Initialise(userName, false);
             _players.Add(newPlayer);
-            for (int p = 1; p < noOfPlayers; p++)
+            for (int p = 1; p < _noOfPlayers; p++)
             {
                 Player ai = new Player();
                 ai.Initialise("AI " + p, true);
@@ -255,11 +256,21 @@ public class GameModel : GuildsElement
 
     }
 
+    public void DrawToPlayer(int playerID, int amount)
+    {
+        // TODO: Code to handle the draw deck being empty
+        for (var i = 0; i == amount; i++)
+        {
+            _players[playerID].getHand().add(_drawDeck.pop());
+        }
+        Debug.Log("Added " + amount + " card(s) to player " + playerID + "'s hand.");
+    }
+
     public void EndTurn()
     {
         // TODO: Implement
         _currentPlayer++;
-        if (_currentPlayer == _players.Count)
+        if (_currentPlayer > _players.Count - 1)
         {
             _currentPlayer = 0;
         }
