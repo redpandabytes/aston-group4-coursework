@@ -1,5 +1,7 @@
-﻿// @Author: Nathaniel Baulch-Jones
-
+﻿/* 
+ * @Author: Nathaniel Baulch-Jones
+ * @Author: Dehul Shingadia
+ */
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -105,5 +107,9 @@ public class GameViewer : GuildsElement
     public void pickCArd(Card card)
     {
 
+    }
+    private void destroyChild()
+    {
+        
     }
 }

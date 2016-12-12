@@ -112,4 +112,13 @@ public class DropZone : MonoBehaviour, IDropHandler
 
         }
     }
+
+    private void destroyChild()
+    {
+        if (transform child in GameObject.Find("dropZone"). )
+        {
+
+        }
+    }
+
 }

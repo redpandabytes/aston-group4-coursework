@@ -14,7 +14,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public GameObject dropZone2;
     public Boolean draggable = true;
     public GameController gameController;
-    public int position;
+    //public int position;
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (draggable == true)
@@ -38,7 +38,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        dropZone2 = GameObject.Find("Dropzone");
+        //dropZone2 = GameObject.Find("Dropzone");
         if (draggable == true)
         {
             //Debug.Log(GameObject.Find("Hand").transform.position);
@@ -58,4 +58,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             }
         }
     }
+
+
 }
