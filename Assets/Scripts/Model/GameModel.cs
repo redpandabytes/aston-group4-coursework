@@ -104,7 +104,7 @@ public class GameModel : GuildsElement
     public void TakeAction(Action a)
     {
 
-        if (a.getChoice() == "cleanSlate")
+        if (a.getChoice().Equals("cleanSlate"))
         {
             //discard hand and get new cards
             _players[_currentPlayer].setCleanSlate();
@@ -115,11 +115,11 @@ public class GameModel : GuildsElement
             }
 
         }
-        else if (a.getChoice() == "pickUp")
+        else if (a.getChoice().Equals("pickUp"))
         {
             _players[_currentPlayer].getHand().add(_drawDeck.pop());
         }
-        else if (a.getChoice() == "playCard")
+        else if (a.getChoice().Equals("playCard"))
         {
             //check if card equals value or guild
             Card c = a.getSelectedCard();
@@ -153,16 +153,24 @@ public class GameModel : GuildsElement
                 else
                 {
                     _discardDeck.push(c);
+                    //remove card from player
                     switch (c.getValue())
                     {
                         case 11:
                             //Professor
+                                //Takes selectedCard and secondCard in Action
+                                //Swaps the cards with two random from targetedPlayer in Action
                             break;
                         case 12:
                             //Crazy Prof
+                                //Field in gameController isReversed
+                                //When true game loops backwards through Player List
+                                //When false uses forward loop
                             break;
                         case 13:
                             //ShieldBearer
+                                //targetedPlayer in Action cannot equal currentPlayer
+                                //One turn only 
                             break;
                         case 14:
                             //Apprentice
@@ -176,15 +184,22 @@ public class GameModel : GuildsElement
                             break;
                         case 15:
                             //Messenger
+                                //Rolls back current player before the end increment?
                             break;
                         case 16:
                             //Spy
+                                //Returns hand of another player
+                                //?: Where to put this view method so players can't access it normally
                             break;
                         case 17:
                             //Thug
+                                //Change suit of card in middle
+                                //?: Or add a new card to middle?
                             break;
                         case 18:
                             //Jester
+                                //Player has boolean missingTurn
+                                //If true, skips player and sets missingTurn to false
                             break;
                         case 19:
                             //Smith (only for non triumph cards)
@@ -195,9 +210,10 @@ public class GameModel : GuildsElement
                             break;
                         case 20:
                             //Wizard
+                                //Swap hand objects
+                                //Create a temp hand to store while swapping
                             break;
                     }
-                    //remove card
                 }
 
             }

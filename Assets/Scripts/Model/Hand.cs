@@ -49,7 +49,7 @@ public class Hand
     // returns an arraylist of all the cards in the user's hand
     //public ArrayList<Card> getCards()
     //{
-    //uncomment when wqorking on method
+    //uncomment when working on method
     //}
 
     //get the hand size of the player's hand

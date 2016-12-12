@@ -5,6 +5,7 @@ public class Action
 {
     private string desired;
     private Card selectedCard;
+    private Card secondCard; //If Professor or Messenger is chosen
     private Player targetedPlayer; //If a special with a target is chosen
     private int guildToChangeTo; //When thug is chosen 
 
@@ -37,4 +38,16 @@ public class Action
         return selectedCard;
     }
 
+    public int getGuildChosen()
+    {
+        return guildToChangeTo;
+    }
+
+    public Player getTarget() {
+        return targetedPlayer;
+    }
+
+    public Card getSecondCard() {
+        return secondCard;
+    }
 }
