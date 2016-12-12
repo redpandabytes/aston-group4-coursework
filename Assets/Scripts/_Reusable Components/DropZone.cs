@@ -106,10 +106,11 @@ public class DropZone : GuildsElement, IDropHandler
         {
             // card can be played, so let's play it
             Debug.Log("Attempting to play card: Guild " + guildValue + ", Card " + cardValue);
+            app.Notify(GameNotification.CardPlayed, this, guildValue, cardValue);
         }
         else
         {
-            // card isn't playable, do shit
+            // card isn't playable, inform user with pretty error
             Debug.Log("This card is not playable.");
         }
 
