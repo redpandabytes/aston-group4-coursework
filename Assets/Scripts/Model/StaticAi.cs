@@ -71,10 +71,19 @@ public Action easyPlay(Player x)
                     viableChoices.Add(c);
                 }
             }
-            Card chosen = viableChoices[Random.Range(0, viableChoices.Count)];
-            Action a = new Action();
-            a.Initialise("playCard", chosen);
-            return a;
+            if (viableChoices.Count != 0)
+            {
+                Card chosen = viableChoices[Random.Range(0, viableChoices.Count)];
+                Action a = new Action();
+                a.Initialise("playCard", chosen);
+                return a;
+            }
+            else
+            {
+                Action a = new Action();
+                a.Initialise("pickUp", null);
+                return a;
+            }
         }
 }
     public Action mediumPlay() {
@@ -84,5 +93,6 @@ public Action easyPlay(Player x)
     public Action hardPlay() {
         return new Action();
      }
-    public void updateAIKnowledge() { }
+  //  public void updateAIKnowledge(int playerNo, int noOfCardsPlayed) {
+  //  }
 } 
