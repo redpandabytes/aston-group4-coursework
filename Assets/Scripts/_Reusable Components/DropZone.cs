@@ -121,14 +121,16 @@ public class DropZone : GuildsElement, IDropHandler
            // Debug.Log(gameObject.name);
 
         }
+
+        destroyChild();
     }
 
     private void destroyChild()
     {
-        //if (transform child in GameObject.Find("dropZone"). )
-        //{
-            //destroy game viewer
-        //}
+        foreach (Transform child in this.gameObject.transform) {
+            Destroy(child.gameObject);
+        }
+
     }
 
 }
