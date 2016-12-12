@@ -192,9 +192,6 @@ public class GameModel : GuildsElement
                             //Wizard
                             break;
                     }
-
-                    //push to discard deck
-                    // special move
                     //remove card
                 }
 

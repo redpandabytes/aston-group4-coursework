@@ -1,4 +1,8 @@
-﻿public class StaticAi
+﻿using System.Collections.Generic;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+public class StaticAi
 {
     //Fields
     private int _difficulty;
@@ -10,7 +14,8 @@
     {
         this._difficulty = difficulty;
         this._noOfPlayers = noOfPlayers;
-        for (int i = 0; i < noOfPlayers; i++)
+        playersHandSizes = new int[_noOfPlayers];
+        for (int i = 0; i < _noOfPlayers; i++)
         {
             playersHandSizes[i] = 7;
         }
@@ -23,27 +28,27 @@ private void Start()
 }
 
 //Method for when player turn is passed to AI
-/*public Action AITurn(Player x, int playerNo)
+public Action AITurn(Player x)
 {
     if (_difficulty == 3)
     {
-        hardPlay();
+        return hardPlay();
     }
     else if (_difficulty == 2)
     {
-        mediumPlay();
+        return mediumPlay();
     }
     else {
-        easyPlay(x, playerNo);
+        return easyPlay(x);
     }
-} */
+} 
 
 //Easy AI turn
-public Action easyPlay(Player x, int playerNo)
+public Action easyPlay(Player x)
 {
     Player p = x;
-    int pNo = playerNo;
     Hand h = p.getHand();
+        //Player has only one card of type weapon:
         if (h.getHandSize() == 1) {
             Card c = h.getCardAtIndex(0);
             if ((c.getValue() < 10) && ((c.getValue() == cardInPlay.getValue()) || c.getGuild() == cardInPlay.getGuild())){
@@ -55,9 +60,20 @@ public Action easyPlay(Player x, int playerNo)
                 a.Initialise("pickUp", null);
                 return a;
             }
-        } else {
+        } else{
+            //Sort through viable cards and pick a random one
+            List<Card> viableChoices = new List<Card>();
+            for (int i=0; i < h.getHandSize(); i++)
+            {
+                Card c = h.getCardAtIndex(i);
+                if  ((c.getValue() == cardInPlay.getValue()) || c.getGuild() == cardInPlay.getGuild())
+                {
+                    viableChoices.Add(c);
+                }
+            }
+            Card chosen = viableChoices[Random.Range(0, viableChoices.Count)];
             Action a = new Action();
-            a.Initialise("pickUp", null);
+            a.Initialise("playCard", chosen);
             return a;
         }
 }
