@@ -16,13 +16,17 @@ public class GameController : GuildsElement
     public Hand player1;
     public Hand player2;
     public Hand player3;
+
 	public Transform turnP1;
 	public Transform turnP2;
 	public Transform turnP3;
 	public Transform turnP4;
+
     public Deck deck; //stack of unplayed cards
 
     public Button pickCardBttn;
+
+    public Transform dropzone;
 
     public GameObject card;
 
