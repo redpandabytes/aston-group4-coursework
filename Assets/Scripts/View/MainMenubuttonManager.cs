@@ -14,6 +14,7 @@ public class MainMenubuttonManager : GuildsElement
     private AudioSource source; //TODO: Assign this
     public AudioClip hover;
     public AudioClip click;
+   // public Transform mainPanel;
     //public GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
 
     public void SingleplayerBtn(string startGame)
@@ -64,7 +65,7 @@ public class MainMenubuttonManager : GuildsElement
         app.Notify(GameNotification.CardPicked, this);
         GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
         GetComponent<Card>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-        this.transform.SetParent();
+       // this.transform.SetParent(mainPanel);
 
        //card.renderer.transparent.material.color = new Color(1.0f, 1.0.f, 1.0f, 1.0f);
     /*

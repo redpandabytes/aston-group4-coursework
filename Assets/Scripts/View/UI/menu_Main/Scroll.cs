@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System;
 
 /*
- *  Created By Dehul Shingadia on 08/11/2016   
+ *  @Author: Dehul Shingadia 
  */
 
 public class Scroll : MonoBehaviour
