@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using System;
 using UnityEngine.UI;
 
-public class DropZone : MonoBehaviour, IDropHandler
+public class DropZone : GuildsElement, IDropHandler
 {
 
     //public GameObject dropZone;
@@ -102,7 +102,16 @@ public class DropZone : MonoBehaviour, IDropHandler
             cardValue = 0;
         }
 
-        Debug.Log("Card Played - Guild Value " + guildValue + ", Card Value " + cardValue);
+        if (app.model.IsCardPlayable(guildValue, cardValue))
+        {
+            // card can be played, so let's play it
+            Debug.Log("Attempting to play card: Guild " + guildValue + ", Card " + cardValue);
+        }
+        else
+        {
+            // card isn't playable, do shit
+            Debug.Log("This card is not playable.");
+        }
 
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
         if (d != null) {

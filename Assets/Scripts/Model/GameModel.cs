@@ -19,6 +19,7 @@ public class GameModel : GuildsElement
     private Card currentCard;
 
     private const int StartingHandSize = 7;
+    private const int NumStandardCardsPerDeck = 10;
 
     public void Initialise()
     {
@@ -84,6 +85,38 @@ public class GameModel : GuildsElement
             _currentPlayer = Random.Range(0, 4);
 
         }
+    }
+
+    public bool IsCardPlayable(int guildValue, int cardValue)
+    {
+        if (_discardDeck.getAmountOfCards() > 0)
+        {
+            // cards in the deck means we have to check if the supplied card is valid
+            if (cardValue <= NumStandardCardsPerDeck)
+            {
+                return true; // standard cards can be played at any time
+            }
+            else
+            {
+                // special card attempting to be played
+                if (_discardDeck.peek().getGuild() == guildValue)
+                {
+                    // special cards only playable when the guild on the discard pile is the same
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            Debug.Log(_discardDeck.peek().getGuild());
+        }
+        else
+        {
+            // cards are always playable if there is nothing in the discard deck yet
+            return true;
+        }
+        return true;
     }
 
     public int GetStartingHandSize()
