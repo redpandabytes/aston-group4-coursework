@@ -47,7 +47,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             //throw new NotImplementedException();
             //x 270 y guress
             //if card is in center make uninteractable
-            //if (this.transform.position.x =  ) { }
+           
 
             if (this.transform.position == GameObject.Find("Hand").transform.position)
             {
