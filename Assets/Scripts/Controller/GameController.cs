@@ -1,6 +1,6 @@
 ﻿/*
-@Author: Nathaniel Baulch-Jones
-@Author: Dehul Shingadia
+* @Author: Nathaniel Baulch-Jones
+* @Author: Dehul Shingadia
 */
 
 using UnityEngine;
