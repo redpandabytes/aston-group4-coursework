@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Action : MonoBehaviour
+public class Action
 {
     private string desired;
     private Card selectedCard;

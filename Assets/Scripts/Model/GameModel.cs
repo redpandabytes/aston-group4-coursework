@@ -87,6 +87,11 @@ public class GameModel : GuildsElement
         }
     }
 
+    public Hand GetPlayerHand(int playerId)
+    {
+        return _players[playerId].getHand();
+    }
+
     public void StartTurn()
     {
         // TODO: Implement
