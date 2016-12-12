@@ -10,9 +10,11 @@ using System;
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Transform parentToReturnTo = null;
-    //public Transform dropZone;
+    public Transform dropZone;
+    public GameObject dropZone2;
     public Boolean draggable = true;
     public GameController gameController;
+    public int position;
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (draggable == true)
@@ -33,24 +35,29 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             this.transform.position = eventData.position;//position of mouse
         }
     }
-    
+
     public void OnEndDrag(PointerEventData eventData)
     {
+        dropZone2 = GameObject.Find("Dropzone");
         if (draggable == true)
         {
+            Debug.Log(GameObject.Find("Hand").transform.position);
             Debug.Log("Card Dropped");
-        this.transform.SetParent(parentToReturnTo);
+            this.transform.SetParent(parentToReturnTo);
             //throw new NotImplementedException();
             //x 270 y guress
             //if card is in center make uninteractable
+            //if (this.transform.position.x =  ) { }
 
-            if (this.transform.parent = gameController.dropzone)
+            if (this.transform.position == GameObject.Find("Hand").transform.position)
             {
                 draggable = false;
             }
-            
+            else
+            {
+                draggable = true;
+            }
         }
-        
-    }
 
+    }
 }
