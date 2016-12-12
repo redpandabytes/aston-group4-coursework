@@ -102,7 +102,7 @@ public class GameViewer : GuildsElement
     {
         throw new System.NotImplementedException();
     }
-    public void pickCArd(Card card)
+    public void pickCard(Card card)
     {
 
     }
