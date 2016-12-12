@@ -1,4 +1,4 @@
-﻿// @Author: Enter Authors Here
+﻿// @Author: Matthew Kavanagh
 
 using UnityEngine;
 using System.Collections;

@@ -1,4 +1,8 @@
-﻿// @Author: Nathaniel Baulch-Jones
+﻿/* @Author: Nathaniel Baulch-Jones
+ * @Author: David Powell
+ * @Author: Matthew Kavanagh
+ * @Author: Dehul Shingadia
+*/
 
 using System;
 using System.Security.Principal;
