@@ -115,11 +115,9 @@ public class DropZone : GuildsElement, IDropHandler
         }
 
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
-        if (d != null) {
+        if (d != null)
+        {
             d.parentToReturnTo = this.transform;
-           // dropZone = gameObject;
-           // Debug.Log(gameObject.name);
-
         }
 
         destroyChild();
@@ -127,7 +125,8 @@ public class DropZone : GuildsElement, IDropHandler
 
     private void destroyChild()
     {
-        foreach (Transform child in this.gameObject.transform) {
+        foreach (Transform child in this.gameObject.transform)
+        {
             Destroy(child.gameObject);
         }
 
