@@ -99,29 +99,24 @@ public class GameModel : GuildsElement
             else
             {
                 // special card attempting to be played
-                if (_discardDeck.peek().getGuild() == guildValue)
-                {
-                    // special cards only playable when the guild on the discard pile is the same
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return _discardDeck.peek().getGuild() == guildValue;
             }
-            Debug.Log(_discardDeck.peek().getGuild());
         }
         else
         {
             // cards are always playable if there is nothing in the discard deck yet
             return true;
         }
-        return true;
     }
 
     public int GetStartingHandSize()
     {
         return StartingHandSize;
+    }
+
+    public int GetCurrentPlayer()
+    {
+        return _currentPlayer;
     }
 
     public Hand GetPlayerHand(int playerId)
