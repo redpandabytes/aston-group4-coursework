@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 public class GameViewer : GuildsElement
 {
-
-    public GameModel model;
+    private int _expiryCountDown = 10; // the default amount of time a player has to take their turn
 
     //TODO: Write this class
 
@@ -60,9 +59,17 @@ public class GameViewer : GuildsElement
             {
                 Debug.Log("Card not found error");
             }
-//            GetComponent<Card>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         }
-
+        // Update text to reflect current player's turn
+        int curPlayer = app.model.GetCurrentPlayer();
+        if (curPlayer == 0)
+        {
+            GameObject.Find("CurrentPlayerLabel").GetComponent<Text>().text = "     Player, it is your turn! (10)";
+        }
+        else
+        {
+            GameObject.Find("CurrentPlayerLabel").GetComponent<Text>().text = "CPU " + curPlayer + " is taking their turn! (10)";
+        }
     }
 
     public void Start()
@@ -72,7 +79,7 @@ public class GameViewer : GuildsElement
 
     public void Intiailise(GameModel passedModel) // Setup the object with a constructor
     {
-        this.model = passedModel;
+        app.model = passedModel; // TODO: Is this necessary?
     }
 
     public void Update()
