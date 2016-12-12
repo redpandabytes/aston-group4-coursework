@@ -16,7 +16,10 @@ public class GameController : GuildsElement
     public Hand player1;
     public Hand player2;
     public Hand player3;
-
+	public Transform turnP1;
+	public Transform turnP2;
+	public Transform turnP3;
+	public Transform turnP4;
     public Deck deck; //stack of unplayed cards
 
     public Button pickCardBttn;
@@ -35,12 +38,14 @@ public class GameController : GuildsElement
                 
                 if (player == 0)
                 {
+					//turnP1.gameObject.SetActive(true);
                     // player picks 7 cards
                     //player0.add(deck.pop()); // player 0 picks a card
                     Debug.Log("player: " + player + " picked their: " + i + "card.");
                 }
                 if (player == 1)
                 {
+					//turnP2.gameObject.SetActive(true);
                     //AI picks 7 cards
                     //player1.add(deck.pop()); // player 1 picks a card
                     Debug.Log("player: " + player + " picked their: " + i + "card.");

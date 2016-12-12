@@ -34,7 +34,8 @@ public class MainMenubuttonManager : GuildsElement
     }
     public void btnExit()
     {
-        Application.Quit();
+       // Application.Quit();
+		UnityEditor.EditorApplication.isPlaying = false;
     }
 
     public void toHelpBtn(string toHelp)
