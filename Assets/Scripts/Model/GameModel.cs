@@ -395,11 +395,18 @@ public class GameModel : GuildsElement
         EndTurn(); // implement the player's turn
     }
 
-
+    public bool ShouldAiTakeTurn()
+    {
+        return ((Random.Range(0, 1000) == 1));
+    }
 
     // Update is called once per frame
     public void Update()
     {
         UpdateCountDown();
+        if (_players[GetCurrentPlayer()].isAi() && ShouldAiTakeTurn())
+        {
+            Debug.Log("I'm about to take the AI's turn");
+        }
     }
 }
