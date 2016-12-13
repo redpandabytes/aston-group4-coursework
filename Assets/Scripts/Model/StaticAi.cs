@@ -93,6 +93,9 @@ public GameAction easyPlay(Player x)
     public GameAction hardPlay() {
         return new GameAction();
      }
-  //  public void updateAIKnowledge(int playerNo, int noOfCardsPlayed) {
-  //  }
+    //noOfCardsPlayed needs to know if it played none and picked up one
+    public void updateAIKnowledge(int playerNo, int noOfCardsPlayed, Card cardInPlay) {
+        this.cardInPlay = cardInPlay;
+        playersHandSizes[playerNo] = playersHandSizes[playerNo] - noOfCardsPlayed;
+    }
 } 
