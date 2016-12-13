@@ -397,7 +397,8 @@ public class GameModel : GuildsElement
 
     public bool ShouldAiTakeTurn()
     {
-        return ((Random.Range(0, 1000) == 1));
+        var sensitivity = 200; // the higher the sensitivity, the less likely the AI is to trigger
+        return ((Random.Range(0, sensitivity) == 1));
     }
 
     // Update is called once per frame
@@ -406,7 +407,7 @@ public class GameModel : GuildsElement
         UpdateCountDown();
         if (_players[GetCurrentPlayer()].isAi() && ShouldAiTakeTurn())
         {
-            Debug.Log("I'm about to take the AI's turn");
+            // game logic for triggering the AI's turn
         }
     }
 }
