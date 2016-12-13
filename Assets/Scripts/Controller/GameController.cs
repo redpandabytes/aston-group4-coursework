@@ -64,7 +64,7 @@ public class GameController : GuildsElement
             case GameNotification.TimeRanOut:
                 app.model.DrawToPlayer(app.model.GetCurrentPlayer(), 1);
                 app.model.EndTurn();
-//                app.viewer.EndTurn();
+                app.viewer.EndTurn();
                 break;
             default:
                 Debug.Log("Unknown Command");
