@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameViewer : GuildsElement
 {
-    private const int DefaultTurnLength = 10;
+    private const int DefaultTurnLength = 4;
     private float _expiryCountDown = DefaultTurnLength;
 
     private Hand _playersHand;
@@ -183,7 +183,7 @@ public class GameViewer : GuildsElement
     }
     public void pickCard(Card card)
     {
-
+        
     }
     private void destroyChild()
     {

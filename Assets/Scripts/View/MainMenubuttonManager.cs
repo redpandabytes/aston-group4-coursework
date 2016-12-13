@@ -68,6 +68,7 @@ public class MainMenubuttonManager : GuildsElement
         GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
         //GetComponent<Card>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         // this.transform.SetParent(mainPanel);
+
         card.transform.SetParent(GameObject.Find("Hand0").transform);
         card.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 300);
         card.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
