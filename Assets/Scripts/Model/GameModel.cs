@@ -132,6 +132,7 @@ public class GameModel : GuildsElement
         GameAction choice = _players[_currentPlayer].getDesiredAction();
         TakeAction(choice);
 
+
     }
 
     public void TakeAction(GameAction a)

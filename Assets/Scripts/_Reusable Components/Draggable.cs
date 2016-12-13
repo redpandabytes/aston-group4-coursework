@@ -7,7 +7,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System;
 
-public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Transform parentToReturnTo = null;
     public Boolean draggable = true;
@@ -36,26 +36,35 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //dropZone2 = GameObject.Find("Dropzone");
-        if (draggable == true)
-        {
-            //Debug.Log(GameObject.Find("Hand").transform.position);
-            //Debug.Log("Card Dropped");
-            this.transform.SetParent(parentToReturnTo);
-            
-            //x 270 y guress
-            //if card is in center make uninteractable
-           
-            if (this.transform.position == GameObject.Find("Hand0").transform.position)
+        int player = app.model.GetCurrentPlayer();
+        //if (player == 0)
+        //{
+        //    draggable = true;
+        //}
+        //else
+        //{
+        //    draggable = false;
+        //}
+            //dropZone2 = GameObject.Find("Dropzone");
+            if (draggable == true)
             {
-                draggable = false;
+                //Debug.Log(GameObject.Find("Hand").transform.position);
+                //Debug.Log("Card Dropped");
+                this.transform.SetParent(parentToReturnTo);
+
+                //x 270 y guress
+                //if card is in center make uninteractable
+
+                if (this.transform.position == GameObject.Find("Hand0").transform.position)
+                {
+                    draggable = false;
+                }
+                else
+                {
+                    draggable = true;
+                }
             }
-            else
-            {
-                draggable = true;
-            }
-        }
-    }
+      }
 
 
 }
