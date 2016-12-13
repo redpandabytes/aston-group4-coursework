@@ -14,7 +14,8 @@ public class MainMenubuttonManager : GuildsElement
     private AudioSource source; //TODO: Assign this
     public AudioClip hover;
     public AudioClip click;
-   // public Transform mainPanel;
+    private GameObject _handObject;
+    // public Transform mainPanel;
     //public GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
 
     public void SingleplayerBtn(string startGame)
@@ -66,27 +67,31 @@ public class MainMenubuttonManager : GuildsElement
         app.Notify(GameNotification.CardPicked, this);
         GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
         //GetComponent<Card>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-       // this.transform.SetParent(mainPanel);
+        // this.transform.SetParent(mainPanel);
+        card.transform.SetParent(GameObject.Find("Hand0").transform);
+        card.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 300);
+        card.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
-       //card.renderer.transparent.material.color = new Color(1.0f, 1.0.f, 1.0f, 1.0f);
-    /*
-        if (GameController.player == 1)
-        {
-            //set parent of card to player 1 hand
-        }
-        if (GameController.player == 2)
-        {
-            //set parent of card to player 2 hand
-        }
-        if (GameController.player == 3)
-        {
-            //set parent of card to player 3 hand
-        }
-        if (GameController.player == 4)
-        {
-            //set parent of card to player 4 hand
-        }
-        */
+
+        //card.renderer.transparent.material.color = new Color(1.0f, 1.0.f, 1.0f, 1.0f);
+        /*
+            if (GameController.player == 1)
+            {
+                //set parent of card to player 1 hand
+            }
+            if (GameController.player == 2)
+            {
+                //set parent of card to player 2 hand
+            }
+            if (GameController.player == 3)
+            {
+                //set parent of card to player 3 hand
+            }
+            if (GameController.player == 4)
+            {
+                //set parent of card to player 4 hand
+            }
+            */
     }
        
 }

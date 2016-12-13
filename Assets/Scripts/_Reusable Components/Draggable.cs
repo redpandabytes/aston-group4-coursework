@@ -10,10 +10,8 @@ using System;
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Transform parentToReturnTo = null;
-    public Transform dropZone;
-    public GameObject dropZone2;
     public Boolean draggable = true;
-    public GameController gameController;
+    //public GameController gameController;
     //public int position;
     public void OnBeginDrag(PointerEventData eventData)
     {
