@@ -6,6 +6,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Action = System.Action;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
@@ -19,6 +20,7 @@ public class GameController : GuildsElement
 
     public void OnNotification(string pEventPath, Object pTarget, object[] pData)
     {
+        var cardAction = new GameAction();
         // Handle GameController notifications
         switch (pEventPath)
         {
@@ -41,11 +43,15 @@ public class GameController : GuildsElement
                     pauseCanvas.gameObject.SetActive(false);
                 }
                 break;
+            case GameNotification.AiTookTurn:
+                cardAction.Initialise(0); // initialise it with real values tho
+                app.model.HandleAction(cardAction);
+                app.viewer.HandleAction();
+                break;
             case GameNotification.CardPicked:
-                Debug.Log("A card was picked");
-                //app.model.PickCard();
-                //app.viewer.pickCard(app.model.getLastCard);
-                //app.model
+                cardAction.Initialise(0); // 0 = pickup? Or does it? I just made it up. TODO: Decide special action ints
+                app.model.HandleAction(cardAction);
+                app.viewer.HandleAction();
 
                 break;
             case GameNotification.CardPlayed:
@@ -53,18 +59,23 @@ public class GameController : GuildsElement
                 var cardValue = (int)pData[1];
                 if (app.model.IsCardPlayable(cardGuild, cardValue))
                 {
-                    // can play
-                    Debug.Log("Logic to play a card");
+                    cardAction.Initialise(cardGuild, cardValue);
+                    app.Notify(GameNotification.ActionTaken, this, cardAction);
                 }
                 else
                 {
+                    // should never get to here unless player is hacking, view should verify cards
                     throw new Exception("Cannot play this card");
                 }
                 break;
             case GameNotification.TimeRanOut:
                 app.model.DrawToPlayer(app.model.GetCurrentPlayer(), 1);
                 app.model.EndTurn();
-//                app.viewer.EndTurn();
+                app.viewer.EndTurn();
+                break;
+            case GameNotification.ActionTaken:
+                app.model.HandleAction((GameAction)pData[0]);
+                app.viewer.HandleAction();
                 break;
             default:
                 Debug.Log("Unknown Command");

@@ -129,12 +129,12 @@ public class GameModel : GuildsElement
     {
         // TODO: Implement
         _players[_currentPlayer].setDesiredAction();
-        Action choice = _players[_currentPlayer].getDesiredAction();
+        GameAction choice = _players[_currentPlayer].getDesiredAction();
         TakeAction(choice);
 
     }
 
-    public void TakeAction(Action a)
+    public void TakeAction(GameAction a)
     {
 
         if (a.getChoice().Equals("cleanSlate"))
@@ -191,8 +191,8 @@ public class GameModel : GuildsElement
                     {
                         case 11:
                             //Professor
-                                //Takes selectedCard and secondCard in Action
-                                //Swaps the cards with two random from targetedPlayer in Action
+                                //Takes selectedCard and secondCard in GameAction
+                                //Swaps the cards with two random from targetedPlayer in GameAction
                             break;
                         case 12:
                             //Crazy Prof
@@ -202,7 +202,7 @@ public class GameModel : GuildsElement
                             break;
                         case 13:
                             //ShieldBearer
-                                //targetedPlayer in Action cannot equal currentPlayer
+                                //targetedPlayer in GameAction cannot equal currentPlayer
                                 //One turn only 
                             break;
                         case 14:
@@ -291,9 +291,18 @@ public class GameModel : GuildsElement
         throw new NotImplementedException();
     }
 
-    public void PlayCard()
+    // deal with a card or special action being taken
+    public void HandleAction(GameAction theGameAction)
     {
-        // TODO: Implement
+        // TODO: Handle The GameAction way more than I've done here
+        // TODO: For example, handle them playing a card that was in their hand, remove from the hand, etc, etc...
+
+        if (theGameAction.WasPickupCard())
+        {
+            DrawToPlayer(_currentPlayer, 1);
+        }
+        Debug.Log("Ended the turn by popping a card to current player");
+        EndTurn(); // call endturn to update the model after we've done everything else
     }
 
     // Update is called once per frame

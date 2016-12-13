@@ -28,7 +28,7 @@ private void Start()
 }
 
 //Method for when player turn is passed to AI
-public Action AITurn(Player x)
+public GameAction AITurn(Player x)
 {
     if (_difficulty == 3)
     {
@@ -44,7 +44,7 @@ public Action AITurn(Player x)
 } 
 
 //Easy AI turn
-public Action easyPlay(Player x)
+public GameAction easyPlay(Player x)
 {
     Player p = x;
     Hand h = p.getHand();
@@ -52,11 +52,11 @@ public Action easyPlay(Player x)
         if (h.getHandSize() == 1) {
             Card c = h.getCardAtIndex(0);
             if ((c.getValue() < 10) && ((c.getValue() == cardInPlay.getValue()) || c.getGuild() == cardInPlay.getGuild())){
-                Action a = new Action();
+                GameAction a = new GameAction();
                 a.Initialise("playCard", c);
                 return a;
             } else {
-                Action a = new Action();
+                GameAction a = new GameAction();
                 a.Initialise("pickUp", null);
                 return a;
             }
@@ -74,24 +74,24 @@ public Action easyPlay(Player x)
             if (viableChoices.Count != 0)
             {
                 Card chosen = viableChoices[Random.Range(0, viableChoices.Count)];
-                Action a = new Action();
+                GameAction a = new GameAction();
                 a.Initialise("playCard", chosen);
                 return a;
             }
             else
             {
-                Action a = new Action();
+                GameAction a = new GameAction();
                 a.Initialise("pickUp", null);
                 return a;
             }
         }
 }
-    public Action mediumPlay() {
+    public GameAction mediumPlay() {
 
-        return new Action();
+        return new GameAction();
     }
-    public Action hardPlay() {
-        return new Action();
+    public GameAction hardPlay() {
+        return new GameAction();
      }
   //  public void updateAIKnowledge(int playerNo, int noOfCardsPlayed) {
   //  }

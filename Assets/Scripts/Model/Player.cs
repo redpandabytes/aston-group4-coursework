@@ -11,7 +11,7 @@ public class Player
     private bool hasPlayedCleanSlate;
     private bool isAI;
     private bool hasFinishedTurn;
-    private Action desiredAction;
+    private GameAction _desiredGameAction;
     private Card selectedCard;
 
 
@@ -28,7 +28,7 @@ public class Player
         this.hasPlayedCleanSlate = false;
         this.hand = new Hand();
         this.hasFinishedTurn = false;
-        desiredAction = new Action();
+        _desiredGameAction = new GameAction();
         selectedCard = null;
 
     }
@@ -49,10 +49,10 @@ public class Player
     }
 
     // returns the card or action that the user has performed once their turn is complete
-    public Action getDesiredAction()
+    public GameAction getDesiredAction()
     {
         // TODO: Implement method that can return a generic, so we can return an action rather than a card/int (we can't do both).
-        return new Action();
+        return new GameAction();
     }
 
     public void setDesiredAction()

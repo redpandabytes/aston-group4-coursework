@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Action
+public class GameAction
 {
-    private string desired;
+    private string desired; // TODO: What does this mean?
     private Card selectedCard;
     private Card secondCard; //If Professor or Messenger is chosen
     private Player targetedPlayer; //If a special with a target is chosen
-    private int guildToChangeTo; //When thug is chosen 
+    private int guildToChangeTo; //When thug is chosen
+    private int verySpecialAction;
 
     // Use this for initialization
     void Start()
@@ -21,11 +22,26 @@ public class Action
 
     }
 
-    //Initialises chosen action
+    public bool WasPickupCard()
+    {
+        return verySpecialAction == 0;
+    }
+
+    //Polymorphic initialisation (don't check for valid actions here)
     public void Initialise(string choice, Card selected)
     {
         desired = choice;
         selectedCard = selected;
+    }
+
+    public void Initialise(int guildValue, int cardValue)
+    {
+
+    }
+
+    public void Initialise(int specialAction)
+    {
+        verySpecialAction = specialAction;
     }
 
     public string getChoice()
