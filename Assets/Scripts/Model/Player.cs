@@ -73,4 +73,7 @@ public class Player
         return hand;
     }
 
+    public bool isAi() {
+        return isAI;
+    }
 }
