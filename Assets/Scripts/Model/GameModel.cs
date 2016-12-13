@@ -129,18 +129,19 @@ public class GameModel : GuildsElement
 
     public void StartTurn()
     {
-        // TODO: Implement
-        if (_players[_currentPlayer].isAi() == false)
-        { 
-            _players[_currentPlayer].setDesiredAction();
-            GameAction choice = _players[_currentPlayer].getDesiredAction();
-            HandleAction(choice);
-        } 
-        else
-        {
-           GameAction choice = _ai.AITurn(_players[_currentPlayer]);
-            HandleAction(choice);
-        }
+//        Debug.Log("Am here");
+//        // TODO: Implement
+//        if (_players[_currentPlayer].isAi() == false)
+//        {
+//            _players[_currentPlayer].setDesiredAction();
+//            GameAction choice = _players[_currentPlayer].getDesiredAction();
+//            HandleAction(choice);
+//        }
+//        else
+//        {
+//           GameAction choice = _ai.AiTurn(_players[_currentPlayer]);
+//            HandleAction(choice);
+//        }
         
     }
 

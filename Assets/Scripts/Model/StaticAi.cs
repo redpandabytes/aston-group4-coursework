@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class StaticAi
@@ -7,19 +6,19 @@ public class StaticAi
     //Fields
     private int _difficulty;
     private int _noOfPlayers;
-    private Card cardInPlay;
-    private int[] playersHandSizes;
+    private Card _cardInPlay;
+    private int[] _playersHandSizes;
 
     public void Initialise(int difficulty, int noOfPlayers)
     {
-        this._difficulty = difficulty;
-        this._noOfPlayers = noOfPlayers;
-        playersHandSizes = new int[_noOfPlayers];
+        _difficulty = difficulty;
+        _noOfPlayers = noOfPlayers;
+        _playersHandSizes = new int[_noOfPlayers];
         for (int i = 0; i < _noOfPlayers; i++)
         {
-            playersHandSizes[i] = 7;
+            _playersHandSizes[i] = 7;
         }
-        cardInPlay = null;
+        _cardInPlay = null;
     }
 
 //Initialization of AIController
@@ -28,30 +27,30 @@ private void Start()
 }
 
 //Method for when player turn is passed to AI
-public GameAction AITurn(Player x)
+public GameAction AiTurn(Player x)
 {
     if (_difficulty == 3)
     {
-        return hardPlay();
+        return HardPlay();
     }
     else if (_difficulty == 2)
     {
-        return mediumPlay();
+        return MediumPlay();
     }
     else {
-        return easyPlay(x);
+        return EasyPlay(x);
     }
 } 
 
 //Easy AI turn
-public GameAction easyPlay(Player x)
+public GameAction EasyPlay(Player x)
 {
     Player p = x;
     Hand h = p.getHand();
         //Player has only one card of type weapon:
         if (h.getHandSize() == 1) {
             Card c = h.getCardAtIndex(0);
-            if ((c.getValue() < 10) && ((c.getValue() == cardInPlay.getValue()) || c.getGuild() == cardInPlay.getGuild())){
+            if ((c.getValue() < 10) && ((c.getValue() == _cardInPlay.getValue()) || c.getGuild() == _cardInPlay.getGuild())){
                 GameAction a = new GameAction();
                 a.Initialise("playCard", c);
                 return a;
@@ -66,7 +65,7 @@ public GameAction easyPlay(Player x)
             for (int i=0; i < h.getHandSize(); i++)
             {
                 Card c = h.getCardAtIndex(i);
-                if  ((c.getValue() == cardInPlay.getValue()) || c.getGuild() == cardInPlay.getGuild())
+                if  ((c.getValue() == _cardInPlay.getValue()) || c.getGuild() == _cardInPlay.getGuild())
                 {
                     viableChoices.Add(c);
                 }
@@ -86,16 +85,16 @@ public GameAction easyPlay(Player x)
             }
         }
 }
-    public GameAction mediumPlay() {
+    public GameAction MediumPlay() {
 
         return new GameAction();
     }
-    public GameAction hardPlay() {
+    public GameAction HardPlay() {
         return new GameAction();
      }
     //noOfCardsPlayed needs to know if it played none and picked up one
-    public void updateAIKnowledge(int playerNo, int noOfCardsPlayed, Card cardInPlay) {
-        this.cardInPlay = cardInPlay;
-        playersHandSizes[playerNo] = playersHandSizes[playerNo] - noOfCardsPlayed;
+    public void UpdateAiKnowledge(int playerNo, int noOfCardsPlayed, Card cardInPlay) {
+        this._cardInPlay = cardInPlay;
+        _playersHandSizes[playerNo] = _playersHandSizes[playerNo] - noOfCardsPlayed;
     }
 } 
