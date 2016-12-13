@@ -46,13 +46,18 @@ public class GameViewer : GuildsElement
 
                 if (_playersHand.getCardAtIndex(i).getGuild() == 0)
                 {
-                    theGuild = "Blue";
+                    theGuild = "Triumph";
                 }
                 else if (_playersHand.getCardAtIndex(i).getGuild() == 1)
                 {
+                    theGuild = "Blue";
+                }
+
+                else if (_playersHand.getCardAtIndex(i).getGuild() == 2)
+                {
                     theGuild = "Green";
                 }
-                else if (_playersHand.getCardAtIndex(i).getGuild() == 2)
+                else if (_playersHand.getCardAtIndex(i).getGuild() == 3)
                 {
                     theGuild = "Purple";
                 }
