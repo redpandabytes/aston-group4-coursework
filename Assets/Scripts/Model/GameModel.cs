@@ -23,6 +23,8 @@ public class GameModel : GuildsElement
     private const int StartingHandSize = 7;
     private const int NumStandardCardsPerDeck = 10;
 
+    private bool reversedPlay = false; //(Crazy Proffessor)
+
     public void Initialise()
     {
         //Initialise a new game:
@@ -128,16 +130,96 @@ public class GameModel : GuildsElement
     public void StartTurn()
     {
         // TODO: Implement
+<<<<<<< HEAD
         _players[_currentPlayer].setDesiredAction();
         GameAction choice = _players[_currentPlayer].getDesiredAction();
         TakeAction(choice);
 
 
+=======
+        if (_players[_currentPlayer].isAi() == false)
+        { 
+            _players[_currentPlayer].setDesiredAction();
+            GameAction choice = _players[_currentPlayer].getDesiredAction();
+            HandleAction(choice);
+        } 
+        else
+        {
+           GameAction choice = _ai.AITurn(_players[_currentPlayer]);
+            HandleAction(choice);
+        }
+        
+>>>>>>> b35c73d08bb6e2f4c26b0cfca4297dfd6db9d2c7
     }
 
     public void TakeAction(GameAction a)
     {
+        //TODO: Implement
 
+    }
+
+    public void DrawToPlayer(int playerID, int amount)
+    {
+        // TODO: Code to handle the draw deck being empty
+        for (var i = 0; i == amount; i++)
+        {
+            _players[playerID].getHand().add(_drawDeck.pop());
+        }
+        Debug.Log("Added " + amount + " card(s) to player " + playerID + "'s hand.");
+    }
+
+    public void EndTurn()
+    {
+        // TODO: Implement
+        if (reversedPlay == false)
+        {
+
+            if (_currentPlayer == (_players.Count - 1))
+            {
+                _currentPlayer = 0;
+            }
+            else
+            {
+                _currentPlayer++;
+            }
+        }
+        else
+        {
+            if (_currentPlayer == 0)
+            {
+                _currentPlayer = (_players.Count - 1);
+            }
+            else
+            {
+                _currentPlayer--;
+            }
+        }
+            // IF PLAYER IS MISSING TURN INCREMENT AND SET THEIR BOOLEAN TO FALSE
+       
+        StartTurn();
+    }
+
+    public void CheckForWinner()
+    {
+        for (int i = 0; i < _players.Count; i++) {
+            if (_players[i].getHand().getHandSize() == 0) {
+                EndGame();
+                //Needs to pass on who won
+            }
+        }
+    }
+
+    public void EndGame()
+    {
+        throw new NotImplementedException();
+    }
+
+    // deal with a card or special action being taken
+    public void HandleAction(GameAction theGameAction)
+    {
+        // TODO: Handle The GameAction way more than I've done here
+        // TODO: For example, handle them playing a card that was in their hand, remove from the hand, etc, etc...
+        GameAction a = theGameAction;
         if (a.getChoice().Equals("cleanSlate"))
         {
             //discard hand and get new cards
@@ -151,7 +233,9 @@ public class GameModel : GuildsElement
         }
         else if (a.getChoice().Equals("pickUp"))
         {
-            _players[_currentPlayer].getHand().add(_drawDeck.pop());
+            // _players[_currentPlayer].getHand().add(_drawDeck.pop());
+            DrawToPlayer(_currentPlayer, 1);
+            Debug.Log("Ended the turn by popping a card to current player");
         }
         else if (a.getChoice().Equals("playCard"))
         {
@@ -192,19 +276,26 @@ public class GameModel : GuildsElement
                     {
                         case 11:
                             //Professor
-                                //Takes selectedCard and secondCard in GameAction
-                                //Swaps the cards with two random from targetedPlayer in GameAction
+                            //Takes selectedCard and secondCard in GameAction
+                            //Swaps the cards with two random from targetedPlayer in GameAction
+                            //Makes sure the same card slot in the targets hand is not chosen twice
+                            Hand targetsHand = _players[a.getTarget()].getHand();
+                            int ran = Random.Range(0, (targetsHand.getHandSize() - 1));
+                            _players[a.getTarget()].getHand().addAtIndex(ran, a.getSelectedCard());
+                            int newRan = Random.Range(0, (targetsHand.getHandSize() - 1));
+                            while (newRan == ran) {
+                                newRan = Random.Range(0, (targetsHand.getHandSize() - 1));
+                            }
+                            _players[a.getTarget()].getHand().addAtIndex(newRan, a.getSelectedCard());
                             break;
                         case 12:
                             //Crazy Prof
-                                //Field in gameController isReversed
-                                //When true game loops backwards through Player List
-                                //When false uses forward loop
+                            reversedPlay = !reversedPlay;
                             break;
                         case 13:
                             //ShieldBearer
-                                //targetedPlayer in GameAction cannot equal currentPlayer
-                                //One turn only 
+                            //targetedPlayer in GameAction cannot equal currentPlayer
+                            //One turn only 
                             break;
                         case 14:
                             //Apprentice
@@ -218,22 +309,23 @@ public class GameModel : GuildsElement
                             break;
                         case 15:
                             //Messenger
-                                //Rolls back current player before the end increment?
+                            //Rolls back current player before the end increment?
                             break;
                         case 16:
                             //Spy
-                                //Returns hand of another player
-                                //?: Where to put this view method so players can't access it normally
+                            //Returns hand of another player
+                            //?: Where to put this view method so players can't access it normally
                             break;
                         case 17:
                             //Thug
-                                //Change suit of card in middle
-                                //?: Or add a new card to middle?
+                            //Change suit of card in middle
+                            //?: Or add a new card to middle?
                             break;
                         case 18:
                             //Jester
-                                //Player has boolean missingTurn
-                                //If true, skips player and sets missingTurn to false
+                            //Player has boolean missingTurn
+                            //If true, skips player and sets missingTurn to false
+                            _players[a.getTarget()].setMissingTurn();
                             break;
                         case 19:
                             //Smith (only for non triumph cards)
@@ -244,67 +336,18 @@ public class GameModel : GuildsElement
                             break;
                         case 20:
                             //Wizard
-                                //Swap hand objects
-                                //Create a temp hand to store while swapping
+                            //Swap hand objects
+                            //Create a temp hand to store while swapping
                             break;
                     }
                 }
 
             }
         }
-
-        //throw new NotImplementedException();
-
+        EndTurn();
     }
 
-    public void DrawToPlayer(int playerID, int amount)
-    {
-        // TODO: Code to handle the draw deck being empty
-        for (var i = 0; i == amount; i++)
-        {
-            _players[playerID].getHand().add(_drawDeck.pop());
-        }
-        Debug.Log("Added " + amount + " card(s) to player " + playerID + "'s hand.");
-    }
-
-    public void EndTurn()
-    {
-        // TODO: Implement
-        _currentPlayer++;
-        if (_currentPlayer > _players.Count - 1)
-        {
-            _currentPlayer = 0;
-        }
-    }
-
-    public void CheckForWinner()
-    {
-        for (int i = 0; i < _players.Count; i++) {
-            if (_players[i].getHand().getHandSize() == 0) {
-                EndGame();
-                //Needs to pass on who won
-            }
-        }
-    }
-
-    public void EndGame()
-    {
-        throw new NotImplementedException();
-    }
-
-    // deal with a card or special action being taken
-    public void HandleAction(GameAction theGameAction)
-    {
-        // TODO: Handle The GameAction way more than I've done here
-        // TODO: For example, handle them playing a card that was in their hand, remove from the hand, etc, etc...
-
-        if (theGameAction.WasPickupCard())
-        {
-            DrawToPlayer(_currentPlayer, 1);
-        }
-        Debug.Log("Ended the turn by popping a card to current player");
-        EndTurn(); // call endturn to update the model after we've done everything else
-    }
+     
 
     // Update is called once per frame
     public void Update()

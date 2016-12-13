@@ -6,7 +6,7 @@ public class GameAction
     private string desired; // TODO: What does this mean?
     private Card selectedCard;
     private Card secondCard; //If Professor or Messenger is chosen
-    private Player targetedPlayer; //If a special with a target is chosen
+    private int targetedPlayer; //If a special with a target is chosen
     private int guildToChangeTo; //When thug is chosen
     private int verySpecialAction;
 
@@ -59,7 +59,7 @@ public class GameAction
         return guildToChangeTo;
     }
 
-    public Player getTarget() {
+    public int getTarget() {
         return targetedPlayer;
     }
 
