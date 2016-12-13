@@ -400,12 +400,18 @@ public class GameModel : GuildsElement
         return ((Random.Range(0, 1000) == 1));
     }
 
+    public void AITurn() {
+       GameAction choice = _ai.AiTurn(_players[_currentPlayer]);
+       HandleAction(choice);
+    }
+
     // Update is called once per frame
     public void Update()
     {
         UpdateCountDown();
         if (_players[GetCurrentPlayer()].isAi() && ShouldAiTakeTurn())
         {
+            AITurn();
             Debug.Log("I'm about to take the AI's turn");
         }
     }
