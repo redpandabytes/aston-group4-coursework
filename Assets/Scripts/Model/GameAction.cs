@@ -42,6 +42,7 @@ public class GameAction
     public void Initialise(int specialAction)
     {
         verySpecialAction = specialAction;
+        desired = GameNotification.TimeRanOut;
     }
 
     public string getChoice()

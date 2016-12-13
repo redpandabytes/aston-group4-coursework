@@ -69,9 +69,11 @@ public class GameController : GuildsElement
                 }
                 break;
             case GameNotification.TimeRanOut:
-                app.model.DrawToPlayer(app.model.GetCurrentPlayer(), 1);
-                app.model.EndTurn();
-                app.viewer.EndTurn();
+                GameAction action = new GameAction();
+                action.Initialise(0); // 0 means that time ran out
+                app.model.HandleAction(action);
+                app.viewer.HandleAction();
+//                app.viewer.HandleAction(action);
                 break;
             case GameNotification.ActionTaken:
                 app.model.HandleAction((GameAction)pData[0]);

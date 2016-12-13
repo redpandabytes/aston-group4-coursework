@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class StaticAi
@@ -65,10 +66,19 @@ public GameAction EasyPlay(Player x)
             for (int i=0; i < h.getHandSize(); i++)
             {
                 Card c = h.getCardAtIndex(i);
-                if  ((c.getValue() == _cardInPlay.getValue()) || c.getGuild() == _cardInPlay.getGuild())
+                Debug.Log("The card value is: " + c.getValue());
+                Debug.Log("The guild value is: " + c.getGuild());
+                Debug.Log(_cardInPlay);
+                if  (_cardInPlay != null)
                 {
-                    viableChoices.Add(c);
+                    if(c.getValue() == _cardInPlay.getValue() || c.getGuild() == _cardInPlay.getGuild())
+                    {
+                        viableChoices.Add(c);
+                    }
                 }
+                GameAction a = new GameAction();
+                a.Initialise("pickUp", null);
+                return a;
             }
             if (viableChoices.Count != 0)
             {
@@ -94,7 +104,8 @@ public GameAction EasyPlay(Player x)
      }
     //noOfCardsPlayed needs to know if it played none and picked up one
     public void UpdateAiKnowledge(int playerNo, int noOfCardsPlayed, Card cardInPlay) {
-        this._cardInPlay = cardInPlay;
+        Debug.Log("(AI) Is in play card null?: "+ (cardInPlay == null));
+        _cardInPlay = cardInPlay;
         _playersHandSizes[playerNo] = _playersHandSizes[playerNo] - noOfCardsPlayed;
     }
 } 
