@@ -401,9 +401,9 @@ public class GameModel : GuildsElement
         return ((Random.Range(0, sensitivity) == 1));
     }
 
-    public void AITurn() {
-       GameAction choice = _ai.AiTurn(_players[_currentPlayer]);
-       HandleAction(choice);
+    public GameAction AITurn() {
+       return _ai.AiTurn(_players[_currentPlayer]);
+        //HandleAction(choice);
     }
 
     // Update is called once per frame
@@ -413,7 +413,8 @@ public class GameModel : GuildsElement
         if (_players[GetCurrentPlayer()].isAi() && ShouldAiTakeTurn())
         {
             // game logic for triggering the AI's turn
-            AITurn();
+            GameAction choice = AITurn();
+            app.Notify(GameNotification.AiTookTurn, this, choice);
             Debug.Log("I'm about to take the AI's turn");
         }
     }
