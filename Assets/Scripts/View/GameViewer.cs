@@ -7,12 +7,13 @@ using UnityEngine.UI;
 
 public class GameViewer : GuildsElement
 {
-    private const int DefaultTurnLength = 3;
+    private const int DefaultTurnLength = 10;
     private float _expiryCountDown = DefaultTurnLength;
 
     private Hand _playersHand;
     private GameObject _handObject;
     private GameObject _currentPlayerLabel;
+    private GameObject _cardStackBtn;
 
     //TODO: Write this class
 
@@ -21,6 +22,7 @@ public class GameViewer : GuildsElement
         _playersHand = app.model.GetPlayerHand(0);
         _handObject = GameObject.Find("Hand0");
         _currentPlayerLabel = GameObject.Find("CurrentPlayerLabel");
+        _cardStackBtn = GameObject.Find("CardStackBtn");
 
         foreach(Transform child in _handObject.transform) {
             Destroy(child.gameObject);
@@ -113,12 +115,13 @@ public class GameViewer : GuildsElement
         _expiryCountDown = DefaultTurnLength;
     }
 
-    public void TakeAction()
+    public void HandleAction()
     {
-        throw new System.NotImplementedException();
+        // Do stuff to make the player's action look pretty
+        StartTurn();
     }
 
-    public void StartTurn()
+    public void StartTurn() // This should ensure that the view is appropriate for the current turn
     {
         TogglePlayersHandEnabled(app.model.GetCurrentPlayer() == 0);
     }
@@ -138,7 +141,7 @@ public class GameViewer : GuildsElement
         {
             if (card.GetComponent<Draggable>() == null)
             {
-                Debug.Log("Error: Missing Draggable component!");
+                Debug.Log("Warning: Missing Draggable component in card item");
             }
             else
             {
@@ -152,7 +155,15 @@ public class GameViewer : GuildsElement
                     card.GetComponent<Image>().color = new Color(0.2F, 0.3F, 0.4F, 0.5F);
                 }
             }
-
+            if (trueOrFalse)
+            {
+                _cardStackBtn.GetComponent<Image>().color = new Color(1F, 1F, 1F, 1F);
+            }
+            else
+            {
+                _cardStackBtn.GetComponent<Image>().color = new Color(0.2F, 0.3F, 0.4F, 0.5F);
+            }
+            _cardStackBtn.GetComponent<Button>().interactable = trueOrFalse;
         }
     }
 
