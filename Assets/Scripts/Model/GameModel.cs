@@ -23,6 +23,9 @@ public class GameModel : GuildsElement
     private const int StartingHandSize = 7;
     private const int NumStandardCardsPerDeck = 10;
 
+    private const int DefaultTurnLength = 4;
+    private float _expiryCountDown = DefaultTurnLength;
+
     private bool reversedPlay = false; //(Crazy Proffessor)
 
     public void Initialise()
@@ -111,6 +114,36 @@ public class GameModel : GuildsElement
             return true;
         }
     }
+
+    public void ResetCountdownTimer()
+    {
+        _expiryCountDown = DefaultTurnLength;
+    }
+
+
+    public void UpdateCountDown()
+    {
+        _expiryCountDown -= Time.deltaTime;
+        var curPlayer = app.model.GetCurrentPlayer();
+        if (curPlayer == 0)
+        {
+            app.viewer.UpdateCountDown("     Player, it is your turn! (" + Mathf.Floor(_expiryCountDown + 1) + ")");
+        }
+        else
+        {
+            app.viewer.UpdateCountDown("CPU " + curPlayer + " is taking their turn! (" +
+                                       Mathf.Floor(_expiryCountDown + 1) + ")");
+        }
+
+        if(_expiryCountDown <= 0)
+        {
+            Debug.Log("No action was taken by the player.");
+            app.Notify(GameNotification.TimeRanOut, this, false, null);
+            ResetCountdownTimer();
+        }
+    }
+
+
 
     public int GetStartingHandSize()
     {
@@ -367,10 +400,6 @@ public class GameModel : GuildsElement
     // Update is called once per frame
     public void Update()
     {
-        // GAME LOGIC WILL BE RAN HERE!
-    }
-    public void pickCard()
-    {
-        //Do this plz
+        UpdateCountDown();
     }
 }

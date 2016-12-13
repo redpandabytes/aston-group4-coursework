@@ -2,14 +2,13 @@
  * @Author: Nathaniel Baulch-Jones
  * @Author: Dehul Shingadia
  */
+
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameViewer : GuildsElement
 {
-    private const int DefaultTurnLength = 4;
-    private float _expiryCountDown = DefaultTurnLength;
-
     private Hand _playersHand;
     private GameObject _handObject;
     private GameObject _currentPlayerLabel;
@@ -74,7 +73,6 @@ public class GameViewer : GuildsElement
             }
         }
         StartTurn();
-        UpdateCountDown();  // Update text to reflect current player's turn
 
     }
 
@@ -91,33 +89,12 @@ public class GameViewer : GuildsElement
     // Stuff that needs to be done each frame
     public void Update()
     {
-        UpdateCountDown();
+//        UpdateCountDown();
     }
 
-    public void UpdateCountDown()
+    public void UpdateCountDown(String passedString)
     {
-        _expiryCountDown -= Time.deltaTime;
-        int curPlayer = app.model.GetCurrentPlayer();
-        if (curPlayer == 0)
-        {
-            _currentPlayerLabel.GetComponent<Text>().text = "     Player, it is your turn! (" + Mathf.Floor(_expiryCountDown + 1) + ")";
-        }
-        else
-        {
-            _currentPlayerLabel.GetComponent<Text>().text = "CPU " + curPlayer + " is taking their turn! (" + Mathf.Floor(_expiryCountDown + 1) + ")";
-        }
-
-        if(_expiryCountDown <= 0)
-        {
-            Debug.Log("No action was taken by the player.");
-            app.Notify(GameNotification.TimeRanOut, this, false, null);
-            ResetCountdownTimer();
-        }
-    }
-
-    public void ResetCountdownTimer()
-    {
-        _expiryCountDown = DefaultTurnLength;
+    _currentPlayerLabel.GetComponent<Text>().text = passedString;
     }
 
     public void HandleAction()
