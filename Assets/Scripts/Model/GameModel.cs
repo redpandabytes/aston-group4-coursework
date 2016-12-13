@@ -23,6 +23,8 @@ public class GameModel : GuildsElement
     private const int StartingHandSize = 7;
     private const int NumStandardCardsPerDeck = 10;
 
+    private bool reversedPlay = false; //(Crazy Proffessor)
+
     public void Initialise()
     {
         //Initialise a new game:
@@ -161,11 +163,32 @@ public class GameModel : GuildsElement
     public void EndTurn()
     {
         // TODO: Implement
-        _currentPlayer++;
-        if (_currentPlayer > _players.Count - 1)
+        if (reversedPlay == false)
         {
-            _currentPlayer = 0;
+
+            if (_currentPlayer == (_players.Count - 1))
+            {
+                _currentPlayer = 0;
+            }
+            else
+            {
+                _currentPlayer++;
+            }
         }
+        else
+        {
+            if (_currentPlayer == 0)
+            {
+                _currentPlayer = (_players.Count - 1);
+            }
+            else
+            {
+                _currentPlayer--;
+            }
+        }
+            // IF PLAYER IS MISSING TURN INCREMENT AND SET THEIR BOOLEAN TO FALSE
+       
+        StartTurn();
     }
 
     public void CheckForWinner()
@@ -188,13 +211,6 @@ public class GameModel : GuildsElement
     {
         // TODO: Handle The GameAction way more than I've done here
         // TODO: For example, handle them playing a card that was in their hand, remove from the hand, etc, etc...
-
-        /* if (theGameAction.WasPickupCard())
-         {
-             DrawToPlayer(_currentPlayer, 1);
-         }
-         Debug.Log("Ended the turn by popping a card to current player");
-         EndTurn(); // call endturn to update the model after we've done everything else */
         GameAction a = theGameAction;
         if (a.getChoice().Equals("cleanSlate"))
         {
@@ -254,12 +270,19 @@ public class GameModel : GuildsElement
                             //Professor
                             //Takes selectedCard and secondCard in GameAction
                             //Swaps the cards with two random from targetedPlayer in GameAction
+                            //Makes sure the same card slot in the targets hand is not chosen twice
+                            Hand targetsHand = _players[a.getTarget()].getHand();
+                            int ran = Random.Range(0, (targetsHand.getHandSize() - 1));
+                            _players[a.getTarget()].getHand().addAtIndex(ran, a.getSelectedCard());
+                            int newRan = Random.Range(0, (targetsHand.getHandSize() - 1));
+                            while (newRan == ran) {
+                                newRan = Random.Range(0, (targetsHand.getHandSize() - 1));
+                            }
+                            _players[a.getTarget()].getHand().addAtIndex(newRan, a.getSelectedCard());
                             break;
                         case 12:
                             //Crazy Prof
-                            //Field in gameController isReversed
-                            //When true game loops backwards through Player List
-                            //When false uses forward loop
+                            reversedPlay = !reversedPlay;
                             break;
                         case 13:
                             //ShieldBearer
@@ -294,6 +317,7 @@ public class GameModel : GuildsElement
                             //Jester
                             //Player has boolean missingTurn
                             //If true, skips player and sets missingTurn to false
+                            _players[a.getTarget()].setMissingTurn();
                             break;
                         case 19:
                             //Smith (only for non triumph cards)
