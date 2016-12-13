@@ -38,12 +38,19 @@ public class PauseMenuScript : GuildsElement
     {
         app.Notify(GameNotification.PauseGame, this, paused, canvas);
         paused = !paused;
+		Time.timeScale = 0;
     }
 
     public void clickResumeBtn()
     {
         app.Notify(GameNotification.PauseGame, this, paused, canvas);
         paused = !paused;
+		Time.timeScale = 1;
     }
+
+	public void clickSettingsBtn()
+	{
+		Time.timeScale = 1;
+	}
 }
 
