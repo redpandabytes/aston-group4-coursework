@@ -23,7 +23,7 @@ public class LoadingScript : MonoBehaviour
 
         if (loadingBar.fillAmount <= 1)
         {
-            loadingBar.fillAmount += 1.0f / loadingTime * Time.deltaTime;
+            loadingBar.fillAmount += 1.0f / loadingTime * Time.fixedDeltaTime;
         }
         if (loadingBar.fillAmount == 1.0f)
         {
