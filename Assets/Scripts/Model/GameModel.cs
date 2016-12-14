@@ -24,8 +24,8 @@ public class GameModel : GuildsElement
     private const int StartingHandSize = 7;
     private const int NumStandardCardsPerDeck = 10;
 
-    private const int DefaultTurnLength = 5;
-    private float _expiryCountDown = DefaultTurnLength;
+    private const int DefaultTurnLength = 10;
+    private float _expiryCountDown;
 
     private bool reversedPlay = false; //(Crazy Proffessor)
 
@@ -36,6 +36,7 @@ public class GameModel : GuildsElement
         _drawDeck = new Deck();
         _difficulty = 1; // TODO: this is hard coded for now
         _noOfPlayers = 4; // TODO: Different game modes may have <4 || >4 players?
+        _expiryCountDown = DefaultTurnLength;
 
         // For guilds 1-4, create cards 1-20 and add to the draw deck
         for (int g = 1; g < 5; g++)
@@ -118,13 +119,15 @@ public class GameModel : GuildsElement
 
     public void ResetCountdownTimer()
     {
+        Debug.Log("Reset countdown");
         _expiryCountDown = DefaultTurnLength;
     }
 
 
     public void UpdateCountDown()
     {
-        _expiryCountDown -= Time.deltaTime;
+        _expiryCountDown -= Time.fixedDeltaTime;
+//        Debug.Log("Updating count down: " + _expiryCountDown);
         var curPlayer = app.model.GetCurrentPlayer();
         if (curPlayer == 0)
         {
