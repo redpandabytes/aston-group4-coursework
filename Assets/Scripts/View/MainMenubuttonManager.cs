@@ -35,8 +35,7 @@ public class MainMenubuttonManager : GuildsElement
     }
     public void btnExit()
     {
-       // Application.Quit();
-		UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
     }
 
     public void toHelpBtn(string toHelp)
@@ -60,11 +59,18 @@ public class MainMenubuttonManager : GuildsElement
         app.Notify(GameNotification.GameVictory, this);
     }
 
+    public void playTriumph()
+    {
+        var action = new GameAction();
+        action.Initialise(GameNotification.TriumphCard);
+        app.Notify(GameNotification.ActionTaken, this, action);
+    }
+
 
     public void pickCard()
     {
         Debug.Log("Pressed left click.");
-        app.Notify(GameNotification.CardPicked, this);
+        app.Notify(GameNotification.CardPickedUp, this);
         GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
         //GetComponent<Card>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         // this.transform.SetParent(mainPanel);

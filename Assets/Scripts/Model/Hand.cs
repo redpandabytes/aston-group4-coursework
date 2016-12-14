@@ -16,6 +16,10 @@ public class Hand
         hand = new List<Card>();
     }
 
+    public void Instantiate(Hand existingHand)
+    {
+        hand = existingHand.hand;
+    }
     // add a card to the user's hand
     public void add(Card card)
     {
@@ -33,6 +37,11 @@ public class Hand
     }
     public void removeAtIndex(int i) {
         hand.RemoveAt(i);
+    }
+
+    public void reset()
+    {
+        hand.Clear();
     }
 
     // check if the player's hand contains a certain card

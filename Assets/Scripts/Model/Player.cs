@@ -75,6 +75,12 @@ public class Player
         return hand;
     }
 
+    // set the hand to an instance of a hand
+    public void setHand(Hand hand)
+    {
+        this.hand = hand;
+    }
+
     public bool isAi() {
         return isAI;
     }

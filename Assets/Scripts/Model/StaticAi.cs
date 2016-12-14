@@ -44,53 +44,55 @@ public GameAction AiTurn(Player x)
 } 
 
 //Easy AI turn
-public GameAction EasyPlay(Player x)
+public GameAction EasyPlay(Player p)
 {
-    Player p = x;
     Hand h = p.getHand();
         //Player has only one card of type weapon:
         if (h.getHandSize() == 1) {
-            Card c = h.getCardAtIndex(0);
+            var c = h.getCardAtIndex(0);
             if ((c.getValue() < 10) && ((c.getValue() == _cardInPlay.getValue()) || c.getGuild() == _cardInPlay.getGuild())){
-                GameAction a = new GameAction();
-                a.Initialise("playCard", c);
+                var a = new GameAction();
+                a.Initialise(GameNotification.CardPlayed, c);
                 return a;
             } else {
-                GameAction a = new GameAction();
-                a.Initialise("pickUp", null);
+                var a = new GameAction();
+                a.Initialise(GameNotification.CardPickedUp, null);
                 return a;
             }
         } else{
             //Sort through viable cards and pick a random one
-            List<Card> viableChoices = new List<Card>();
-            for (int i=0; i < h.getHandSize(); i++)
+            var viableChoices = new List<Card>();
+            for (var i=0; i < h.getHandSize(); i++)
             {
-                Card c = h.getCardAtIndex(i);
-                Debug.Log("The card value is: " + c.getValue());
-                Debug.Log("The guild value is: " + c.getGuild());
-                Debug.Log(_cardInPlay);
-                if  (_cardInPlay != null)
+                var c = h.getCardAtIndex(i);
+                if (_cardInPlay == null)
                 {
-                    if(c.getValue() == _cardInPlay.getValue() || c.getGuild() == _cardInPlay.getGuild())
+                    viableChoices.Add(c);
+                }
+                else
+                {
+                    if (c.getValue() == _cardInPlay.getValue() || c.getGuild() == _cardInPlay.getGuild())
                     {
                         viableChoices.Add(c);
                     }
                 }
-                GameAction a = new GameAction();
-                a.Initialise("pickUp", null);
-                return a;
+
+
             }
-            if (viableChoices.Count != 0)
+            Debug.Log("(StaticAi.cs) Viable count: " + viableChoices.Count);
+            if (viableChoices.Count > 0)
             {
-                Card chosen = viableChoices[Random.Range(0, viableChoices.Count)];
-                GameAction a = new GameAction();
-                a.Initialise("playCard", chosen);
+                var chosen = viableChoices[Random.Range(0, viableChoices.Count)];
+                var a = new GameAction();
+                Debug.Log("(StaticAi.cs) Returning a viable choice");
+                a.Initialise(GameNotification.CardPlayed, chosen);
                 return a;
             }
             else
             {
-                GameAction a = new GameAction();
-                a.Initialise("pickUp", null);
+                var a = new GameAction();
+                Debug.Log("(StaticAi.cs) Returning instruction to pickup a card");
+                a.Initialise(GameNotification.CardPickedUp);
                 return a;
             }
         }
@@ -104,7 +106,7 @@ public GameAction EasyPlay(Player x)
      }
     //noOfCardsPlayed needs to know if it played none and picked up one
     public void UpdateAiKnowledge(int playerNo, int noOfCardsPlayed, Card cardInPlay) {
-        Debug.Log("(AI) Is in play card null?: "+ (cardInPlay == null));
+//        Debug.Log("(StaticAi.cs) Is the discard deck null?: "+ (cardInPlay == null));
         _cardInPlay = cardInPlay;
         _playersHandSizes[playerNo] = _playersHandSizes[playerNo] - noOfCardsPlayed;
     }
