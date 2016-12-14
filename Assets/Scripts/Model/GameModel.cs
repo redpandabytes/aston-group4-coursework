@@ -107,7 +107,18 @@ public class GameModel : GuildsElement
             else
             {
                 // special card attempting to be played
-                return _discardDeck.peek().getGuild() == guildValue;
+                if (_discardDeck.peek().getGuild() == guildValue)
+                {
+                    return true;
+                }
+                else if (_discardDeck.peek().getValue() == cardValue)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
         else
