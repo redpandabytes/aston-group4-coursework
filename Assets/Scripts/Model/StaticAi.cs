@@ -2,7 +2,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class StaticAi
+public class StaticAi : GuildsElement
 {
     //Fields
     private int _difficulty;
@@ -46,20 +46,29 @@ public GameAction AiTurn(Player x)
 //Easy AI turn
 public GameAction EasyPlay(Player p)
 {
-    Hand h = p.getHand();
+    var h = p.getHand();
         //Player has only one card of type weapon:
-        if (h.getHandSize() == 1) {
-            var c = h.getCardAtIndex(0);
-            if ((c.getValue() < 10) && ((c.getValue() == _cardInPlay.getValue()) || c.getGuild() == _cardInPlay.getGuild())){
-                var a = new GameAction();
-                a.Initialise(GameNotification.CardPlayed, c);
-                return a;
-            } else {
-                var a = new GameAction();
-                a.Initialise(GameNotification.CardPickedUp, null);
-                return a;
-            }
-        } else{
+//        if (h.getHandSize() == 1) {
+//            var c = h.getCardAtIndex(0);
+//            if (app.model.IsCardPlayable(c.getGuild(), c.getValue()))
+//            {
+//                Debug.Log("we should be able to win :D");
+//                return null;
+//            }
+//            else
+//            {
+//                Debug.Log("we cannot play this card.");
+//                return null;
+//            }
+//            if ((c.getValue() < 10) && ((c.getValue() == _cardInPlay.getValue()) || c.getGuild() == _cardInPlay.getGuild())){
+//                var a = new GameAction();
+//                a.Initialise(GameNotification.CardPlayed, c);
+//                return a;
+//            } else {
+//                var a = new GameAction();
+//                a.Initialise(GameNotification.CardPickedUp, null);
+//                return a;
+//            }
             //Sort through viable cards and pick a random one
             var viableChoices = new List<Card>();
             for (var i=0; i < h.getHandSize(); i++)
@@ -96,7 +105,7 @@ public GameAction EasyPlay(Player p)
                 return a;
             }
         }
-}
+
     public GameAction MediumPlay() {
 
         return new GameAction();

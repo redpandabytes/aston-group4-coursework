@@ -100,12 +100,12 @@ public class GameModel : GuildsElement
         if (_discardDeck.getAmountOfCards() > 0)
         {
             // cards in the deck means we have to check if the supplied card is valid
-            if (cardValue <= NumStandardCardsPerDeck)
-            {
-                return true; // standard cards can be played at any time
-            }
-            else
-            {
+//            if (cardValue <= NumStandardCardsPerDeck)
+//            {
+//                return true; // standard cards can be played at any time
+//            }
+//            else
+//            {
                 // special card attempting to be played
                 if (_discardDeck.peek().getGuild() == guildValue)
                 {
@@ -117,10 +117,10 @@ public class GameModel : GuildsElement
                 }
                 else
                 {
-                    return false;
+                    return guildValue == 0; // Triumph card is always playable
                 }
             }
-        }
+//        }
         else
         {
             // cards are always playable if there is nothing in the discard deck yet
@@ -247,7 +247,14 @@ public class GameModel : GuildsElement
         for (int i = 0; i < _players.Count; i++) {
             if (_players[i].getHand().getHandSize() == 0) {
 //                EndGame(); // TODO: DO this properly
-                SceneManager.LoadScene("Victory_Scene");
+                if (_players[i].isAi())
+                {
+                    SceneManager.LoadScene("Defeat");
+                }
+                else
+                {
+                    SceneManager.LoadScene("Victory_Scene");
+                }
                 //Needs to pass on who won
             }
         }

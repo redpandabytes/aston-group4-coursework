@@ -48,7 +48,7 @@ public class GameController : GuildsElement
                 }
                 else
                 {
-//                    Debug.Log("(GameController.cs) AI attempting to play card");
+                    Debug.Log("(GameController.cs) AI attempting to play card");
                     app.Notify(GameNotification.CardPlayed, this, cardAction.getSelectedCard().getGuild(),
                     cardAction.getSelectedCard().getValue());
                 }
