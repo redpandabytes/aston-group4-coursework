@@ -106,6 +106,13 @@ public class GameViewer : GuildsElement
     public void StartTurn() // This should ensure that the view is appropriate for the current turn
     {
         TogglePlayersHandEnabled(app.model.GetCurrentPlayer() == 0);
+        GameObject.Find("Player1_Lbl").GetComponent<Text>().text = "(" + app.model.GetPlayerHand(1).getHandSize() +
+                                                                   " cards)";
+        GameObject.Find("Player2_Lbl").GetComponent<Text>().text = "(" + app.model.GetPlayerHand(2).getHandSize() +
+                                                                   " cards)";
+        GameObject.Find("Player3_Lbl").GetComponent<Text>().text = "(" + app.model.GetPlayerHand(3).getHandSize() +
+                                                                   " cards)";
+
     }
 
     public void EndTurn()
@@ -123,7 +130,7 @@ public class GameViewer : GuildsElement
         {
             if (card.GetComponent<Draggable>() == null)
             {
-                Debug.Log("Warning: Missing Draggable component in card item");
+//                Debug.Log("Warning: Missing Draggable component in card item"); //TODO: Fix this
             }
             else
             {
