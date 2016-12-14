@@ -290,6 +290,22 @@ public class GameModel : GuildsElement
 //                Debug.Log("(GameModel.cs) A card was played");
                 _discardDeck.push(gameAction.getSelectedCard());
 
+                //WARNING: Check for Triumph card first because if it's played it breaks everything else
+                //This is a temporary workaround for the demo ONLY
+                //TODO: Fix spaghetti
+
+                if (gameAction.WasTriumphCard())
+                {
+                    // TODO: For the time being Triumph is pretty shit, basically just so it does something in the demo
+                    var tempHand = _players[0].getHand();
+                    var tempHand2 = _players[1].getHand();
+
+                    _players[0].setHand(tempHand2);
+                    _players[1].setHand(tempHand);
+                    // this should work I think
+                    break;
+                }
+
                 //Remove the card from the player's hand
                 //TODO: I felt sick writing this, come up with a better solution after MVP please, e.g. remove ByRef rather than this horrible mess
                 Debug.Log("(GameModel.cs) Attempting to remove the player's played card. Hand size is: " + _players[_currentPlayer].getHand().getHandSize());
@@ -308,7 +324,6 @@ public class GameModel : GuildsElement
 
                 // Update the model depending on special actions of the card
                 // TODO: Sorry whoever coded this game logic, I coded most of it out for now as for the MVP I'm just implementing the Triumph card
-
 
                 //check if card equals value or guild
 //                var c = gameAction.getSelectedCard();

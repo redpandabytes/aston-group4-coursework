@@ -41,6 +41,10 @@ public class GameAction
         {
             verySpecialAction = 0;
         }
+        else
+        {
+            verySpecialAction = 1; // triumph card
+        }
     }
 
     public void Initialise(int guildValue, int cardValue)
@@ -53,6 +57,7 @@ public class GameAction
         selectedCard.Initialise(guildValue, cardValue, null);
     }
 
+
     public void Initialise(int specialAction)
     {
         verySpecialAction = specialAction;
@@ -62,9 +67,19 @@ public class GameAction
         }
     }
 
+    public bool WasTriumphCard()
+    {
+        return (verySpecialAction == 1);
+    }
+
     public string getChoice()
     {
+        //TODO: Fix spaghetti code
         if ((desired == null) && (selectedCard != null))
+        {
+            return GameNotification.CardPlayed;
+        }
+        else if (WasTriumphCard() == true)
         {
             return GameNotification.CardPlayed;
         }

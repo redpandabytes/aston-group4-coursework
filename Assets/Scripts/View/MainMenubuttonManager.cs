@@ -60,6 +60,13 @@ public class MainMenubuttonManager : GuildsElement
         app.Notify(GameNotification.GameVictory, this);
     }
 
+    public void playTriumph()
+    {
+        var action = new GameAction();
+        action.Initialise(GameNotification.TriumphCard);
+        app.Notify(GameNotification.ActionTaken, this, action);
+    }
+
 
     public void pickCard()
     {

@@ -8,6 +8,9 @@ internal class GameNotification
     public const string PlayCard = "playCard";
     public const string CleanSlate = "clean.state";
 
+    // Special Card Strings
+    public const string TriumphCard = "triumph.card";
+
     // Actions
     public const string CardPlayed = "card.played";
     public const string CardPickedUp = "card.picked.up";

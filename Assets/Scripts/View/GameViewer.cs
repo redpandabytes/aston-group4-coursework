@@ -29,8 +29,8 @@ public class GameViewer : GuildsElement
 
         for (int i = 0; i <= app.model.GetStartingHandSize() - 1; i++)
         {
-            Debug.Log("(Player's starting hand): Value is " + _playersHand.getCardAtIndex(i).getValue());
-            Debug.Log("(Player's starting hand): Guild is " + _playersHand.getCardAtIndex(i).getGuild());
+//            Debug.Log("(Player's starting hand): Value is " + _playersHand.getCardAtIndex(i).getValue());
+//            Debug.Log("(Player's starting hand): Guild is " + _playersHand.getCardAtIndex(i).getGuild());
 
             GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
             if (card != null)
