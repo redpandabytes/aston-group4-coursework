@@ -71,13 +71,13 @@ public class MainMenubuttonManager : GuildsElement
     {
         Debug.Log("Pressed left click.");
         app.Notify(GameNotification.CardPickedUp, this);
-        GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
+//        GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
         //GetComponent<Card>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         // this.transform.SetParent(mainPanel);
 
-        card.transform.SetParent(GameObject.Find("Hand0").transform);
-        card.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 300);
-        card.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+//        card.transform.SetParent(GameObject.Find("Hand0").transform);
+//        card.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 300);
+//        card.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
 
         //card.renderer.transparent.material.color = new Color(1.0f, 1.0.f, 1.0f, 1.0f);

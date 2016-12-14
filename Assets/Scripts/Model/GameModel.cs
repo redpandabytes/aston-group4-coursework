@@ -311,9 +311,14 @@ public class GameModel : GuildsElement
                     // TODO: For the time being Triumph is pretty shit, basically just so it does something in the demo
                     var tempHand = _players[0].getHand();
                     var tempHand2 = _players[1].getHand();
-
+                    Debug.Log("OOOOOOOOOOOOOOOOOO TRIUMPH CARD");
                     _players[0].setHand(tempHand2);
                     _players[1].setHand(tempHand);
+                    _discardDeck.push(_players[0].getHand().getCardAtIndex(0));
+                    _players[0].getHand().removeAtIndex(0);
+                    _discardDeck.push(_players[0].getHand().getCardAtIndex(0));
+                    _players[0].getHand().removeAtIndex(0);
+
                     // this should work I think
                     break;
                 }

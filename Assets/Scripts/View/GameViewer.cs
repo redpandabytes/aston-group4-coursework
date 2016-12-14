@@ -23,11 +23,23 @@ public class GameViewer : GuildsElement
         _currentPlayerLabel = GameObject.Find("CurrentPlayerLabel");
         _cardStackBtn = GameObject.Find("CardStackBtn");
 
+        RenderPlayerHand();
+        StartTurn();
+
+    }
+
+    public void Start()
+    {
+        //            throw new System.NotImplementedException();
+    }
+
+    public void RenderPlayerHand()
+    {
         foreach(Transform child in _handObject.transform) {
             Destroy(child.gameObject);
         }
 
-        for (int i = 0; i <= app.model.GetStartingHandSize() - 1; i++)
+        for (var i = 0; i <= app.model.GetPlayerHand(0).getHandSize() - 1; i++)
         {
 //            Debug.Log("(Player's starting hand): Value is " + _playersHand.getCardAtIndex(i).getValue());
 //            Debug.Log("(Player's starting hand): Guild is " + _playersHand.getCardAtIndex(i).getGuild());
@@ -72,13 +84,6 @@ public class GameViewer : GuildsElement
                 Debug.Log("Card not found error");
             }
         }
-        StartTurn();
-
-    }
-
-    public void Start()
-    {
-        //            throw new System.NotImplementedException();
     }
 
     public void Intiailise(GameModel passedModel) // Setup the object with a constructor
@@ -106,6 +111,10 @@ public class GameViewer : GuildsElement
 
     public void StartTurn() // This should ensure that the view is appropriate for the current turn
     {
+        // update the player's hand with the correct values
+        Debug.Log("(GameViewer.cs) About to Update the Player's hand view.");
+
+        RenderPlayerHand();
         TogglePlayersHandEnabled(app.model.GetCurrentPlayer() == 0);
         GameObject.Find("Player1_Lbl").GetComponent<Text>().text = "(" + app.model.GetPlayerHand(1).getHandSize() +
                                                                    " cards)";
@@ -163,6 +172,7 @@ public class GameViewer : GuildsElement
             card.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
         }
+
     }
 
 

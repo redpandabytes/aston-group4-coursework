@@ -70,7 +70,15 @@ public class GameAction
 
     public bool WasTriumphCard()
     {
-        return (verySpecialAction == 1);
+        if (verySpecialAction == 1)
+        {
+            return true;
+        }
+        if (getSelectedCard() != null)
+        {
+            return verySpecialAction == 1 || (getSelectedCard().getValue() == 0 && getSelectedCard().getGuild() == 0);
+        }
+        return false;
     }
 
     public string getChoice()
