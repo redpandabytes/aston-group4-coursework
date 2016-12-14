@@ -44,12 +44,9 @@ public class GameController : GuildsElement
                 }
                 break;
             case GameNotification.AiTookTurn:
-//               cardAction.Initialise(0); // initialise it with real values tho
-//                 app.model.HandleAction(cardAction);
-//                 app.viewer.HandleAction(); 
-                app.model.HandleAction((GameAction)pData[0]);
-                app.viewer.HandleAction();
-
+                cardAction = app.model.AITurn();
+                app.Notify(GameNotification.ActionTaken, this, cardAction);
+                Debug.Log("handling AI turn");
                 break;
             case GameNotification.CardPicked:
                 cardAction.Initialise(0); // 0 = pickup? Or does it? I just made it up. TODO: Decide special action ints

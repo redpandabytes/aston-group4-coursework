@@ -415,7 +415,6 @@ public class GameModel : GuildsElement
             // game logic for triggering the AI's turn
             GameAction choice = AITurn();
             app.Notify(GameNotification.AiTookTurn, this, choice);
-            Debug.Log("I'm about to take the AI's turn");
         }
     }
 }
