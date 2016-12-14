@@ -13,6 +13,7 @@ public class Player
     private bool hasFinishedTurn;
     private GameAction _desiredGameAction;
     private Card selectedCard;
+    private bool isMissingTurn;
 
 
     // Use this for initialization
@@ -30,6 +31,7 @@ public class Player
         this.hasFinishedTurn = false;
         _desiredGameAction = new GameAction();
         selectedCard = null;
+        isMissingTurn = false;
 
     }
 
@@ -73,4 +75,20 @@ public class Player
         return hand;
     }
 
+    // set the hand to an instance of a hand
+    public void setHand(Hand hand)
+    {
+        this.hand = hand;
+    }
+
+    public bool isAi() {
+        return isAI;
+    }
+
+    public bool getMissingTurn() {
+        return isMissingTurn;
+    }
+    public void setMissingTurn() {
+        isMissingTurn = !isMissingTurn;
+    }
 }

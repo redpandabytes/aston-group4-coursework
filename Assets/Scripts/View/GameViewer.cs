@@ -2,14 +2,13 @@
  * @Author: Nathaniel Baulch-Jones
  * @Author: Dehul Shingadia
  */
+
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameViewer : GuildsElement
 {
-    private const int DefaultTurnLength = 10;
-    private float _expiryCountDown = DefaultTurnLength;
-
     private Hand _playersHand;
     private GameObject _handObject;
     private GameObject _currentPlayerLabel;
@@ -30,8 +29,8 @@ public class GameViewer : GuildsElement
 
         for (int i = 0; i <= app.model.GetStartingHandSize() - 1; i++)
         {
-            Debug.Log("(Player's starting hand): Value is " + _playersHand.getCardAtIndex(i).getValue());
-            Debug.Log("(Player's starting hand): Guild is " + _playersHand.getCardAtIndex(i).getGuild());
+//            Debug.Log("(Player's starting hand): Value is " + _playersHand.getCardAtIndex(i).getValue());
+//            Debug.Log("(Player's starting hand): Guild is " + _playersHand.getCardAtIndex(i).getGuild());
 
             GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
             if (card != null)
@@ -74,7 +73,6 @@ public class GameViewer : GuildsElement
             }
         }
         StartTurn();
-        UpdateCountDown();  // Update text to reflect current player's turn
 
     }
 
@@ -91,33 +89,12 @@ public class GameViewer : GuildsElement
     // Stuff that needs to be done each frame
     public void Update()
     {
-        UpdateCountDown();
+//        UpdateCountDown();
     }
 
-    public void UpdateCountDown()
+    public void UpdateCountDown(String passedString)
     {
-        _expiryCountDown -= Time.deltaTime;
-        int curPlayer = app.model.GetCurrentPlayer();
-        if (curPlayer == 0)
-        {
-            _currentPlayerLabel.GetComponent<Text>().text = "     Player, it is your turn! (" + Mathf.Floor(_expiryCountDown + 1) + ")";
-        }
-        else
-        {
-            _currentPlayerLabel.GetComponent<Text>().text = "CPU " + curPlayer + " is taking their turn! (" + Mathf.Floor(_expiryCountDown + 1) + ")";
-        }
-
-        if(_expiryCountDown <= 0)
-        {
-            Debug.Log("No action was taken by the player.");
-            app.Notify(GameNotification.TimeRanOut, this, false, null);
-            ResetCountdownTimer();
-        }
-    }
-
-    public void ResetCountdownTimer()
-    {
-        _expiryCountDown = DefaultTurnLength;
+    _currentPlayerLabel.GetComponent<Text>().text = passedString;
     }
 
     public void HandleAction()
@@ -129,6 +106,13 @@ public class GameViewer : GuildsElement
     public void StartTurn() // This should ensure that the view is appropriate for the current turn
     {
         TogglePlayersHandEnabled(app.model.GetCurrentPlayer() == 0);
+        GameObject.Find("Player1_Lbl").GetComponent<Text>().text = "(" + app.model.GetPlayerHand(1).getHandSize() +
+                                                                   " cards)";
+        GameObject.Find("Player2_Lbl").GetComponent<Text>().text = "(" + app.model.GetPlayerHand(2).getHandSize() +
+                                                                   " cards)";
+        GameObject.Find("Player3_Lbl").GetComponent<Text>().text = "(" + app.model.GetPlayerHand(3).getHandSize() +
+                                                                   " cards)";
+
     }
 
     public void EndTurn()
@@ -146,7 +130,7 @@ public class GameViewer : GuildsElement
         {
             if (card.GetComponent<Draggable>() == null)
             {
-                Debug.Log("Warning: Missing Draggable component in card item");
+//                Debug.Log("Warning: Missing Draggable component in card item"); //TODO: Fix this
             }
             else
             {
@@ -183,7 +167,7 @@ public class GameViewer : GuildsElement
     }
     public void pickCard(Card card)
     {
-
+        
     }
     private void destroyChild()
     {

@@ -25,11 +25,13 @@ public class GameController : GuildsElement
         switch (pEventPath)
         {
             case GameNotification.GameVictory:
-                Debug.Log("Victory!");
+                Debug.Log("(GameController.cs) Victory!");
                 break;
+
             case GameNotification.GameDefeat:
-                Debug.Log("Defeat :(");
+                Debug.Log("(GameController.cs) Defeat :(");
                 break;
+
             case GameNotification.PauseGame:
                 var pauseCanvas = (RectTransform)pData[1];
                 if (pData[0].Equals(false))
@@ -43,20 +45,28 @@ public class GameController : GuildsElement
                     pauseCanvas.gameObject.SetActive(false);
                 }
                 break;
+
             case GameNotification.AiTookTurn:
-                cardAction.Initialise(0); // initialise it with real values tho
-                app.model.HandleAction(cardAction);
-                app.viewer.HandleAction();
-                break;
-            case GameNotification.CardPicked:
-                cardAction.Initialise(0); // 0 = pickup? Or does it? I just made it up. TODO: Decide special action ints
-                app.model.HandleAction(cardAction);
-                app.viewer.HandleAction();
+                cardAction = (GameAction)pData[0];
+                Debug.Log("(GameController.cs) Processing the AI's action");
+                if (cardAction.WasPickupCard())
+                {
+                    Debug.Log("(GameController.cs) AI attempting to pick up a card");
+                    app.Notify(GameNotification.CardPickedUp, this);
+                }
+                else
+                {
+//                    Debug.Log("(GameController.cs) AI attempting to play card");
+                    app.Notify(GameNotification.CardPlayed, this, cardAction.getSelectedCard().getGuild(),
+                    cardAction.getSelectedCard().getValue());
+                }
 
                 break;
+
             case GameNotification.CardPlayed:
                 var cardGuild = (int)pData[0];
                 var cardValue = (int)pData[1];
+//                Debug.Log("(GameController.cs) The player played a card");
                 if (app.model.IsCardPlayable(cardGuild, cardValue))
                 {
                     cardAction.Initialise(cardGuild, cardValue);
@@ -64,48 +74,36 @@ public class GameController : GuildsElement
                 }
                 else
                 {
-                    // should never get to here unless player is hacking, view should verify cards
-                    throw new Exception("Cannot play this card");
+                    // should never get to here unless player is hacking, as view should verify cards
+                    Debug.Log("(GameController.cs) WARNING!: Illegal Move Detected! Potential Hacking?");
+                    app.Notify(GameNotification.CardPickedUp, this); // pickup a card if they're hacking
                 }
                 break;
-            case GameNotification.TimeRanOut:
-                app.model.DrawToPlayer(app.model.GetCurrentPlayer(), 1);
-                app.model.EndTurn();
-                app.viewer.EndTurn();
+
+            case GameNotification.CardPickedUp:
+                cardAction.Initialise(0); // 0 = pickup? Or does it? I just made it up. TODO: Decide special action ints
+                app.model.HandleAction(cardAction);
+                app.viewer.HandleAction();
                 break;
+
+            case GameNotification.TimeRanOut:
+                GameAction action = new GameAction();
+                action.Initialise(0); // 0 means that time ran out
+                app.model.HandleAction(action);
+                app.viewer.HandleAction();
+//                app.viewer.HandleAction(action);
+                break;
+
             case GameNotification.ActionTaken:
                 app.model.HandleAction((GameAction)pData[0]);
                 app.viewer.HandleAction();
                 break;
             default:
-                Debug.Log("Unknown Command");
+                Debug.Log("(GameController.cs) Unknown Command");
                 break;
         }
     }
 
-    //    public void StartTurn() // Update the user's UI when it's their turn
-//    {
-//        app.model.StartTurn();
-//        app.viewer.StartTurn();
-//
-//    }
-//
-//    public void TakeAction() // The user has supplied a card, action, or no action to be taken
-//    {
-//
-//
-//    }
-//
-//    public void EndTurn() // Update the Model/UI when it becomes someone elses turn
-//    {
-//
-//    }
-//
-//    public void CheckForWinner() // TODO: Maybe take out
-//    {
-//
-//    }
-//
 //    public void Update() // Keep counting down on every frame
 //    {
 //
