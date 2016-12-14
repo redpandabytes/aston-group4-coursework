@@ -40,6 +40,7 @@ public class GameAction
         if (choice == GameNotification.CardPickedUp)
         {
             verySpecialAction = 0;
+            desired = GameNotification.CardPickedUp;
         }
         else
         {
@@ -60,10 +61,10 @@ public class GameAction
 
     public void Initialise(int specialAction)
     {
-        verySpecialAction = specialAction;
-        if (verySpecialAction == 0)
+        if (specialAction == 0)
         {
             desired = GameNotification.CardPickedUp;
+            verySpecialAction = 0;
         }
     }
 
@@ -79,10 +80,15 @@ public class GameAction
         {
             return GameNotification.CardPlayed;
         }
+        else if (desired == GameNotification.CardPlayed)
+        {
+            return GameNotification.CardPlayed;
+        }
         else if (WasTriumphCard() == true)
         {
             return GameNotification.CardPlayed;
         }
+
         else
         {
             return desired;

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class GameModel : GuildsElement
@@ -175,21 +176,6 @@ public class GameModel : GuildsElement
     public void StartTurn()
     {
         // TODO: Implement
-//        _players[_currentPlayer].setDesiredAction();
-//        GameAction choice = _players[_currentPlayer].getDesiredAction();
-//        TakeAction(choice);
-//
-//        if (_players[_currentPlayer].isAi() == false)
-//        {
-//            _players[_currentPlayer].setDesiredAction();
-//            choice = _players[_currentPlayer].getDesiredAction();
-//            HandleAction(choice);
-//        }
-//        else
-//        {
-//            choice = _ai.GenerateAiAction(_players[_currentPlayer]);
-//            HandleAction(choice);
-//        }
     }
 
     public void TakeAction(GameAction a)
@@ -201,9 +187,10 @@ public class GameModel : GuildsElement
     public void DrawToPlayer(int playerID, int amount)
     {
         // TODO: Code to handle the draw deck being empty
-        for (var i = 0; i == amount; i++)
+        for (var i = 0; i < amount; i++)
         {
             _players[playerID].getHand().add(_drawDeck.pop());
+            Debug.Log("(GameModelcs) Actually added a card to their hand.");
         }
         Debug.Log("(GameModel.cs) Added " + amount + " card(s) to player " + playerID + "'s hand.");
     }
@@ -237,14 +224,16 @@ public class GameModel : GuildsElement
             // IF PLAYER IS MISSING TURN INCREMENT AND SET THEIR BOOLEAN TO FALSE
         ResetCountdownTimer();
         _ai.UpdateAiKnowledge(_currentPlayer, 1, PeekInPlayCard());
-        StartTurn();
+        CheckForWinner(); // check for winner before we increment anything
+        StartTurn(); // move on to the next player
     }
 
     public void CheckForWinner()
     {
         for (int i = 0; i < _players.Count; i++) {
             if (_players[i].getHand().getHandSize() == 0) {
-                EndGame();
+//                EndGame(); // TODO: DO this properly
+                SceneManager.LoadScene("Victory_Scene");
                 //Needs to pass on who won
             }
         }
@@ -272,7 +261,9 @@ public class GameModel : GuildsElement
                 break;
 
             case GameNotification.CardPickedUp:
+                Debug.Log("(GameModel.cs) (Predraw) The player currently has " + _players[_currentPlayer].getHand().getHandSize());
                 DrawToPlayer(_currentPlayer, 1);
+                Debug.Log("(GameModel.cs) I am drawing to Player " + _currentPlayer + ". They now have " + _players[_currentPlayer].getHand().getHandSize() + " cards.");
                 // deal with card picked up
                 break;
 

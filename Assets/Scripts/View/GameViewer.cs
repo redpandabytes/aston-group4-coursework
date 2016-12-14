@@ -90,6 +90,7 @@ public class GameViewer : GuildsElement
     public void Update()
     {
 //        UpdateCountDown();
+
     }
 
     public void UpdateCountDown(String passedString)
@@ -113,7 +114,57 @@ public class GameViewer : GuildsElement
         GameObject.Find("Player3_Lbl").GetComponent<Text>().text = "(" + app.model.GetPlayerHand(3).getHandSize() +
                                                                    " cards)";
 
+        if (app.model.PeekInPlayCard() != null) // only update the card in the middle if it isn't null
+        {
+//            Debug.Log("(GameViewer.cs) In play card: Guild:" + app.model.PeekInPlayCard().getGuild() + ", Value: " + app.model.PeekInPlayCard().getValue());
+            Debug.Log("(GameViewer.cs) About to update the central view");
+            var peekedGuild = app.model.PeekInPlayCard().getGuild();
+            var peekedValue = app.model.PeekInPlayCard().getValue();
+
+//            String imageName = eventData.pointerDrag.GetComponentInChildren<Image>().sprite.name;
+            var imageName = "";
+            Debug.Log("The string is " + imageName);
+            switch (peekedGuild)
+            {
+                case 1:
+                    imageName = "Blue";
+                    break;
+                case 2:
+                    imageName = "Green";
+                    break;
+                case 3:
+                    imageName = "Purple";
+                    break;
+                case 4:
+                    imageName = "Yellow";
+                    break;
+                default:
+                    imageName = "Triumph";
+                    break;
+            }
+
+            imageName = imageName + "-Card-" + peekedValue;
+
+            Debug.Log("(GameViewer.cs) We need to initiate a PreFab with " + imageName);
+
+            foreach (Transform child in GameObject.Find("playedCardsCell").GetComponentInChildren<Transform>())
+            {
+                Destroy(child.gameObject);
+            }
+
+            var card = Instantiate(Resources.Load("Card")) as GameObject;
+            //GetComponent<Card>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            // this.transform.SetParent(mainPanel);
+
+
+            card.GetComponent<Image>().sprite = Resources.Load<Sprite>(imageName);
+            card.transform.SetParent(GameObject.Find("playedCardsCell").transform);
+            card.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 300);
+            card.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
+        }
     }
+
 
     public void EndTurn()
     {

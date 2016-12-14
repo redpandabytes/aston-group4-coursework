@@ -24,14 +24,6 @@ public class GameController : GuildsElement
         // Handle GameController notifications
         switch (pEventPath)
         {
-            case GameNotification.GameVictory:
-                Debug.Log("(GameController.cs) Victory!");
-                break;
-
-            case GameNotification.GameDefeat:
-                Debug.Log("(GameController.cs) Defeat :(");
-                break;
-
             case GameNotification.PauseGame:
                 var pauseCanvas = (RectTransform)pData[1];
                 if (pData[0].Equals(false))
@@ -81,15 +73,16 @@ public class GameController : GuildsElement
                 break;
 
             case GameNotification.CardPickedUp:
-                cardAction.Initialise(0); // 0 = pickup? Or does it? I just made it up. TODO: Decide special action ints
-                app.model.HandleAction(cardAction);
+                GameAction pickUpAction = new GameAction();
+                pickUpAction.Initialise(0); // 0 = pickup? Or does it? I just made it up. TODO: Decide special action ints
+                app.model.HandleAction(pickUpAction);
                 app.viewer.HandleAction();
                 break;
 
             case GameNotification.TimeRanOut:
-                GameAction action = new GameAction();
-                action.Initialise(0); // 0 means that time ran out
-                app.model.HandleAction(action);
+                GameAction ranOutAction = new GameAction();
+                ranOutAction.Initialise(0); // 0 means that time ran out
+                app.model.HandleAction(ranOutAction);
                 app.viewer.HandleAction();
 //                app.viewer.HandleAction(action);
                 break;
@@ -100,6 +93,13 @@ public class GameController : GuildsElement
                 break;
             default:
                 Debug.Log("(GameController.cs) Unknown Command");
+                break;
+            case GameNotification.GameVictory:
+                Debug.Log("(GameController.cs) Victory!");
+                break;
+
+            case GameNotification.GameDefeat:
+                Debug.Log("(GameController.cs) Defeat :(");
                 break;
         }
     }
