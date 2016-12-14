@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/* 
+ * @Author: Matthew Kavanagh
+ * @Author: David Powell
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public class SoundControl : MonoBehaviour {
