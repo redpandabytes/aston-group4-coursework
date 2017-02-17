@@ -27,11 +27,11 @@ public class GameModel : GuildsElement
     private const int DefaultTurnLength = 10;
     private float _expiryCountDown;
 
-    private bool reversedPlay = false; //(Crazy Proffessor)
+    private bool reversedPlay = false; // (Crazy Professor) card in action
 
     public void Initialise()
     {
-        //Initialise a new game:
+        //Script procedure to initialise a new game:
         _discardDeck = new Deck();
         _drawDeck = new Deck();
         _difficulty = 1; // TODO: this is hard coded for now
@@ -39,6 +39,7 @@ public class GameModel : GuildsElement
         _expiryCountDown = DefaultTurnLength;
 
         // For guilds 1-4, create cards 1-20 and add to the draw deck
+        // Value DB Google Drive: https://docs.google.com/spreadsheets/d/1aoWqoUjY1dmnW7_qooTxKf3aJFOO_YblTjn5QbRmTHU/
         for (int g = 1; g < 5; g++)
         {
             for (int v = 1; v < 20; v++)
@@ -55,22 +56,23 @@ public class GameModel : GuildsElement
         triumph.Initialise(0, 0, null);
         _drawDeck.push(triumph);
 
+        // Shuffle is required for distributing cards to players randomly
         _drawDeck.shuffle();
 
         //SET UP PLAYERS
         // TODO: Only hardcoded for a single player right now
         _players = new List<Player>();
 
-        String userName = "Player 1";
         _ai = new StaticAi();
         _ai.Initialise(_difficulty, _noOfPlayers);
 
-        if (GameMode == 1) // TODO: Implement multiplayer mode
+        if (GameMode == 1) // GameMode 1 is a singleplayer game
         {
             Player newPlayer = new Player();
+            String userName = "Player 1";
             newPlayer.Initialise(userName, false);
             _players.Add(newPlayer);
-            for (int p = 1; p < _noOfPlayers; p++)
+            for (int p = 1; p < _noOfPlayers; p++) // initalise AIs for each other player (4 in a standard single player)
             {
                 Player ai = new Player();
                 ai.Initialise("AI " + p, true);
@@ -84,7 +86,6 @@ public class GameModel : GuildsElement
                 for (var i = 1; i <= StartingHandSize; i++)
                 {
                     Card cardToAdd = _drawDeck.pop();
-//                    Debug.Log("(Adding to starting hand): Guild " + cardToAdd.getGuild() + ", Value " + cardToAdd.getValue());
                     curHand.add(cardToAdd);
                 }
             }
@@ -93,20 +94,17 @@ public class GameModel : GuildsElement
             _currentPlayer = Random.Range(0, 4);
 
         }
+        else
+        {
+            // TODO: Multiplayer setup
+        }
     }
 
+    // Implement basic anti-cheat functionality. Model should decline invalid plays regardless of action
     public bool IsCardPlayable(int guildValue, int cardValue)
     {
         if (_discardDeck.getAmountOfCards() > 0)
         {
-            // cards in the deck means we have to check if the supplied card is valid
-//            if (cardValue <= NumStandardCardsPerDeck)
-//            {
-//                return true; // standard cards can be played at any time
-//            }
-//            else
-//            {
-                // special card attempting to be played
                 if (_discardDeck.peek().getGuild() == guildValue)
                 {
                     return true;
@@ -120,12 +118,8 @@ public class GameModel : GuildsElement
                     return guildValue == 0; // Triumph card is always playable
                 }
             }
-//        }
-        else
-        {
-            // cards are always playable if there is nothing in the discard deck yet
-            return true;
-        }
+        // cards are always playable if there is nothing in the discard deck yet
+        return true;
     }
 
     public void ResetCountdownTimer()
@@ -138,7 +132,6 @@ public class GameModel : GuildsElement
     public void UpdateCountDown()
     {
         _expiryCountDown -= Time.fixedDeltaTime;
-//        Debug.Log("Updating count down: " + _expiryCountDown);
         var curPlayer = app.model.GetCurrentPlayer();
         if (curPlayer == 0)
         {
@@ -326,8 +319,8 @@ public class GameModel : GuildsElement
                     break;
                 }
 
-                //Remove the card from the player's hand
-                //TODO: I felt sick writing this, come up with a better solution after MVP please, e.g. remove ByRef rather than this horrible mess
+                // Remove card by iterating through player's hand
+                //TODO: Find solution using references instead of loops - this is fine because it's not too inefficient - but it's quite messy.
                 Debug.Log("(GameModel.cs) Attempting to remove the player's played card. Hand size is: " + _players[_currentPlayer].getHand().getHandSize());
                 for (var i = 0; i <= _players[_currentPlayer].getHand().getHandSize() -1; i++)
                 {

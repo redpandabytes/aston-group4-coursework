@@ -11,6 +11,13 @@ public class Card
 
     public Color color { get; internal set; }
 
+    /// <summary>
+    /// Initialise.</summary>
+    /// <param name="guild"> The ID of the guild to create</param>
+    /// <param name="value"> The value of the card to create</param>
+    /// <param name="face"> The face of the card (may be null)</param> 
+    /// <seealso cref="https://docs.google.com/spreadsheets/d/1aoWqoUjY1dmnW7_qooTxKf3aJFOO_YblTjn5QbRmTHU/">
+    /// The database of card value pairs </seealso>
     // Use this for initialization
     public void Initialise(int guild, int value, Sprite face)
     {
@@ -18,8 +25,8 @@ public class Card
         this._value = value;
         this._face = face;
     }
-
-    // Update is called once per frame
+    
+    // Generic getters/setters
     public int getGuild()
     {
         return _guild;
