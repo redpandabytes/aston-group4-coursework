@@ -39,18 +39,27 @@ public class PauseMenuScript : GuildsElement
         app.Notify(GameNotification.PauseGame, this, paused, canvas);
         paused = !paused;
 		Time.timeScale = 0;
+        Time.fixedDeltaTime = 0; //effects GUI elements
     }
 
     public void clickResumeBtn()
     {
         app.Notify(GameNotification.PauseGame, this, paused, canvas);
         paused = !paused;
-		Time.timeScale = 1;
+		Time.timeScale = 1; //run in normal time
+        Time.fixedDeltaTime = 0.02f; //return to default
     }
 
 	public void clickSettingsBtn()
 	{
 		Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
 	}
+
+    public void ClickRestartBtn()
+    {
+        Time.timeScale = 1; //run in normal time
+        Time.fixedDeltaTime = 0.02f; //return to default
+    }
 }
 
