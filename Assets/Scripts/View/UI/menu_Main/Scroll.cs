@@ -18,6 +18,9 @@ public class Scroll : MonoBehaviour
     private bool dragging = false; //Only true if image is being dragged
     private int closestButton; // closest button to the center
     private int bttnDistance;
+
+    static float t = 0; // used for keeping track of lerp amount in lerp function
+
     // Use this for initialization
     void Start()
     {
@@ -55,7 +58,6 @@ public class Scroll : MonoBehaviour
         if (!dragging)
         {
             LerpToButtons(closestButton * -bttnDistance);
-
         }
 
 
@@ -65,8 +67,11 @@ public class Scroll : MonoBehaviour
 
     void LerpToButtons(int position)
     {
-        float newX = Mathf.Lerp(panel.anchoredPosition.x, position, Time.deltaTime * 10f);
+        Time.fixedDeltaTime = 2f;
+        float newX = Mathf.Lerp(panel.anchoredPosition.x, position, t);
         Vector2 newPosition = new Vector2(newX, panel.anchoredPosition.y);
+
+        t += 8f * Time.deltaTime;
 
         panel.anchoredPosition = newPosition;
         // method for lerp
