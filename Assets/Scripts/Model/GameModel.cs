@@ -28,6 +28,7 @@ public class GameModel : GuildsElement
     private float _expiryCountDown;
 
     private bool reversedPlay = false; // (Crazy Professor) card in action
+    private bool messenger = false; //MESSENGER
 
     public void Initialise()
     {
@@ -208,7 +209,11 @@ public class GameModel : GuildsElement
         if (reversedPlay == false)
         {
 
-            if (_currentPlayer == (_players.Count - 1))
+            if (messenger == true) {
+                
+                messenger = false;
+            }
+                else if (_currentPlayer == (_players.Count - 1))
             {
                 _currentPlayer = 0;
             }
@@ -219,7 +224,12 @@ public class GameModel : GuildsElement
         }
         else
         {
-            if (_currentPlayer == 0)
+            if (messenger == true)
+            {
+
+                messenger = false;
+            }
+            else if (_currentPlayer == 0)
             {
                 _currentPlayer = (_players.Count - 1);
             }
@@ -338,10 +348,15 @@ public class GameModel : GuildsElement
                     reversedPlay = !reversedPlay;
                     //  break;
                 }
-                else if (gameAction.getSelectedCard().getValue() == 19) {
+                else if (gameAction.getSelectedCard().getValue() == 19)
+                {
                     Debug.Log("SMITH");
                     _players[_currentPlayer].getHand().add(_discardDeck.second());
-                        
+
+                }
+                else if (gameAction.getSelectedCard().getValue() == 15) {
+                    Debug.Log("MESSENGER");
+                    messenger = true;
                 }
                 removeCardPlayed(gameAction);
                 
