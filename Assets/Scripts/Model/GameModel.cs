@@ -316,7 +316,7 @@ public class GameModel : GuildsElement
                     }
 
                     // this should work I think
-                    break;
+                 //   break;
                 }
                else if (gameAction.getSelectedCard().getValue() == 14)
                 {
@@ -329,24 +329,19 @@ public class GameModel : GuildsElement
                             _players[i].getHand().add(_drawDeck.pop());
                         }
                     }
-                    break;
-                } 
-
+                  //  break;
+                }
+                else if (gameAction.getSelectedCard().getValue() == 12)
+                {
+                    Debug.Log("CRAZY PROFESSOR");
+                    reversedPlay = !reversedPlay;
+                  //  break;
+                }
+                removeCardPlayed(gameAction);
+                
                 // Remove card by iterating through player's hand
                 //TODO: Find solution using references instead of loops - this is fine because it's not too inefficient - but it's quite messy.
-                Debug.Log("(GameModel.cs) Attempting to remove the player's played card. Hand size is: " + _players[_currentPlayer].getHand().getHandSize());
-                for (var i = 0; i <= _players[_currentPlayer].getHand().getHandSize() -1; i++)
-                {
-                    if ((_players[_currentPlayer].getHand().getCardAtIndex(i).getGuild() ==
-                         gameAction.getSelectedCard().getGuild()) &&
-                        ((_players[_currentPlayer].getHand().getCardAtIndex(i).getValue() ==
-                          gameAction.getSelectedCard().getValue())))
-                    {
-                        Debug.Log("(GameModel.cs) About to remove card! Was looking for '" + gameAction.getSelectedCard().getGuild() + ", " + gameAction.getSelectedCard().getValue() + "'. Found '" + _players[_currentPlayer].getHand().getCardAtIndex(i).getGuild() + ", " + (_players[_currentPlayer].getHand().getCardAtIndex(i).getValue()) + "' :).");
-                        _players[_currentPlayer].getHand().removeAtIndex(i);
-                        break;
-                    }
-                }
+              
 
                 // Update the model depending on special actions of the card
                 // TODO: Sorry whoever coded this game logic, I coded most of it out for now as for the MVP I'm just implementing the Triumph card
@@ -475,6 +470,22 @@ public class GameModel : GuildsElement
        return _ai.AiTurn(_players[_currentPlayer]);
     }
 
+    public void removeCardPlayed(GameAction gameAction)
+    {
+        Debug.Log("(GameModel.cs) Attempting to remove the player's played card. Hand size is: " + _players[_currentPlayer].getHand().getHandSize());
+        for (var i = 0; i <= _players[_currentPlayer].getHand().getHandSize() - 1; i++)
+        {
+            if ((_players[_currentPlayer].getHand().getCardAtIndex(i).getGuild() ==
+                 gameAction.getSelectedCard().getGuild()) &&
+                ((_players[_currentPlayer].getHand().getCardAtIndex(i).getValue() ==
+                  gameAction.getSelectedCard().getValue())))
+            {
+                Debug.Log("(GameModel.cs) About to remove card! Was looking for '" + gameAction.getSelectedCard().getGuild() + ", " + gameAction.getSelectedCard().getValue() + "'. Found '" + _players[_currentPlayer].getHand().getCardAtIndex(i).getGuild() + ", " + (_players[_currentPlayer].getHand().getCardAtIndex(i).getValue()) + "' :).");
+                _players[_currentPlayer].getHand().removeAtIndex(i);
+                break;
+            }
+        }
+    }
     // Update is called once per frame
     public void Update()
     {
