@@ -318,6 +318,19 @@ public class GameModel : GuildsElement
                     // this should work I think
                     break;
                 }
+               else if (gameAction.getSelectedCard().getValue() == 14)
+                {
+                    //Apprentice
+                    Debug.Log("Apprentice played");
+                    for (var i = 0; i < _players.Count; i++)
+                    {
+                        if (i != _currentPlayer)
+                        {
+                            _players[i].getHand().add(_drawDeck.pop());
+                        }
+                    }
+                    break;
+                } 
 
                 // Remove card by iterating through player's hand
                 //TODO: Find solution using references instead of loops - this is fine because it's not too inefficient - but it's quite messy.
