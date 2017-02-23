@@ -302,23 +302,24 @@ public class GameModel : GuildsElement
                 if (gameAction.WasTriumphCard())
                 {
                     // TODO: For the time being Triumph is pretty shit, basically just so it does something in the demo
-                  //  var tempHand = _players[0].getHand();
-                  //  var tempHand2 = _players[1].getHand();
+                    //  var tempHand = _players[0].getHand();
+                    //  var tempHand2 = _players[1].getHand();
                     Debug.Log("OOOOOOOOOOOOOOOOOO TRIUMPH CARD");
-                  //  _players[0].setHand(tempHand2);
-                 //   _players[1].setHand(tempHand);
+                    //  _players[0].setHand(tempHand2);
+                    //   _players[1].setHand(tempHand);
                     _discardDeck.push(_players[0].getHand().getCardAtIndex(0));
                     _players[0].getHand().removeAtIndex(0);
                     _discardDeck.push(_players[0].getHand().getCardAtIndex(0));
                     _players[0].getHand().removeAtIndex(0);
-                    for (int i = 1; i < _players.Count; i++) {
+                    for (int i = 1; i < _players.Count; i++)
+                    {
                         _players[i].getHand().add(_drawDeck.pop());
                     }
 
                     // this should work I think
-                 //   break;
+                    //   break;
                 }
-               else if (gameAction.getSelectedCard().getValue() == 14)
+                else if (gameAction.getSelectedCard().getValue() == 14)
                 {
                     //Apprentice
                     Debug.Log("Apprentice played");
@@ -329,13 +330,18 @@ public class GameModel : GuildsElement
                             _players[i].getHand().add(_drawDeck.pop());
                         }
                     }
-                  //  break;
+                    //  break;
                 }
                 else if (gameAction.getSelectedCard().getValue() == 12)
                 {
                     Debug.Log("CRAZY PROFESSOR");
                     reversedPlay = !reversedPlay;
-                  //  break;
+                    //  break;
+                }
+                else if (gameAction.getSelectedCard().getValue() == 19) {
+                    Debug.Log("SMITH");
+                    _players[_currentPlayer].getHand().add(_discardDeck.second());
+                        
                 }
                 removeCardPlayed(gameAction);
                 

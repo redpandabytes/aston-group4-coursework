@@ -51,6 +51,12 @@ public class Deck
     {
         deck.Push(c);
     }
+    public Card second() {
+        Card temp = deck.Pop();
+        Card second = deck.Pop();
+        deck.Push(temp);
+        return second;
+    }
 
     public int getAmountOfCards()
     {
