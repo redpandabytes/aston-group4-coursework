@@ -67,7 +67,6 @@ public class Scroll : MonoBehaviour
 
     void LerpToButtons(int position)
     {
-        Time.fixedDeltaTime = 2f;
         float newX = Mathf.Lerp(panel.anchoredPosition.x, position, t);
         Vector2 newPosition = new Vector2(newX, panel.anchoredPosition.y);
 
