@@ -93,6 +93,8 @@ public class GameModel : GuildsElement
 
             // decide which player goes first, in single player the player is always at Index 0 in _players
             _currentPlayer = Random.Range(0, 4);
+            //TAKE OUT: 
+            _currentPlayer = 0;
 
         }
         else
@@ -106,20 +108,24 @@ public class GameModel : GuildsElement
     {
         if (_discardDeck.getAmountOfCards() > 0)
         {
-                if (_discardDeck.peek().getGuild() == guildValue)
-                {
-                    return true;
-                }
-                else if (_discardDeck.peek().getValue() == cardValue)
-                {
-                    return true;
-                }
-                else
-                {
-                    return guildValue == 0; // Triumph card is always playable
-                }
+            if (_discardDeck.peek().getGuild() == guildValue)
+            {
+                return true;
             }
+            else if (_discardDeck.peek().getValue() == cardValue)
+            {
+                return true;
+            }
+            else
+            {
+                return guildValue == 0; // Triumph card is always playable
+            }
+        }
         // cards are always playable if there is nothing in the discard deck yet
+        //exception: can't play Smith if discard deck is empty
+        else if (cardValue == 19) {
+            return false; 
+        }
         return true;
     }
 
@@ -210,7 +216,6 @@ public class GameModel : GuildsElement
         {
 
             if (messenger == true) {
-                
                 messenger = false;
             }
                 else if (_currentPlayer == (_players.Count - 1))
@@ -226,7 +231,6 @@ public class GameModel : GuildsElement
         {
             if (messenger == true)
             {
-
                 messenger = false;
             }
             else if (_currentPlayer == 0)
@@ -332,7 +336,7 @@ public class GameModel : GuildsElement
                 else if (gameAction.getSelectedCard().getValue() == 14)
                 {
                     //Apprentice
-                    Debug.Log("Apprentice played");
+                    Debug.Log("APPRENTICE");
                     for (var i = 0; i < _players.Count; i++)
                     {
                         if (i != _currentPlayer)
@@ -348,6 +352,7 @@ public class GameModel : GuildsElement
                     reversedPlay = !reversedPlay;
                     //  break;
                 }
+                //TODO: decide what happens when 19 used on first turn - cant pick up nothing
                 else if (gameAction.getSelectedCard().getValue() == 19)
                 {
                     Debug.Log("SMITH");
