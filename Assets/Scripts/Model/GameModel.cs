@@ -93,8 +93,7 @@ public class GameModel : GuildsElement
 
             // decide which player goes first, in single player the player is always at Index 0 in _players
             _currentPlayer = Random.Range(0, 4);
-            //TAKE OUT: 
-            _currentPlayer = 0;
+ 
 
         }
         else
@@ -242,6 +241,11 @@ public class GameModel : GuildsElement
                 _currentPlayer--;
             }
         }
+        if (_players[_currentPlayer].getMissingTurn() == true) {
+            Debug.Log(_currentPlayer + " is MISSING THEIR TURN");
+            _players[_currentPlayer].setMissingTurn();
+            EndTurn();
+        }
             // IF PLAYER IS MISSING TURN INCREMENT AND SET THEIR BOOLEAN TO FALSE
         ResetCountdownTimer();
         _ai.UpdateAiKnowledge(_currentPlayer, 1, PeekInPlayCard());
@@ -336,7 +340,7 @@ public class GameModel : GuildsElement
                 else if (gameAction.getSelectedCard().getValue() == 14)
                 {
                     //Apprentice
-                    Debug.Log("APPRENTICE");
+                    Debug.Log("APPRENTICE - EVERYONE PICK UP");
                     for (var i = 0; i < _players.Count; i++)
                     {
                         if (i != _currentPlayer)
@@ -348,20 +352,37 @@ public class GameModel : GuildsElement
                 }
                 else if (gameAction.getSelectedCard().getValue() == 12)
                 {
-                    Debug.Log("CRAZY PROFESSOR");
+                    Debug.Log("CRAZY PROFESSOR- REVERSED PLAY");
                     reversedPlay = !reversedPlay;
                     //  break;
                 }
                 //TODO: decide what happens when 19 used on first turn - cant pick up nothing
                 else if (gameAction.getSelectedCard().getValue() == 19)
                 {
-                    Debug.Log("SMITH");
+                    Debug.Log("SMITH- PICKED UP FROM MIDDLE");
                     _players[_currentPlayer].getHand().add(_discardDeck.second());
 
                 }
-                else if (gameAction.getSelectedCard().getValue() == 15) {
-                    Debug.Log("MESSENGER");
+                else if (gameAction.getSelectedCard().getValue() == 15)
+                {
+                    Debug.Log("MESSENGER - EXTRA TURN");
                     messenger = true;
+                }
+                //TODO: get player to select target
+                else if (gameAction.getSelectedCard().getValue() == 18) {
+                    Debug.Log("JESTER");
+                    int target = Random.Range(0, 4);
+                    while(target == _currentPlayer)
+                    {
+                        target = Random.Range(0, 4);
+                    }
+
+                        if (_players[target].getMissingTurn() == false)
+                        {
+                            _players[target].setMissingTurn();
+                        }
+                        else { }
+
                 }
                 removeCardPlayed(gameAction);
                 
