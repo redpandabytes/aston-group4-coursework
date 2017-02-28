@@ -77,7 +77,9 @@ public class GameViewer : GuildsElement
                     theGuild = "Yellow";
                 }
                 // this for instance is really spaghetti
-                card.GetComponent<Image>().sprite = Resources.Load<Sprite>(theGuild + "-Card-" + _playersHand.getCardAtIndex(i).getValue());
+      
+                    card.GetComponent<Image>().sprite = Resources.Load<Sprite>(theGuild + "-Card-" + _playersHand.getCardAtIndex(i).getValue());
+                
             }
             else
             {
