@@ -368,20 +368,34 @@ public class GameModel : GuildsElement
                     Debug.Log("MESSENGER - EXTRA TURN");
                     messenger = true;
                 }
+                else if (gameAction.getSelectedCard().getValue() == 20)
+                {
+                    Debug.Log("WIZARD- SWAP HANDS");
+                    int target = Random.Range(0, 4);
+                    while (target == _currentPlayer)
+                    {
+                        target = Random.Range(0, 4);
+                    }
+                    Hand temp1 = _players[_currentPlayer].getHand();
+                    Hand temp2 = _players[target].getHand();
+                    _players[_currentPlayer].setHand(temp2);
+                    _players[target].setHand(temp1);
+
+                }
                 //TODO: get player to select target
                 else if (gameAction.getSelectedCard().getValue() == 18) {
-                    Debug.Log("JESTER");
+                    Debug.Log("JESTER - MISSES TURN");
                     int target = Random.Range(0, 4);
-                    while(target == _currentPlayer)
+                    while (target == _currentPlayer)
                     {
                         target = Random.Range(0, 4);
                     }
 
-                        if (_players[target].getMissingTurn() == false)
-                        {
-                            _players[target].setMissingTurn();
-                        }
-                        else { }
+                    if (_players[target].getMissingTurn() == false)
+                    {
+                        _players[target].setMissingTurn();
+                    }
+                    else { }
 
                 }
                 removeCardPlayed(gameAction);
@@ -443,7 +457,7 @@ public class GameModel : GuildsElement
 //                                _players[gameAction.getTarget()].getHand().addAtIndex(newRan, gameAction.getSelectedCard());
 //                                break;
 //                            case 12:
-//                                //Crazy Prof
+//                                //Crazy Prof - DONE
 //                                reversedPlay = !reversedPlay;
 //                                break;
 //                            case 13:
@@ -452,7 +466,7 @@ public class GameModel : GuildsElement
 //                                //One turn only
 //                                break;
 //                            case 14:
-//                                //Apprentice
+//                                //Apprentice - DONE
 //                                for (var i = 0; i < _players.Count; i++)
 //                                {
 //                                    if (i != _currentPlayer)
@@ -462,7 +476,7 @@ public class GameModel : GuildsElement
 //                                }
 //                                break;
 //                            case 15:
-//                                //Messenger
+//                                //Messenger - DONE
 //                                //Rolls back current player before the end increment?
 //                                break;
 //                            case 16:
@@ -476,13 +490,13 @@ public class GameModel : GuildsElement
 //                                //?: Or add a new card to middle?
 //                                break;
 //                            case 18:
-//                                //Jester
+//                                //Jester  - DONE BUT NEEDS TO LET PLAYER CHOOSE
 //                                //Player has boolean missingTurn
 //                                //If true, skips player and sets missingTurn to false
 //                                _players[gameAction.getTarget()].setMissingTurn();
 //                                break;
 //                            case 19:
-//                                //Smith (only for non triumph cards)
+//                                //Smith (only for non triumph cards)   - DONE
 //                                if (_discardDeck.peek().getGuild() != 0)
 //                                {
 //                                    _players[_currentPlayer].getHand().add(_discardDeck.pop());
