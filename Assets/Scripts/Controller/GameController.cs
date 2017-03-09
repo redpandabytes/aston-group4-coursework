@@ -78,7 +78,7 @@ public class GameController : GuildsElement
                 GameAction pickUpAction = new GameAction();
                 pickUpAction.Initialise(0); // 0 = pickup? Or does it? I just made it up. TODO: Decide special action ints
                 app.model.HandleAction(pickUpAction);
-                app.viewer.HandleAction((GameAction)pData[0]);
+                app.viewer.HandleAction(pickUpAction);
                 break;
 
             case GameNotification.TimeRanOut:
