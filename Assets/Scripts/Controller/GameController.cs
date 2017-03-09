@@ -85,7 +85,7 @@ public class GameController : GuildsElement
                 GameAction ranOutAction = new GameAction();
                 ranOutAction.Initialise(0); // 0 means that time ran out
                 app.model.HandleAction(ranOutAction);
-                app.viewer.HandleAction((GameAction)pData[0]);
+                app.viewer.HandleAction(ranOutAction);
 //                app.viewer.HandleAction(action);
                 break;
 
