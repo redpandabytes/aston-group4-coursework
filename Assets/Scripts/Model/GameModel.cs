@@ -324,6 +324,9 @@ public class GameModel : GuildsElement
                     {
                         _players[i].getHand().add(_drawDeck.pop());
                     }
+
+                    //TODO: PROFESSOR, SPY, SHIELDBEARER
+                    //TODO: FIX THUG AND WIZARD
                 }
                 else if (gameAction.getSelectedCard().getValue() == 11)
                 {
@@ -352,6 +355,7 @@ public class GameModel : GuildsElement
                     Debug.Log("SHIELDBEARER - immune for one round");
                     //targetedPlayer in GameAction cannot equal currentPlayer
                     //One turn only
+                    _players[_currentPlayer].setImmune();
 
                 }
                 else if (gameAction.getSelectedCard().getValue() == 14)
