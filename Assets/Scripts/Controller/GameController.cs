@@ -21,6 +21,8 @@ public class GameController : GuildsElement
     public void OnNotification(string pEventPath, Object pTarget, object[] pData)
     {
         var cardAction = new GameAction();
+
+       
         // Handle GameController notifications
         switch (pEventPath)
         {
@@ -76,20 +78,20 @@ public class GameController : GuildsElement
                 GameAction pickUpAction = new GameAction();
                 pickUpAction.Initialise(0); // 0 = pickup? Or does it? I just made it up. TODO: Decide special action ints
                 app.model.HandleAction(pickUpAction);
-                app.viewer.HandleAction();
+                app.viewer.HandleAction(pickUpAction);
                 break;
 
             case GameNotification.TimeRanOut:
                 GameAction ranOutAction = new GameAction();
                 ranOutAction.Initialise(0); // 0 means that time ran out
                 app.model.HandleAction(ranOutAction);
-                app.viewer.HandleAction();
+                app.viewer.HandleAction(ranOutAction);
 //                app.viewer.HandleAction(action);
                 break;
 
             case GameNotification.ActionTaken:
                 app.model.HandleAction((GameAction)pData[0]);
-                app.viewer.HandleAction();
+                app.viewer.HandleAction((GameAction)pData[0]);
                 break;
             default:
                 Debug.Log("(GameController.cs) Unknown Command");
