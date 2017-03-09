@@ -9,10 +9,12 @@ using UnityEngine.UI;
 
 public class GameViewer : GuildsElement
 {
+    public Transform targetCanvas;
     private Hand _playersHand;
     private GameObject _handObject;
     private GameObject _currentPlayerLabel;
     private GameObject _cardStackBtn;
+ 
 
     //TODO: Write this class
 
@@ -105,9 +107,17 @@ public class GameViewer : GuildsElement
     _currentPlayerLabel.GetComponent<Text>().text = passedString;
     }
 
-    public void HandleAction()
+    public void HandleAction(GameAction gameAction)
     {
         // Do stuff to make the player's action look pretty
+        //check card
+        if (gameAction.getChoice() == GameNotification.CardPlayed) {
+            if (gameAction.getSelectedCard().getValue() == 15) {
+                //code for chooseTarget
+                targetCanvas.gameObject.SetActive(true);
+            }
+        }
+
         StartTurn();
     }
 
