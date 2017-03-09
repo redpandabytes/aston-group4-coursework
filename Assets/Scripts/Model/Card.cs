@@ -36,4 +36,11 @@ public class Card
     {
         return _value;
     }
+    public void setGuild(int newGuild)
+    {
+        if ((newGuild >= 0) && (newGuild <=3))
+        {
+            _guild = newGuild;
+        }
+    }
 }

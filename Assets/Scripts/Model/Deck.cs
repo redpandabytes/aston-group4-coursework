@@ -51,11 +51,21 @@ public class Deck
     {
         deck.Push(c);
     }
+    //returns the second card for when a special card effects the card that was played before it
     public Card second() {
         Card temp = deck.Pop();
-        Card second = deck.Pop();
-        deck.Push(temp);
-        return second;
+        if (deck.Peek() != null)
+        {
+            Card second = deck.Pop();
+            deck.Push(temp);
+            return second;
+        }
+        else
+        {
+            deck.Push(temp);
+            return null;
+        }
+        
     }
 
     public int getAmountOfCards()

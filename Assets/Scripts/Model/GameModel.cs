@@ -121,10 +121,7 @@ public class GameModel : GuildsElement
             }
         }
         // cards are always playable if there is nothing in the discard deck yet
-        //exception: can't play Smith if discard deck is empty
-        else if (cardValue == 19) {
-            return false; 
-        }
+  
         return true;
     }
 
@@ -337,6 +334,35 @@ public class GameModel : GuildsElement
                     // this should work I think
                     //   break;
                 }
+                else if (gameAction.getSelectedCard().getValue() == 11)
+                {
+                    Debug.Log("PROFESSOR- SWAP 2CARDS");
+                    //Professor
+                    //Takes selectedCard and secondCard in GameAction
+                    //Swaps the cards with two random from targetedPlayer in GameAction
+                    //Makes sure the same card slot in the targets hand is not chosen twice
+                    // Hand targetsHand = _players[gameAction.getTarget()].getHand();
+                    // var ran = Random.Range(0, (targetsHand.getHandSize() - 1));
+                    //_players[gameAction.getTarget()].getHand().addAtIndex(ran, gameAction.getSelectedCard());
+                    //var newRan = Random.Range(0, (targetsHand.getHandSize() - 1));
+                    // while (newRan == ran) {
+                    //newRan = Random.Range(0, (targetsHand.getHandSize() - 1));
+                    //  }
+                    //  _players[gameAction.getTarget()].getHand().addAtIndex(newRan, gameAction.getSelectedCard());
+                }
+                else if (gameAction.getSelectedCard().getValue() == 12)
+                {
+                    Debug.Log("CRAZY PROFESSOR- REVERSED PLAY");
+                    reversedPlay = !reversedPlay;
+                    
+                }
+                else if (gameAction.getSelectedCard().getValue() == 13)
+                {
+                    Debug.Log("SHIELDBEARER - immune for one round");
+                    //targetedPlayer in GameAction cannot equal currentPlayer
+                    //One turn only
+
+                }
                 else if (gameAction.getSelectedCard().getValue() == 14)
                 {
                     //Apprentice
@@ -350,54 +376,33 @@ public class GameModel : GuildsElement
                     }
                     //  break;
                 }
-                else if (gameAction.getSelectedCard().getValue() == 12)
-                {
-                    Debug.Log("CRAZY PROFESSOR- REVERSED PLAY");
-                    reversedPlay = !reversedPlay;
-                    //  break;
-                }
-                else if(gameAction.getSelectedCard().getValue() == 17)
-                {
-                    Debug.Log("THUG - change card in middle");
-                    
-                }
-                else if (gameAction.getSelectedCard().getValue() == 13)
-                {
-                    Debug.Log("SHIELDBEARER - immune for one round");
-
-                    
-                }
-                //TODO: decide what happens when 19 used on first turn - cant pick up nothing
-                else if (gameAction.getSelectedCard().getValue() == 19)
-                {
-                    Debug.Log("SMITH- PICKED UP FROM MIDDLE");
-                    _players[_currentPlayer].getHand().add(_discardDeck.second());
-
-                }
                 else if (gameAction.getSelectedCard().getValue() == 15)
                 {
                     Debug.Log("MESSENGER - EXTRA TURN");
                     messenger = true;
                 }
-                else if (gameAction.getSelectedCard().getValue() == 200)
+                else if (gameAction.getSelectedCard().getValue() == 16)
                 {
-                    //Not working right now 
-                    Debug.Log("WIZARD- SWAP HANDS");
-                    int target = Random.Range(0, 4);
-                    while (target == _currentPlayer)
+                    Debug.Log("SPY - LOOK AT ANOTHER PLAYERS CARDS");
+                }
+                else if(gameAction.getSelectedCard().getValue() == 17)
+                {
+                    Debug.Log("THUG - change card in middle");
+                    if (_discardDeck.second() != null)
                     {
-                        target = Random.Range(0, 4);
+                        int current = _discardDeck.second().getGuild();
+                        int selected = Random.Range(0, 4);
+                        while (selected == current)
+                        {
+                            selected = Random.Range(0, 4);
+                        }
+                        Card temp = _discardDeck.second();
+                        temp.setGuild(selected);
+                        _discardDeck.push(temp);
                     }
-                    
-             
-                    Hand temp1 = _players[_currentPlayer].getHand();
-                    Hand temp2 = _players[target].getHand();
-                    _players[_currentPlayer].setHand(temp2);
-                    _players[target].setHand(temp1);
-                   
-                } 
-                //TODO: get player to select target
-                else if (gameAction.getSelectedCard().getValue() == 18) {
+                }
+                else if (gameAction.getSelectedCard().getValue() == 18)
+                {
                     Debug.Log("JESTER - MISSES TURN");
                     int target = Random.Range(0, 4);
                     while (target == _currentPlayer)
@@ -412,119 +417,39 @@ public class GameModel : GuildsElement
                     else { }
 
                 }
+                //TODO: decide what happens when 19 used on first turn - cant pick up nothing
+                else if (gameAction.getSelectedCard().getValue() == 19)
+                {
+                    Debug.Log("SMITH- PICKED UP FROM MIDDLE");
+                    if (_discardDeck.getAmountOfCards() > 1)
+                    {
+                        _players[_currentPlayer].getHand().add(_discardDeck.second());
+                    }
+
+                }
+              
+                else if (gameAction.getSelectedCard().getValue() == 20)
+                {
+                    //Not working right now 
+                    Debug.Log("WIZARD- SWAP HANDS");
+                   /** int target = Random.Range(0, 4);
+                    while (target == _currentPlayer)
+                    {
+                        target = Random.Range(0, 4);
+                    }
+                    
+                    Hand temp1 = _players[_currentPlayer].getHand();
+                    Hand temp2 = _players[target].getHand();
+                    _players[_currentPlayer].setHand(temp2);
+                    _players[target].setHand(temp1); */
+                   
+                } 
                 removeCardPlayed(gameAction);
 
                 // Remove card by iterating through player's hand
                 //TODO: Find solution using references instead of loops - this is fine because it's not too inefficient - but it's quite messy.
-
-
                 // Update the model depending on special actions of the card
-                // TODO: Sorry whoever coded this game logic, I coded most of it out for now as for the MVP I'm just implementing the Triumph card
-
-                //check if card equals value or guild
-                //                var c = gameAction.getSelectedCard();
-                //                if ((c.getGuild() == _discardDeck.peek().getGuild())
-                //                    || (c.getValue() == _discardDeck.peek().getGuild())
-                //                    || c.getGuild() == 0)
-                //                {
-                //                    //TRIUMPH CARD
-                //                    if (c.getValue() == 0)
-                //                    {
-                //                        //add 5 cards to each player excl. current
-                //                        for (int i = 0; i < _players.Count; i++)
-                //                        {
-                //                            for (int j = 0; j < 5; j++)
-                //                            {
-                //                                if (i != _currentPlayer)
-                //                                {
-                //                                    _players[i].getHand().add(_drawDeck.pop());
-                //                                }
-                //                            }
-                //                        }
-                //                        //then remove card from player
-                //                    }
-                //                    //WEAPON CARD
-                //                    else if (c.getValue() < 11)
-                //                    {
-                //                        _discardDeck.push(c);
-                //                        // _players[_currentPlayer].getHand().hasCard(c); remove card
-                //                    }
-                //                    //SPECIAL CARD
-                //                    else
-                //                    {
-                //                        _discardDeck.push(c);
-                //                        //remove card from player
-                //                        switch (c.getValue())
-                //                        {
-                //                            case 11:
-                //                                //Professor
-                //                                //Takes selectedCard and secondCard in GameAction
-                //                                //Swaps the cards with two random from targetedPlayer in GameAction
-                //                                //Makes sure the same card slot in the targets hand is not chosen twice
-                //                                Hand targetsHand = _players[gameAction.getTarget()].getHand();
-                //                                var ran = Random.Range(0, (targetsHand.getHandSize() - 1));
-                //                                _players[gameAction.getTarget()].getHand().addAtIndex(ran, gameAction.getSelectedCard());
-                //                                var newRan = Random.Range(0, (targetsHand.getHandSize() - 1));
-                //                                while (newRan == ran) {
-                //                                    newRan = Random.Range(0, (targetsHand.getHandSize() - 1));
-                //                                }
-                //                                _players[gameAction.getTarget()].getHand().addAtIndex(newRan, gameAction.getSelectedCard());
-                //                                break;
-                //                            case 12:
-                //                                //Crazy Prof - DONE
-                //                                reversedPlay = !reversedPlay;
-                //                                break;
-                //                            case 13:
-                //                                //ShieldBearer
-                //                                //targetedPlayer in GameAction cannot equal currentPlayer
-                //                                //One turn only
-                //                                break;
-                //                            case 14:
-                //                                //Apprentice - DONE
-                //                                for (var i = 0; i < _players.Count; i++)
-                //                                {
-                //                                    if (i != _currentPlayer)
-                //                                    {
-                //                                        _players[i].getHand().add(_drawDeck.pop());
-                //                                    }
-                //                                }
-                //                                break;
-                //                            case 15:
-                //                                //Messenger - DONE
-                //                                //Rolls back current player before the end increment?
-                //                                break;
-                //                            case 16:
-                //                                //Spy
-                //                                //Returns hand of another player
-                //                                //?: Where to put this view method so players can't access it normally
-                //                                break;
-                //                            case 17:
-                //                                //Thug
-                //                                //Change suit of card in middle
-                //                                //?: Or add a new card to middle?
-                //                                break;
-                //                            case 18:
-                //                                //Jester  - DONE BUT NEEDS TO LET PLAYER CHOOSE
-                //                                //Player has boolean missingTurn
-                //                                //If true, skips player and sets missingTurn to false
-                //                                _players[gameAction.getTarget()].setMissingTurn();
-                //                                break;
-                //                            case 19:
-                //                                //Smith (only for non triumph cards)   - DONE
-                //                                if (_discardDeck.peek().getGuild() != 0)
-                //                                {
-                //                                    _players[_currentPlayer].getHand().add(_discardDeck.pop());
-                //                                }
-                //                                break;
-                //                            case 20:
-                //                                //Wizard
-                //                                //Swap hand objects
-                //                                //Create a temp hand to store while swapping
-                //                                break;
-                //                        }
-                //                    }
-                //
-                //                }
+               
                 break;
             default:
                 Debug.Log("(GameModel.cs) Unknown Command");
