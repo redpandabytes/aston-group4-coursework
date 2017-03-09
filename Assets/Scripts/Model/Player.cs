@@ -13,7 +13,8 @@ public class Player
     private bool hasFinishedTurn;
     private GameAction _desiredGameAction;
     private Card selectedCard;
-    private bool isMissingTurn;
+    private bool isMissingTurn; //Jester card effect
+    private bool immune; //Shieldbearer card effect
 
 
     // Use this for initialization
@@ -90,5 +91,13 @@ public class Player
     }
     public void setMissingTurn() {
         isMissingTurn = !isMissingTurn;
+    }
+    public bool isImmune()
+    {
+        return immune;
+    }
+    public void setImmune()
+    {
+        immune = !immune;
     }
 }

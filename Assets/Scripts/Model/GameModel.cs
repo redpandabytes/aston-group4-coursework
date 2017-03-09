@@ -276,8 +276,6 @@ public class GameModel : GuildsElement
     // deal with a card or special action being taken
     public void HandleAction(GameAction gameAction)
     {
-        // TODO: Handle The GameAction way more than I've done here
-        // TODO: For example, handle them playing a card that was in their hand, remove from the hand, etc, etc...
         Debug.Log("(GameModel.cs) The gameaction choice was: " + gameAction.getChoice());
         switch (gameAction.getChoice())
         {
@@ -317,11 +315,7 @@ public class GameModel : GuildsElement
                 if (gameAction.WasTriumphCard())
                 {
                     // TODO: For the time being Triumph is pretty shit, basically just so it does something in the demo
-                    //  var tempHand = _players[0].getHand();
-                    //  var tempHand2 = _players[1].getHand();
                     Debug.Log("OOOOOOOOOOOOOOOOOO TRIUMPH CARD");
-                    //  _players[0].setHand(tempHand2);
-                    //   _players[1].setHand(tempHand);
                     _discardDeck.push(_players[0].getHand().getCardAtIndex(0));
                     _players[0].getHand().removeAtIndex(0);
                     _discardDeck.push(_players[0].getHand().getCardAtIndex(0));
@@ -330,9 +324,6 @@ public class GameModel : GuildsElement
                     {
                         _players[i].getHand().add(_drawDeck.pop());
                     }
-
-                    // this should work I think
-                    //   break;
                 }
                 else if (gameAction.getSelectedCard().getValue() == 11)
                 {
@@ -365,7 +356,6 @@ public class GameModel : GuildsElement
                 }
                 else if (gameAction.getSelectedCard().getValue() == 14)
                 {
-                    //Apprentice
                     Debug.Log("APPRENTICE - EVERYONE PICK UP");
                     for (var i = 0; i < _players.Count; i++)
                     {
@@ -374,7 +364,6 @@ public class GameModel : GuildsElement
                             _players[i].getHand().add(_drawDeck.pop());
                         }
                     }
-                    //  break;
                 }
                 else if (gameAction.getSelectedCard().getValue() == 15)
                 {
@@ -417,7 +406,6 @@ public class GameModel : GuildsElement
                     else { }
 
                 }
-                //TODO: decide what happens when 19 used on first turn - cant pick up nothing
                 else if (gameAction.getSelectedCard().getValue() == 19)
                 {
                     Debug.Log("SMITH- PICKED UP FROM MIDDLE");
@@ -427,10 +415,11 @@ public class GameModel : GuildsElement
                     }
 
                 }
-              
                 else if (gameAction.getSelectedCard().getValue() == 20)
                 {
-                    //Not working right now 
+                    //Not working right now A
+                    //TODO: fix
+                    //TODO: to remove card from player, we now need to remove it from the player we swapped with 
                     Debug.Log("WIZARD- SWAP HANDS");
                    /** int target = Random.Range(0, 4);
                     while (target == _currentPlayer)
