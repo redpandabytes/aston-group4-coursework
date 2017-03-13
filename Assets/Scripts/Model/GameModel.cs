@@ -208,6 +208,20 @@ public class GameModel : GuildsElement
     public void EndTurn()
     {
         // TODO: Implement
+        //If current player has just used shieldbearer, it will increment the number of rounds immune
+        if(_players[_currentPlayer].isImmune() == true)
+        {
+            _players[_currentPlayer].incrementRoundsImmune();
+        }
+        //If any player in the array (that is not the current player)is immune and has been immune for 1 or more rounds,
+        //it will set their immunity to false and reset their rounds
+        foreach (Player p in _players) {
+            if((_players[_currentPlayer] != p) && (p.getRoundsImmune() >= 1))
+            {
+                p.setImmune();
+            }
+        }
+        //If the game is in normal play, it will cycle through the array normally, else, it will cycle through it reversed
         if (reversedPlay == false)
         {
 
@@ -325,8 +339,9 @@ public class GameModel : GuildsElement
                         _players[i].getHand().add(_drawDeck.pop());
                     }
 
-                    //TODO: PROFESSOR, SPY, SHIELDBEARER
-                    //TODO: FIX THUG AND WIZARD
+                    //TODO: IMPLEMENT SPY
+                    //TODO: FIX THUG, WIZARD, PROFESSOR
+                    //TODO: TEST SHIELDBEARER
                 }
                 else if (gameAction.getSelectedCard().getValue() == 11)
                 {
@@ -398,7 +413,7 @@ public class GameModel : GuildsElement
                 {
                     Debug.Log("JESTER - MISSES TURN");
                     int target = Random.Range(0, 4);
-                    while (target == _currentPlayer)
+                    while ((target == _currentPlayer) && (_players[target].isImmune() == true))
                     {
                         target = Random.Range(0, 4);
                     }
