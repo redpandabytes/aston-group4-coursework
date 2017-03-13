@@ -15,6 +15,7 @@ public class Player
     private Card selectedCard;
     private bool isMissingTurn; //Jester card effect
     private bool immune; //Shieldbearer card effect
+    private int roundsImmune = 0; //checks how many turns the target has been immune for
 
 
     // Use this for initialization
@@ -98,6 +99,19 @@ public class Player
     }
     public void setImmune()
     {
+        if(immune == true)
+        {
+            roundsImmune = 0;
+        }
         immune = !immune;
+        
+    }
+    public int getRoundsImmune()
+    {
+        return roundsImmune;
+    }
+    public void incrementRoundsImmune()
+    {
+        roundsImmune = roundsImmune++;
     }
 }
