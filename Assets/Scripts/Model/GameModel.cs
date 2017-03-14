@@ -207,16 +207,17 @@ public class GameModel : GuildsElement
 
     public void EndTurn()
     {
-        // TODO: Implement
+        //// TODO: Implement
         //If current player has just used shieldbearer, it will increment the number of rounds immune
-        if(_players[_currentPlayer].isImmune() == true)
+        if (_players[_currentPlayer].isImmune() == true)
         {
             _players[_currentPlayer].incrementRoundsImmune();
         }
         //If any player in the array (that is not the current player)is immune and has been immune for 1 or more rounds,
         //it will set their immunity to false and reset their rounds
-        foreach (Player p in _players) {
-            if((_players[_currentPlayer] != p) && (p.getRoundsImmune() >= 1))
+        foreach (Player p in _players)
+        {
+            if ((_players[_currentPlayer] != p) && (p.getRoundsImmune() >= 1))
             {
                 p.setImmune();
             }
@@ -343,7 +344,7 @@ public class GameModel : GuildsElement
                     //TODO: FIX THUG, WIZARD, PROFESSOR
                     //TODO: TEST SHIELDBEARER
                 }
-                else if (gameAction.getSelectedCard().getValue() == 11)
+                else if (gameAction.getSelectedCard().getValue() == 20)
                 {
                     Debug.Log("PROFESSOR- SWAP 2CARDS");
                     //Professor
@@ -396,21 +397,22 @@ public class GameModel : GuildsElement
                 else if(gameAction.getSelectedCard().getValue() == 17)
                 {
                     Debug.Log("THUG - change card in middle");
-                    if (_discardDeck.second() != null)
-                    {
-                        int current = _discardDeck.second().getGuild();
-                        int selected = Random.Range(1, 4);
-                        while (selected == current)
-                        {
-                            selected = Random.Range(1, 4);
-                        }
-                        Card temp = _discardDeck.second();
-                        temp.setGuild(selected);
-                        _discardDeck.push(temp);
-                        GameAction choice = new GameAction();
-                        choice.Initialise("special.cardupdate");
-                        app.Notify(GameNotification.SpecialCardUpdate, this, choice);
-                    }
+                    //if (_discardDeck.second() != null)
+                    //{
+                    //    int current = _discardDeck.second().getGuild();
+                    //    int selected = Random.Range(1, 4);
+                    //    while (selected == current)
+                    //    {
+                    //        selected = Random.Range(1, 4);
+                    //    }
+                    //    Card temp = _discardDeck.second();
+                    //    temp.setGuild(selected);
+                    //    _discardDeck.push(temp);
+                    //    GameAction choice = new GameAction();
+                    //    choice.Initialise("special.cardupdate");
+                    //    app.Notify(GameNotification.SpecialCardUpdate, this, choice);
+                    //    Debug.Log("The top card should now be" + _discardDeck.peek().getGuild() + _discardDeck.peek().getValue());
+                    //}
                 }
                 else if (gameAction.getSelectedCard().getValue() == 18)
                 {
@@ -437,23 +439,23 @@ public class GameModel : GuildsElement
                     }
 
                 }
-                else if (gameAction.getSelectedCard().getValue() == 20)
+                else if (gameAction.getSelectedCard().getValue() == 11)
                 {
                     //Not working right now A
                     //TODO: fix
                     //TODO: to remove card from player, we now need to remove it from the player we swapped with 
                     Debug.Log("WIZARD- SWAP HANDS");
-                   /** int target = Random.Range(0, 4);
+                    int target = Random.Range(0, 4);
                     while (target == _currentPlayer)
                     {
                         target = Random.Range(0, 4);
                     }
-                    
+
                     Hand temp1 = _players[_currentPlayer].getHand();
                     Hand temp2 = _players[target].getHand();
                     _players[_currentPlayer].setHand(temp2);
-                    _players[target].setHand(temp1); */
-                   
+                    _players[target].setHand(temp1);
+
                 } 
                 removeCardPlayed(gameAction);
 

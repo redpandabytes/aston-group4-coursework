@@ -112,9 +112,9 @@ public class GameViewer : GuildsElement
         // Do stuff to make the player's action look pretty
         //check card
         if (gameAction.getChoice() == GameNotification.CardPlayed) {
-            if (gameAction.getSelectedCard().getValue() == 15) {
+            if (gameAction.getSelectedCard().getValue() == 16) {
                 //code for chooseTarget
-                targetCanvas.gameObject.SetActive(true);
+            //    targetCanvas.gameObject.SetActive(true);
             }
         }
 
