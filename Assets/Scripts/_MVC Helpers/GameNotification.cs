@@ -10,6 +10,7 @@ internal class GameNotification
 
     // Special Card Strings
     public const string TriumphCard = "triumph.card";
+    public const string SpecialCardUpdate = "special.cardupdate";
 
     // Actions
     public const string CardPlayed = "card.played";

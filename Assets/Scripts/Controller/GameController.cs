@@ -103,6 +103,10 @@ public class GameController : GuildsElement
             case GameNotification.GameDefeat:
                 Debug.Log("(GameController.cs) Defeat :(");
                 break;
+            case GameNotification.SpecialCardUpdate:
+                Debug.Log("IT WORKED");
+                app.viewer.StartTurn();
+                break;
         }
     }
 

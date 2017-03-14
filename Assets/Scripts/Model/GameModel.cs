@@ -399,14 +399,17 @@ public class GameModel : GuildsElement
                     if (_discardDeck.second() != null)
                     {
                         int current = _discardDeck.second().getGuild();
-                        int selected = Random.Range(0, 4);
+                        int selected = Random.Range(1, 4);
                         while (selected == current)
                         {
-                            selected = Random.Range(0, 4);
+                            selected = Random.Range(1, 4);
                         }
                         Card temp = _discardDeck.second();
                         temp.setGuild(selected);
                         _discardDeck.push(temp);
+                        GameAction choice = new GameAction();
+                        choice.Initialise("special.cardupdate");
+                        app.Notify(GameNotification.SpecialCardUpdate, this, choice);
                     }
                 }
                 else if (gameAction.getSelectedCard().getValue() == 18)
