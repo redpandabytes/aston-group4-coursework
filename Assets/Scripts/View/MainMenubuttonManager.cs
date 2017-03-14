@@ -15,6 +15,7 @@ public class MainMenubuttonManager : GuildsElement
     public AudioClip hover;
     public AudioClip click;
     private GameObject _handObject;
+    public int zoomedCardCount = 0;
     // public Transform mainPanel;
     //public GameObject card = Instantiate(Resources.Load("Card")) as GameObject;
 

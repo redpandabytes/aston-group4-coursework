@@ -7,13 +7,15 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System;
 
-public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     public Transform parentToReturnTo = null;
     public Boolean draggable = true;
-    public float tapCooldown = 0.001f;
+    public float tapCooldown = 0.5f;
     private int tapCount = 0;
-    public Boolean large = false;
+    public bool zoom = false;
+
+    // bool isOver = false;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -22,7 +24,9 @@ public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDra
             if (this.transform.parent == GameObject.Find("playedCardsCell").transform)
             {
                 draggable = false;
-            } else {
+            }
+            else
+            {
                 Debug.Log("Card Picked Up");
                 parentToReturnTo = this.transform.parent;
                 this.transform.SetParent(this.transform.parent.parent);
@@ -58,49 +62,68 @@ public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDra
         }
     }
 
-  
-    void Update()
+    void Update() { }
+
+    public void OnPointerClick(PointerEventData eventData)
     {
-        var GameAction = new GameAction();
-        bool zoom = false;
-        
-        if (Input.anyKeyDown)
+        //Debug.Log("ClICK!!!!!!");
+        //if (tapCooldown > 0 && tapCount == 1)
+        //{
+        MainMenubuttonManager main = new MainMenubuttonManager();
+
+        if (zoom == false)
         {
-            if (tapCooldown > 0 && tapCount == 2)
+            if (tapCooldown > 0 && tapCount == 1 && main.zoomedCardCount == 0 )
             {
-                if (zoom == false)
-                {
-                    //double tapped
-                    Debug.Log("Double TAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
-                    // make card much larger
-                    // yield return new WaitForSeconds(1.0f);
-                    //zoom = true;
-                }
-            }
-            else if (tapCooldown >0 && tapCount == 2)
-            {
-                if (zoom == true)
-                {
-                Debug.Log("unzoom");
-                //unzoom
-                //zoom = false;
-                }
+                //double tapped
+                Debug.Log("Double TAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP, number of cards zoomed" + main.zoomedCardCount);
+                // make card much larger
+                main.zoomedCardCount = main.zoomedCardCount + 1;
+                
+                zoom = true;
             }
             else
             {
                 tapCount += 1;
             }
         }
+        if (zoom == true)
+        {
+            if (tapCooldown > 0 && tapCount == 2)
+            {
+                Debug.Log("unzoommmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+                //unzoom
+                main.zoomedCardCount = main.zoomedCardCount - 1;
+                zoom = false;
+                tapCount = 0;
+            }
+            else
+            {
+                tapCount += 1;
+            }
+        }
+        //}
+        //else
+        // {
+        //     tapCount += 1;
+        // }
+
+        //if (tapCount < 2) {
+       //     tapCount = 0;
+       // }
 
         if (tapCooldown > 0)
         {
             tapCooldown -= 1 * Time.deltaTime;
 
         }
-        else {
+        else
+        {
             tapCount = 0;
         }
     }
+
     // refactor update method into multiple functions to prevent onclick being detected in multiple frames emulating multiple clicks
+
+
 }
-  
