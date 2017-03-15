@@ -62,8 +62,6 @@ public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDra
         }
     }
 
-    void Update() { }
-
     public void OnPointerClick(PointerEventData eventData)
     {
         //Debug.Log("ClICK!!!!!!");
@@ -77,6 +75,12 @@ public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDra
             {
                 //double tapped
                 Debug.Log("Double TAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP, number of cards zoomed" + main.zoomedCardCount);
+                print(gameObject.transform.position);
+                gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 600);
+                print(gameObject.GetComponent<RectTransform>().sizeDelta);
+                //change parent to zoom zone
+                //only one objetc at any given time
+                //grid layout group used to hold all the card in the players hand is restricting the cards size from being changed, neeed to implement a new zone for card to apprear in if we want them to zoom
                 // make card much larger
                 main.zoomedCardCount = main.zoomedCardCount + 1;
                 
@@ -96,21 +100,14 @@ public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDra
                 main.zoomedCardCount = main.zoomedCardCount - 1;
                 zoom = false;
                 tapCount = 0;
+                //take back card from zoom zone and place back in players hand
             }
             else
             {
                 tapCount += 1;
             }
         }
-        //}
-        //else
-        // {
-        //     tapCount += 1;
-        // }
-
-        //if (tapCount < 2) {
-       //     tapCount = 0;
-       // }
+       
 
         if (tapCooldown > 0)
         {
@@ -122,8 +119,5 @@ public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDra
             tapCount = 0;
         }
     }
-
-    // refactor update method into multiple functions to prevent onclick being detected in multiple frames emulating multiple clicks
-
 
 }
