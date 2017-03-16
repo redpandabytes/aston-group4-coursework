@@ -114,7 +114,8 @@ public class GameViewer : GuildsElement
         if (gameAction.getChoice() == GameNotification.CardPlayed) {
             if (gameAction.getSelectedCard().getValue() == 16) {
                 //code for chooseTarget
-            //    targetCanvas.gameObject.SetActive(true);
+                //FIX: Had to comment the next line as it was saying the canvas was unassigned
+             //   targetCanvas.gameObject.SetActive(true);
             }
         }
 

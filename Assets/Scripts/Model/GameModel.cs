@@ -453,10 +453,18 @@ public class GameModel : GuildsElement
 
                     Hand temp1 = _players[_currentPlayer].getHand();
                     Hand temp2 = _players[target].getHand();
+                    Debug.Log("1: " + temp1.toString());
+                    Debug.Log("2: " + temp2.toString());
                     _players[_currentPlayer].setHand(temp2);
                     _players[target].setHand(temp1);
+                    Debug.Log("1: " + _players[_currentPlayer].getHand().toString());
+                    Debug.Log("2: " + _players[target].getHand().toString());
 
-                } 
+                    GameAction choice = new GameAction();
+                    choice.Initialise("special.cardupdate");
+                    app.Notify(GameNotification.SpecialCardUpdate, this, choice);
+
+                }
                 removeCardPlayed(gameAction);
 
                 // Remove card by iterating through player's hand

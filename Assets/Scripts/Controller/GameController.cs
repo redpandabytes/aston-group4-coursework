@@ -105,7 +105,7 @@ public class GameController : GuildsElement
                 break;
             case GameNotification.SpecialCardUpdate:
                 Debug.Log("IT WORKED");
-               // app.viewer.StartTurn();
+                app.viewer.RenderPlayerHand();
                 break;
         }
     }

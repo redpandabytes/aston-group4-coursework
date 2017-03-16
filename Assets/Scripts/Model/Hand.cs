@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class Hand
@@ -82,5 +83,14 @@ public class Hand
 
 
     //!! We need a method to keep track of what the last card picked was !!
+    public string toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach(Card c in hand)
+        {
+            sb.Append(hand.IndexOf(c) + ": (" + c.getGuild() + "," + c.getValue() + ") ");
+        }
+        return sb.ToString();
 
+    }
 }
