@@ -445,24 +445,24 @@ public class GameModel : GuildsElement
                     //TODO: fix
                     //TODO: to remove card from player, we now need to remove it from the player we swapped with 
                     Debug.Log("WIZARD- SWAP HANDS");
-                    int target = Random.Range(0, 4);
-                    while (target == _currentPlayer)
-                    {
-                        target = Random.Range(0, 4);
-                    }
+                    //int target = Random.Range(0, 4);
+                    //while (target == _currentPlayer)
+                    //{
+                    //    target = Random.Range(0, 4);
+                    //}
 
-                    Hand temp1 = _players[_currentPlayer].getHand();
-                    Hand temp2 = _players[target].getHand();
-                    Debug.Log("1: " + temp1.toString());
-                    Debug.Log("2: " + temp2.toString());
-                    _players[_currentPlayer].setHand(temp2);
-                    _players[target].setHand(temp1);
-                    Debug.Log("1: " + _players[_currentPlayer].getHand().toString());
-                    Debug.Log("2: " + _players[target].getHand().toString());
+                    //Hand temp1 = _players[_currentPlayer].getHand();
+                    //Hand temp2 = _players[target].getHand();
+                    //Debug.Log("1: " + temp1.toString());
+                    //Debug.Log("2: " + temp2.toString());
+                    //_players[_currentPlayer].setHand(temp2);
+                    //_players[target].setHand(temp1);
+                    //Debug.Log("1: " + _players[_currentPlayer].getHand().toString());
+                    //Debug.Log("2: " + _players[target].getHand().toString());
 
-                    GameAction choice = new GameAction();
-                    choice.Initialise("special.cardupdate");
-                    app.Notify(GameNotification.SpecialCardUpdate, this, choice);
+                    //GameAction choice = new GameAction();
+                    //choice.Initialise("special.cardupdate");
+                    //app.Notify(GameNotification.SpecialCardUpdate, this, choice);
 
                 }
                 removeCardPlayed(gameAction);
