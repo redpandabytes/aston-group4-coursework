@@ -15,8 +15,6 @@ public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDra
     private int tapCount = 0;
     public bool zoom = false;
 
-    // bool isOver = false;
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (draggable == true)
@@ -51,7 +49,8 @@ public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDra
             this.transform.SetParent(parentToReturnTo);
             //if card is in center make uninteractable
 
-            if (this.transform.position == GameObject.Find("Hand0").transform.position)
+            if (this.transform.position == GameObject.Find("Hand0").transform.position ||
+                    this.transform.parent == GameObject.Find("zoomCardCell").transform)
             {
                 draggable = false;
             }
@@ -62,52 +61,51 @@ public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDra
         }
     }
 
+    public void Update()
+    {
+        if (this.transform.parent.transform.childCount > 1 && this.transform.parent == GameObject.Find("zoomCardCell").transform)
+        {
+            Unzoom();
+            //only one card zoomed at any given time
+        }
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        //Debug.Log("ClICK!!!!!!");
-        //if (tapCooldown > 0 && tapCount == 1)
-        //{
-        MainMenubuttonManager main = new MainMenubuttonManager();
-
+        //zoom
         if (zoom == false)
         {
-            if (tapCooldown > 0 && tapCount == 1 && main.zoomedCardCount == 0 )
+            if (tapCooldown > 0 && tapCount == 1)
             {
-                //double tapped
-                Debug.Log("Double TAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP, number of cards zoomed" + main.zoomedCardCount);
-                print(gameObject.transform.position);
-                gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 600);
-                print(gameObject.GetComponent<RectTransform>().sizeDelta);
-                //change parent to zoom zone
-                //only one objetc at any given time
-                //grid layout group used to hold all the card in the players hand is restricting the cards size from being changed, neeed to implement a new zone for card to apprear in if we want them to zoom
-                // make card much larger
-                main.zoomedCardCount = main.zoomedCardCount + 1;
-                
-                zoom = true;
+                if (this.transform.parent == GameObject.Find("playedCardsCell").transform)
+                {
+                   //Do Nothing
+                }
+                else {
+                    Zoom();
+                    //card moves to zoomCell
+                }
             }
             else
             {
                 tapCount += 1;
             }
         }
+
+        //unzoom
         if (zoom == true)
         {
             if (tapCooldown > 0 && tapCount == 2)
             {
-                Debug.Log("unzoommmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
-                //unzoom
-                main.zoomedCardCount = main.zoomedCardCount - 1;
-                zoom = false;
-                tapCount = 0;
-                //take back card from zoom zone and place back in players hand
+                    Unzoom();
+                    //card moves back to its past parent
             }
             else
             {
                 tapCount += 1;
             }
         }
-       
+
 
         if (tapCooldown > 0)
         {
@@ -119,5 +117,30 @@ public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDra
             tapCount = 0;
         }
     }
+    public void Zoom()
+    {
+        //double tapped
+        Debug.Log("Double TAP");
+        //print(gameObject.transform.position);
+        //gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 600);
+        parentToReturnTo = this.transform.parent;
+        Debug.Log("cards original parent set");
+        this.transform.parent = GameObject.Find("zoomCardCell").transform;//change parent to zoom zone
+        zoom = true;
+                
+        
+        //grid layout group used to hold all the card in the players hand is restricting the cards size from being changed, neeed to implement a new zone for card to apprear in if we want them to zoom
+        // make card much larger
+    }
 
+    public void Unzoom()
+    {
+        Debug.Log("unzoom");
+        this.transform.parent = parentToReturnTo;
+        //unzoom
+        //main.zoomedCardCount = main.zoomedCardCount - 1;// check to ensure only one card is zoomed
+        zoom = false;
+        tapCount = 0;
+        //take back card from zoom zone and place back in players hand
+    }
 }
