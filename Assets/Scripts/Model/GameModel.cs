@@ -23,7 +23,7 @@ public class GameModel : GuildsElement
     private int _difficulty;
     private int _noOfPlayers;
 
-    private const int StartingHandSize = 9;
+    private const int StartingHandSize = 7;
     private const int NumStandardCardsPerDeck = 10;
 
     private const int DefaultTurnLength = 10;
