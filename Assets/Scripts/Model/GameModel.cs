@@ -23,7 +23,7 @@ public class GameModel : GuildsElement
     private int _difficulty;
     private int _noOfPlayers;
 
-    private const int StartingHandSize = 9;
+    private const int StartingHandSize = 7;
     private const int NumStandardCardsPerDeck = 10;
 
     private const int DefaultTurnLength = 10;
@@ -201,7 +201,7 @@ public class GameModel : GuildsElement
         // TODO: Code to handle the draw deck being empty
         for (var i = 0; i < amount; i++)
         {
-            if (_players[playerID].getHand().getHandSize() == 10)
+            if (_players[playerID].getHand().getHandSize() >= 10)
             {
                 Debug.Log("Hand Full");
             }
@@ -346,7 +346,7 @@ public class GameModel : GuildsElement
                     _players[0].getHand().removeAtIndex(0);
                     for (int i = 1; i < _players.Count; i++)
                     {
-                        _players[i].getHand().add(_drawDeck.pop());
+                        DrawToPlayer(i, 1);
                     }
 
                     //TODO: IMPLEMENT SPY
@@ -390,7 +390,7 @@ public class GameModel : GuildsElement
                     {
                         if (i != _currentPlayer)
                         {
-                            _players[i].getHand().add(_drawDeck.pop());
+                            DrawToPlayer(i, 1);
                         }
                     }
                 }
