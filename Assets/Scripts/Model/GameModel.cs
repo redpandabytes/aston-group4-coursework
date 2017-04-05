@@ -357,17 +357,53 @@ public class GameModel : GuildsElement
                 {
                     Debug.Log("PROFESSOR- SWAP 2CARDS");
                     //Professor
-                    //Takes selectedCard and secondCard in GameAction
-                    //Swaps the cards with two random from targetedPlayer in GameAction
-                    //Makes sure the same card slot in the targets hand is not chosen twice
-                    // Hand targetsHand = _players[gameAction.getTarget()].getHand();
-                    // var ran = Random.Range(0, (targetsHand.getHandSize() - 1));
-                    //_players[gameAction.getTarget()].getHand().addAtIndex(ran, gameAction.getSelectedCard());
-                    //var newRan = Random.Range(0, (targetsHand.getHandSize() - 1));
-                    // while (newRan == ran) {
-                    //newRan = Random.Range(0, (targetsHand.getHandSize() - 1));
-                    //  }
-                    //  _players[gameAction.getTarget()].getHand().addAtIndex(newRan, gameAction.getSelectedCard());
+                    //picks random target
+                    int target = Random.Range(0, 4);
+                    while (target == _currentPlayer)
+                    {
+                        target = Random.Range(0, 4);
+                    }
+                    Debug.Log("1: " + _players[_currentPlayer].getHand().toString());
+                    Debug.Log("2: " + _players[target].getHand().toString());
+
+                    //swap two cards
+                    Hand targetH = _players[target].getHand();
+                    Hand playersH = _players[_currentPlayer].getHand();
+                    //if greater than 2 swap
+                    if ((targetH.getHandSize() >= 2) && (playersH.getHandSize() >= 2))
+                    {
+                        Card targetH1 = targetH.getCardAtIndex(0);
+                        Card targetH2 = targetH.getCardAtIndex(1);
+                        Card playerH1 = playersH.getCardAtIndex(0);
+                        Card playerH2 = playersH.getCardAtIndex(1);
+                        targetH.addAtIndex(0, playerH1);
+                        targetH.addAtIndex(1, playerH2);
+                        playersH.addAtIndex(0, targetH1);
+                        playersH.addAtIndex(1, targetH2);
+
+                        _players[target].setHand(targetH);
+                        _players[_currentPlayer].setHand(playersH);
+                    }
+                    else {
+                       //resolve this by giving the player that only got 1 card, a card from the draw deck
+                    }
+        
+                    Debug.Log("1: " + _players[_currentPlayer].getHand().toString());
+                    Debug.Log("2: " + _players[target].getHand().toString());
+
+                    //update view
+                    GameAction choice = new GameAction();
+                    choice.Initialise("special.cardupdate");
+                    app.Notify(GameNotification.SpecialCardUpdate, this, choice);
+                    //remove from target instead of current player if that card was swapped
+                    if (playersH.hasCard(gameAction.getSelectedCard()) == true){
+                        removeCardPlayed(gameAction, _currentPlayer);
+                    }
+                    else
+                    {
+                        removeCardPlayed(gameAction, target);
+                    }
+
                 }
                 else if (gameAction.getSelectedCard().getValue() == 12)
                 {
@@ -455,29 +491,32 @@ public class GameModel : GuildsElement
                     //TODO: to remove card from player, we now need to remove it from the player we swapped with 
                     Debug.Log("WIZARD- SWAP HANDS");
                     //Randomly select target
-                    //int target = Random.Range(0, 4);
-                    //while (target == _currentPlayer)
-                    //{
-                    //    target = Random.Range(0, 4);
-                    //}
+                    int target = Random.Range(0, 4);
+                    while (target == _currentPlayer)
+                    {
+                        target = Random.Range(0, 4);
+                    }
 
-                    ////swap hands
-                    //Hand temp1 = _players[_currentPlayer].getHand();
-                    //Hand temp2 = _players[target].getHand();
-                    //Debug.Log("1: " + temp1.toString());
-                    //Debug.Log("2: " + temp2.toString());
-                    //_players[_currentPlayer].setHand(temp2);
-                    //_players[target].setHand(temp1);
-                    //Debug.Log("1: " + _players[_currentPlayer].getHand().toString());
-                    //Debug.Log("2: " + _players[target].getHand().toString());
+                    //swap hands
+                    Hand temp1 = _players[_currentPlayer].getHand();
+                    Hand temp2 = _players[target].getHand();
+                    Debug.Log("1: " + temp1.toString());
+                    Debug.Log("2: " + temp2.toString());
+                    _players[_currentPlayer].setHand(temp2);
+                    _players[target].setHand(temp1);
+                    Debug.Log("1: " + _players[_currentPlayer].getHand().toString());
+                    Debug.Log("2: " + _players[target].getHand().toString());
 
-                    ////update view
-                    //GameAction choice = new GameAction();
-                    //choice.Initialise("special.cardupdate");
-                    //app.Notify(GameNotification.SpecialCardUpdate, this, choice);
+                    //update view
+                    GameAction choice = new GameAction();
+                    choice.Initialise("special.cardupdate");
+                    app.Notify(GameNotification.SpecialCardUpdate, this, choice);
+                    //remove from target instead of current player
+                    removeCardPlayed(gameAction, target);
+
 
                 }
-                removeCardPlayed(gameAction);
+                removeCardPlayed(gameAction, _currentPlayer);
 
                 // Remove card by iterating through player's hand
                 //TODO: Find solution using references instead of loops - this is fine because it's not too inefficient - but it's quite messy.
@@ -502,18 +541,18 @@ public class GameModel : GuildsElement
        return _ai.AiTurn(_players[_currentPlayer]);
     }
 
-    public void removeCardPlayed(GameAction gameAction)
+    public void removeCardPlayed(GameAction gameAction, int PlayerID)
     {
         Debug.Log("(GameModel.cs) Attempting to remove the player's played card. Hand size is: " + _players[_currentPlayer].getHand().getHandSize());
-        for (var i = 0; i <= _players[_currentPlayer].getHand().getHandSize() - 1; i++)
+        for (var i = 0; i <= _players[PlayerID].getHand().getHandSize() - 1; i++)
         {
-            if ((_players[_currentPlayer].getHand().getCardAtIndex(i).getGuild() ==
+            if ((_players[PlayerID].getHand().getCardAtIndex(i).getGuild() ==
                  gameAction.getSelectedCard().getGuild()) &&
-                ((_players[_currentPlayer].getHand().getCardAtIndex(i).getValue() ==
+                ((_players[PlayerID].getHand().getCardAtIndex(i).getValue() ==
                   gameAction.getSelectedCard().getValue())))
             {
-                Debug.Log("(GameModel.cs) About to remove card! Was looking for '" + gameAction.getSelectedCard().getGuild() + ", " + gameAction.getSelectedCard().getValue() + "'. Found '" + _players[_currentPlayer].getHand().getCardAtIndex(i).getGuild() + ", " + (_players[_currentPlayer].getHand().getCardAtIndex(i).getValue()) + "' :).");
-                _players[_currentPlayer].getHand().removeAtIndex(i);
+                Debug.Log("(GameModel.cs) About to remove card! Was looking for '" + gameAction.getSelectedCard().getGuild() + ", " + gameAction.getSelectedCard().getValue() + "'. Found '" + _players[PlayerID].getHand().getCardAtIndex(i).getGuild() + ", " + (_players[PlayerID].getHand().getCardAtIndex(i).getValue()) + "' :).");
+                _players[PlayerID].getHand().removeAtIndex(i);
                 break;
             }
         }

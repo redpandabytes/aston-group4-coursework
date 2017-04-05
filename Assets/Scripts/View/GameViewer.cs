@@ -34,10 +34,10 @@ public class GameViewer : GuildsElement
     {
         //            throw new System.NotImplementedException();
     }
-
     public void RenderPlayerHand()
     {
-        foreach(Transform child in _handObject.transform) {
+        _playersHand = app.model.GetPlayerHand(0);
+        foreach (Transform child in _handObject.transform) {
             Destroy(child.gameObject);
         }
 
@@ -90,10 +90,10 @@ public class GameViewer : GuildsElement
         }
     }
 
-    public void Intiailise(GameModel passedModel) // Setup the object with a constructor
-    {
-        app.model = passedModel; // TODO: When is this needed?
-    }
+    //public void Intiailise(GameModel passedModel) // Setup the object with a constructor
+    //{
+    //    app.model = passedModel; // TODO: When is this needed?
+    //}
 
     // Stuff that needs to be done each frame
     public void Update()
