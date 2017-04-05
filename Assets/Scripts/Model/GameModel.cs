@@ -185,6 +185,7 @@ public class GameModel : GuildsElement
         return _players[playerId].getHand();
     }
 
+
     public void StartTurn()
     {
         // TODO: Implement
@@ -350,7 +351,7 @@ public class GameModel : GuildsElement
                     }
 
                     //TODO: IMPLEMENT SPY
-                    //TODO: FIX THUG, WIZARD, PROFESSOR
+                    //TODO: FIX THUG
                     //TODO: TEST SHIELDBEARER
                 }
                 else if (gameAction.getSelectedCard().getValue() == 11)
@@ -442,22 +443,45 @@ public class GameModel : GuildsElement
                 else if(gameAction.getSelectedCard().getValue() == 17)
                 {
                     Debug.Log("THUG - change card in middle");
-                    //if (_discardDeck.second() != null)
-                    //{
-                    //    int current = _discardDeck.second().getGuild();
-                    //    int selected = Random.Range(1, 4);
-                    //    while (selected == current)
-                    //    {
-                    //        selected = Random.Range(1, 4);
-                    //    }
-                    //    Card temp = _discardDeck.second();
-                    //    temp.setGuild(selected);
-                    //    _discardDeck.push(temp);
-                    //    GameAction choice = new GameAction();
-                    //    choice.Initialise("special.cardupdate");
-                    //    app.Notify(GameNotification.SpecialCardUpdate, this, choice);
-                    //    Debug.Log("The top card should now be" + _discardDeck.peek().getGuild() + _discardDeck.peek().getValue());
-                    //}
+                //    if (_discardDeck.second() != null)
+                //    {
+                //        int current = _discardDeck.second().getGuild();
+                //        int selected = Random.Range(1, 4);
+                //        while (selected == current)
+                //        {
+                //            selected = Random.Range(1, 4);
+                //        }
+                //        Card temp = _discardDeck.second();
+                //        temp.setGuild(selected);
+                //        _discardDeck.push(temp);
+                //        GameAction choice = new GameAction();
+                //        choice.Initialise("special.cardupdate");
+                //        app.Notify(GameNotification.SpecialCardUpdate, this, choice);
+                //        Debug.Log("The top card should now be" + _discardDeck.peek().getGuild() + _discardDeck.peek().getValue());
+                //    }
+                //if(_discardDeck.second() != null)
+                //    {
+                //        //get second card
+                //        Card thug = _discardDeck.pop();
+                //        Card wanted = _discardDeck.pop();
+                //        _discardDeck.push(thug);
+                //        //set the guild to something it wasn't before
+                //        int _current = wanted.getGuild();
+                //        Debug.Log("!!!!The card was:" + wanted.ToString());
+                //        int _new = Random.Range(1, 4);
+                //        while (_new == _current)
+                //        {
+                //            _new = Random.Range(1, 4);
+                //        }
+                //        wanted.setGuild(_new);
+                //        Debug.Log("!!!The card is now:" + wanted.);
+                //        //add it to top of deck
+                //        _discardDeck.push(thug);
+                //        Debug.Log("The top card should now be" + wanted.ToString());
+                //        Debug.Log("The top card is actually" + _discardDeck.peek().getGuild() + _discardDeck.peek().getValue());
+
+                //    }
+
                 }
                 else if (gameAction.getSelectedCard().getValue() == 18)
                 {

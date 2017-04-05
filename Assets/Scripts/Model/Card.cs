@@ -43,4 +43,9 @@ public class Card
             _guild = newGuild;
         }
     }
+    public string toString()
+    {
+        string s =_guild + "," + _value;
+        return s;
+    }
 }

@@ -34,6 +34,11 @@ public class GameViewer : GuildsElement
     {
         //            throw new System.NotImplementedException();
     }
+
+    public void updateCentre(Card c)
+    {
+
+    }
     public void RenderPlayerHand()
     {
         _playersHand = app.model.GetPlayerHand(0);
