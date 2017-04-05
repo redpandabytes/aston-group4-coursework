@@ -1,4 +1,6 @@
 ﻿// @Author: Nathaniel Baulch-Jones
+// @Author: David Powell
+// @Author: Rahima Khanom
 
 using System;
 using System.Collections.Generic;
@@ -21,7 +23,7 @@ public class GameModel : GuildsElement
     private int _difficulty;
     private int _noOfPlayers;
 
-    private const int StartingHandSize = 7;
+    private const int StartingHandSize = 9;
     private const int NumStandardCardsPerDeck = 10;
 
     private const int DefaultTurnLength = 10;
@@ -199,8 +201,15 @@ public class GameModel : GuildsElement
         // TODO: Code to handle the draw deck being empty
         for (var i = 0; i < amount; i++)
         {
-            _players[playerID].getHand().add(_drawDeck.pop());
-            Debug.Log("(GameModelcs) Actually added a card to their hand.");
+            if (_players[playerID].getHand().getHandSize() == 10)
+            {
+                Debug.Log("Hand Full");
+            }
+            else
+            {
+                _players[playerID].getHand().add(_drawDeck.pop());
+                Debug.Log("(GameModelcs) Actually added a card to their hand.");
+            }
         }
         Debug.Log("(GameModel.cs) Added " + amount + " card(s) to player " + playerID + "'s hand.");
     }
@@ -329,7 +338,7 @@ public class GameModel : GuildsElement
 
                 if (gameAction.WasTriumphCard())
                 {
-                    // TODO: For the time being Triumph is pretty shit, basically just so it does something in the demo
+                    // TODO: make triumph card more exciting
                     Debug.Log("OOOOOOOOOOOOOOOOOO TRIUMPH CARD");
                     _discardDeck.push(_players[0].getHand().getCardAtIndex(0));
                     _players[0].getHand().removeAtIndex(0);
@@ -344,7 +353,7 @@ public class GameModel : GuildsElement
                     //TODO: FIX THUG, WIZARD, PROFESSOR
                     //TODO: TEST SHIELDBEARER
                 }
-                else if (gameAction.getSelectedCard().getValue() == 20)
+                else if (gameAction.getSelectedCard().getValue() == 11)
                 {
                     Debug.Log("PROFESSOR- SWAP 2CARDS");
                     //Professor
@@ -439,18 +448,20 @@ public class GameModel : GuildsElement
                     }
 
                 }
-                else if (gameAction.getSelectedCard().getValue() == 11)
+                else if (gameAction.getSelectedCard().getValue() == 20)
                 {
-                    //Not working right now A
+                    //Not working right now 
                     //TODO: fix
                     //TODO: to remove card from player, we now need to remove it from the player we swapped with 
                     Debug.Log("WIZARD- SWAP HANDS");
+                    //Randomly select target
                     //int target = Random.Range(0, 4);
                     //while (target == _currentPlayer)
                     //{
                     //    target = Random.Range(0, 4);
                     //}
 
+                    ////swap hands
                     //Hand temp1 = _players[_currentPlayer].getHand();
                     //Hand temp2 = _players[target].getHand();
                     //Debug.Log("1: " + temp1.toString());
@@ -460,6 +471,7 @@ public class GameModel : GuildsElement
                     //Debug.Log("1: " + _players[_currentPlayer].getHand().toString());
                     //Debug.Log("2: " + _players[target].getHand().toString());
 
+                    ////update view
                     //GameAction choice = new GameAction();
                     //choice.Initialise("special.cardupdate");
                     //app.Notify(GameNotification.SpecialCardUpdate, this, choice);
