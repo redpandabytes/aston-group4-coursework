@@ -19,7 +19,8 @@ public class Draggable : GuildsElement, IBeginDragHandler, IDragHandler, IEndDra
     {
         if (draggable == true)
         {
-            if (this.transform.parent == GameObject.Find("playedCardsCell").transform)
+            if (this.transform.parent == GameObject.Find("playedCardsCell").transform ||
+                    this.transform.parent == GameObject.Find("zoomCardCell").transform)
             {
                 draggable = false;
             }
