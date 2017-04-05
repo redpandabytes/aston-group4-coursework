@@ -346,7 +346,7 @@ public class GameModel : GuildsElement
                     _players[0].getHand().removeAtIndex(0);
                     for (int i = 1; i < _players.Count; i++)
                     {
-                        _players[i].getHand().add(_drawDeck.pop());
+                        DrawToPlayer(i, 1);
                     }
 
                     //TODO: IMPLEMENT SPY
@@ -390,7 +390,7 @@ public class GameModel : GuildsElement
                     {
                         if (i != _currentPlayer)
                         {
-                            _players[i].getHand().add(_drawDeck.pop());
+                            DrawToPlayer(i, 1);
                         }
                     }
                 }
