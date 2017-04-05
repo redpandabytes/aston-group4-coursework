@@ -43,7 +43,7 @@ public class GameModel : GuildsElement
         // Value DB Google Drive: https://docs.google.com/spreadsheets/d/1aoWqoUjY1dmnW7_qooTxKf3aJFOO_YblTjn5QbRmTHU/
         for (int g = 1; g < 5; g++)
         {
-            for (int v = 1; v < 20; v++)
+            for (int v = 1; v < 21; v++)
             {
                 Card c = new Card();
                 //TODO: Pass a face
