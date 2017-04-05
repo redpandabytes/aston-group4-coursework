@@ -201,7 +201,7 @@ public class GameModel : GuildsElement
         // TODO: Code to handle the draw deck being empty
         for (var i = 0; i < amount; i++)
         {
-            if (_players[playerID].getHand().getHandSize() == 10)
+            if (_players[playerID].getHand().getHandSize() >= 10)
             {
                 Debug.Log("Hand Full");
             }
