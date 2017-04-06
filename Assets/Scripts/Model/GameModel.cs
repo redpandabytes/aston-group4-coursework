@@ -136,6 +136,7 @@ public class GameModel : GuildsElement
 
     public void UpdateCountDown()
     {
+        Debug.Log("Actually updating text + " + _expiryCountDown);
         _expiryCountDown -= Time.fixedDeltaTime;
         var curPlayer = app.model.GetCurrentPlayer();
         if (curPlayer == 0)

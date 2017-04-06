@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : GuildsElement
 {
@@ -60,6 +61,13 @@ public class PauseMenuScript : GuildsElement
     {
         Time.timeScale = 1; //run in normal time
         Time.fixedDeltaTime = 0.02f; //return to default
+    }
+
+    public void ClickExitBtn()
+    {
+        Time.timeScale = 1; //run in normal time
+        Time.fixedDeltaTime = 0.02f; //return to default
+        SceneManager.LoadScene("Main_Menu");
     }
 }
 
