@@ -3,12 +3,12 @@ using System.Collections;
 
 public class GameAction
 {
-    private string desired; // TODO: What does this mean?
-    private Card selectedCard;
+    private string desired; // The GameAction action to be taken
+    private Card selectedCard; // The selected card in question
     private Card secondCard; //If Professor or Messenger is chosen
     private int targetedPlayer; //If a special with a target is chosen
     private int guildToChangeTo; //When thug is chosen
-    private int verySpecialAction = 999;
+    private int verySpecialAction = 999; // TODO: Remove Legacy code
 
     // Use this for initialization
     void Start()
@@ -50,7 +50,7 @@ public class GameAction
 
     public void Initialise(int guildValue, int cardValue)
     {
-        // TODO: Fix this shit implementation caused by DropZone.cs
+        // TODO: Fix this non-ideal implementation caused by DropZone.cs
         // If DropZone.cs can return a card reference my life will be so much easier
 
         desired = GameNotification.CardPlayed;

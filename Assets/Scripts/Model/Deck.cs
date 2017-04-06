@@ -88,7 +88,7 @@ public class Deck
         return null;
     }
 
-    //Shuffles deck. TODO: This is a slow and shitty algorithm, implement a better one (Fisher Yates?)
+    //Shuffles deck. TODO: This is a slow and non-ideal algorithm, implement a better one (Fisher Yates?)
     public void shuffle()
     {
         Card[] toArray = deck.ToArray();
