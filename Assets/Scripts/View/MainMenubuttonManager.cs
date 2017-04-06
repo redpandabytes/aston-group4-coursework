@@ -54,6 +54,13 @@ public class MainMenubuttonManager : GuildsElement
         SceneManager.LoadScene(returnToMain);
     }
 
+    public void loadGameScene(string sceneName)
+    {
+        var soundToDestroy = GameObject.Find("sound");
+        Destroy(soundToDestroy);
+        SceneManager.LoadScene(sceneName);
+    }
+
     public void NotifyMVC()
     {
         Debug.Log("sdsdfdsd");
